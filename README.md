@@ -1,8 +1,6 @@
 hearU
 =====
 
-base on meteor 0.5.9
-
 首先安装NodeJS和NPM
 <pre>
  > node -v
