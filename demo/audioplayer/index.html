@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="./zepto.js"></script>
+    <!--<script type="text/javascript" src="audio.js"></script>-->
+    <script type="text/javascript" src="./player.js"></script>
+</head>
+<body>
+<!--<audio src="./You-And-Me.mp3"></audio>-->
+
+<button id="play">play</button>
+<button id="pause">pause</button>
+<button id="prev">prev</button>
+<button id="next">next</button>
+
+<script type="text/javascript">
+//    KISSY.use(['widget/player', 'node'], function(S, Player, Node) {
+
+        player = new Player.List();
+        player.add({
+            src: "./You-And-Me.mp3"
+        });
+        player.add({
+            src: "./Behind-Blue-Eyes.mp3"
+        });
+
+        $('#play').on('click', function() {
+            player.play();
+        });
+        $('#pause').on('click', function() {
+            player.pause();
+        });
+        $('#next').on('click', function() {
+            player.next();
+        });
+        $('#prev').on('click', function() {
+            player.prev();
+        });
+
+        player.on('ended play pause next prev', function(ev) {
+            console.log(ev.type);
+        });
+
+        // 资源加载进度
+        player.on('progress', function(ev) {
+            console.log(ev.type, this.buffered.end(this.buffered.length - 1))
+        });
+        // 播放进度
+        player.on('timeupdate', function(ev) {
+            console.log(ev.type, this.currentTime);
+        })
+
+//        player.play();
+    //
+    //    var a = audiojs.createAll({
+    //        trackEnded: function() {
+    //            alert('fire ended event');
+    //        },
+    //        pause: function() {
+    //            var time = a[0].element.currentTime;
+    //            if(time === 0) return;
+    //            alert(time);
+    //            try{
+    //                a[0].element.currentTime = 190;
+    //            }catch(ex) {
+    //                alert('error');
+    //            }
+    //        }
+    //    });
+
+</script>
+</body>
+</html>

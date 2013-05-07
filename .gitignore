@@ -7,6 +7,10 @@ lib-cov
 *.pid
 *.gz
 
+.DS_Store
+.meteor
+.idea/*
+
 pids
 logs
 results

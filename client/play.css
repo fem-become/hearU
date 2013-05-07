@@ -1,0 +1,71 @@
+body{
+	font-family: "Microsoft YaHei";
+	font-size:0.8em;
+}
+#PlayBox{
+	background: #666;
+}
+#PlayBox i{
+	cursor: pointer;#PlayBox
+}
+#PlayBox .head-bar .icon-music{
+	color: #5bc725;
+}
+#PlayBox .song-play-wrapper{
+	padding: 10px;
+	margin:0px auto;
+}
+#PlayBox .song-play-cover{
+	color: #d4d2d2;
+}
+#PlayBox .song-play-cover li{
+	line-height:1.5em;
+	text-align: center;
+}
+#PlayBox  .song-play-tool{
+	font-size:20px;
+	color: #fff;
+	cursor: pointer;
+}
+#PlayBox .song-cover-img{
+	position: relative;
+	color: #464646;
+}
+#PlayBox  .icon-left-open{
+	position: absolute;
+	top:40%;
+	left: 5%;
+	font-size: 18px;
+}
+#PlayBox  .icon-right-open{
+	position: absolute;
+	top:40%;
+	right: 5%;
+	font-size: 18px;
+}
+#PlayBox .recomend-song-list{
+	margin:0px auto;
+	margin-top: 10px;
+	width: 75%;
+	font-size:0.8em;
+}
+#PlayBox .recomend-song-list li,#PlayBox .recomend-song-list li a{
+	display: block;
+    line-height:3em;
+    background: #333333;
+    margin-bottom:1px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+#PlayBox .recomend-song-list li a:hover{
+	background: #669900;
+}
+#PlayBox .recomend-song-list li.first-recomend ,#PlayBox .recomend-song-list li.first-recomend a{
+	border-radius: 5px 5px 0px 0px;
+	
+}
+#PlayBox .recomend-song-list li.last-recomend ,#PlayBox .recomend-song-list li.last-recomend a{
+	border-radius: 0px 0px 5px 5px;
+	
+}

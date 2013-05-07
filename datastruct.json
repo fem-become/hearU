@@ -1,0 +1,179 @@
+元数据结构
+
+user = {
+    _id: "",
+    name: "username",
+    createdate: "create date"
+}
+
+// 要还是不要？
+tag = {
+    _id: "",
+    name: "",
+    type: "" // song or list
+}
+
+// 云谦的接口：http://test.fem.taobao.net:3000/song/12345
+song = {
+    _id:"",
+    title: "",   // 歌曲名
+    cover: "",   // 专辑图片
+    src: "",    // mp3地址
+    albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+    lrc: ""
+    //comments: [] //这个数据不需要
+}
+
+list = {
+    _id: "",
+    title: "",
+    tags: [tag._id],
+    songs: [song._id]，
+    user: user._id
+}
+
+最终数据：
+
+session?
+{
+    _id: "",
+    name: "",
+    playingList: list._id,
+    playingSong: song._id,
+    playingQueue: [song._id]
+}
+
+http://.../song/:songid
+
+{
+    result: true,
+    _id:"",
+    title: "",   // 歌曲名
+    cover: "",   // 专辑图片
+    src: "",    // mp3地址
+    albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+    lrc: ""
+}
+
+//http://.../collection/:userid
+//collection =
+{
+    result: true,
+    lists: [
+       {
+           _id: "",
+           title: "",
+           tags: ["tag1", "tag2"],
+           songs: [
+                {
+                    _id:"",
+                    title: "",   // 歌曲名
+                    cover: "",   // 专辑图片
+                    src: "",    // mp3地址
+                    albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+                    lrc: ""
+                },
+                {
+                    _id:"",
+                    title: "",   // 歌曲名
+                    cover: "",   // 专辑图片
+                    src: "",    // mp3地址
+                    albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+                    lrc: ""
+                }
+            ]
+       },
+       {
+           _id: "",
+           title: "",
+           tags: ["tag1", "tag2"],
+           songs: [
+                {
+                    _id:"",
+                    title: "",   // 歌曲名
+                    cover: "",   // 专辑图片
+                    src: "",    // mp3地址
+                    albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+                    lrc: ""
+                }
+            ]
+       }
+    ]
+}
+
+//http://.../list/:userid
+//lists =
+{
+    result: true,
+    _id: "",
+    title: "",
+    tags: ["tag1", "tag2"],
+    songs: [
+        {
+            _id:"",
+            title: "",   // 歌曲名
+            cover: "",   // 专辑图片
+            src: "",    // mp3地址
+            albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+            lrc: ""
+        },
+        {
+            _id:"",
+            title: "",   // 歌曲名
+            cover: "",   // 专辑图片
+            src: "",    // mp3地址
+            albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+            lrc: ""
+        }
+    ]
+}
+
+// 搜索针对的是歌曲。
+http://.../search/:word
+
+{
+    result: true,
+    songs: [
+        {
+            _id:"",
+            title: "",   // 歌曲名
+            cover: "",   // 专辑图片
+            src: "",    // mp3地址
+            albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+            lrc: ""
+        },
+        {
+            title: "",   // 歌曲名
+            cover: "",   // 专辑图片
+            src: "",    // mp3地址
+            albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+            lrc: ""
+        }
+    ]
+}
+
+http://.../album/:albumid
+{
+    result: true,
+    artist: "",
+    title: "",
+    tags: ["tag1", "tag2"],
+    songs: [
+        {
+            _id:"",
+            title: "",   // 歌曲名
+            cover: "",   // 专辑图片
+            src: "",    // mp3地址
+            albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+            lrc: ""
+        },
+        {
+            _id:"",
+            title: "",   // 歌曲名
+            cover: "",   // 专辑图片
+            src: "",    // mp3地址
+            albumsInfo: "所有信息，包括歌手、专辑的都再这里了。。。提供的接口只有这种数据",  // 不建立其他的数据，所以直接字符串吧
+            lrc: ""
+        }
+    ]
+}
