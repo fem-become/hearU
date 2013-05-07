@@ -9,7 +9,8 @@ lib-cov
 
 .DS_Store
 .meteor
-.idea/*
+.idea
+*.mp3
 
 pids
 logs
