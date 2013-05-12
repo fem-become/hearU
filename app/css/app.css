@@ -1,5 +1,5 @@
 html{
-	background: url("images/imagedoc-darknoise.png") repeat scroll 0 0 #222222;
+	background: #CCC;
 	overflow: hidden;
 }
 
@@ -26,8 +26,10 @@ input:focus{
 }
 
 #header {
-	position:absolute; z-index:2;
-	top:0; left:0;
+	position:absolute;
+    z-index:2;
+	top:0;
+    left:0;
 	width:100%;
 	height:45px;
 	line-height:45px;

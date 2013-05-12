@@ -24,7 +24,6 @@
 			lockDirection:true,
 			onScrollMove:$.throttle(10, function(){
 				$('#pulldown').show();
-				console.log(this.y);
 				if(this.y>0){
 					var x=Math.abs(Math.abs(this.y)/ITEM_HEIGHT);
 					if(x>1){
@@ -68,14 +67,19 @@
 			}
 		},
 		scroll=null,
-		all_events=["touch", "release", "hold", "tap", "doubletap", "dragstart", "drag", "dragend", "dragleft", "dragright", "dragup", "dragdown","swipe"];
+		//all_events=["touch", "release", "hold", "tap", "doubletap", "dragstart", "drag", "dragend", "dragleft", "dragright", "dragup", "dragdown","swipe"];
+        all_events = "release hold tap drag".split(/\s+/g);
 
 	var data=['强力劲爆DJ舞曲','网络歌曲情缘','中国风，中国情','刘德华20年经典重现','净化心灵的西藏轻音乐','分手需要练习的','歌声带你走过绿意','我在旧时光中回忆你','黄霑配乐黄飞鸿系列电影原声','谢谢这些歌郁闷时陪着我','听起来你很开心','在身心疲惫时，把自己融入歌声','都曾反复播放的歌','安静时光，静听一首国语歌','如果你看见，这些歌给你听','每个人的内心都是孤独','伤感永远只留给自己','期待着的温暖歌声','好听的电子氛围音乐','不同感觉的爵士说唱','让人放松的爵士乐','不朽的金属之声','流行舞曲金曲选','超酷牛仔乡村音乐精选','鲍勃迪伦民谣歌曲选','神秘的非洲音乐辑','古典音乐大合唱','好听人气RNB女声歌曲','好听手风琴乐曲选'];
 	function get_list(){
-		var html=[];
+		var html=[], i = 0;
 		$.each(data,function(index,item){
-			html.push('<li class="past item" data-index='+(index+1)+'><div class="slider">'+item+'</div><img class="check" src="images/check.png"><img class="cross" src="images/cross.png"></li>');
-		});
+            if (i++ == 0) {
+                html.push('<li class="song past item songplaying" data-index='+(index+1)+'><div class="slider">'+item+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+            } else {
+			    html.push('<li class="song past item" data-index='+(index+1)+'><div class="slider">'+item+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+            }
+        });
 		return html.join('');
 	}
 
@@ -100,6 +104,8 @@
 	        });
 
 	        this._initEdit();
+
+            this.switchView('songlist');
 		},
 		handle:function(ev){
 			if(this.is_editing){
@@ -158,8 +164,8 @@
 			}
 			var $target=$(target);
 			$target.addClass('animate');
-			console.log(target);
-			if($target.hasClass('main-title')){
+
+            if($target.hasClass('main-title')){
 				self.HeaderView.release.call(self,x);
 			}else if($target.hasClass('side-bar')){
 				if(gesture.direction=='left'){
@@ -171,16 +177,18 @@
 				$('.cross',$target.parent())[0].style['opacity']=0;
 				if(Math.abs(x)>WIN_WIDTH*0.6){
 					if(x<0){
-		                target.style['-webkit-transform']='translate3d(-100%,0px,0px)';
+//		                target.style['-webkit-transform']='translate3d(-100%,0px,0px)';
+                        this.currentView.swipeLeft(ev);
 		            }else{
-		                target.style['-webkit-transform']='translate3d(100%,0px,0px)';
+//		                target.style['-webkit-transform']='translate3d(100%,0px,0px)';
+                        this.currentView.swipeRight(ev);
 		            }
-	            	setTimeout(function(){
-		                $target.parent().remove();
-		                setTimeout(function () {
-							self.scroll.refresh();
-						}, 0);
-		            },300);
+//	            	setTimeout(function(){
+//		                $target.parent().remove();
+//		                setTimeout(function () {
+//							self.scroll.refresh();
+//						}, 0);
+//		            },300);
 				}else{
 					target.style['-webkit-transform']='translate3d(0px,0px,0px)';
 				}
@@ -198,23 +206,31 @@
 			if($target.hasClass('pull-up')){
 
 			}else if(!$target.parent().hasClass('song-list')){
+                if(!$target.hasClass("song")) {
+                    $target = $target.parent(".song");
+                }
+
+                SongListView.tap(ev, self.scroll);
 				return;
 			}
+            return;
+
 	    	this.scroll.scrollTo(0,0);
 	    	this.current_view=SONG_LIST_VIEW;
 	    	// var xx=target.offset().top-$('#header').height();
 	    	// li[0].style['z-index']=li.attr('data-index');
 	    	// li[0].style['-webkit-transform']='translate3d(0px,'+(-xx)+'px,0px)';
 	    	$('#mainlist').html(get_list()).addClass('curl').removeClass('flip');
+
 	    	var list=$('#mainlist li');
 	    	list.each(function (index,item) {
-					if(index*ITEM_HEIGHT<WIN_HEIGHT){
-						setTimeout(function(){
-							$(item).removeClass('past');
-						},150*(index+1));
-					}else{
-						$(item).removeClass('past');
-					}	
+                if(index*ITEM_HEIGHT<WIN_HEIGHT){
+                    setTimeout(function(){
+                        $(item).removeClass('past');
+                    },150*(index+1));
+                }else{
+                    $(item).removeClass('past');
+                }
 		    });
 		},
 		render:function(data,view){
@@ -306,7 +322,28 @@
 				//$('#edit input').focus();
 			},10);
 			$(this.wrapper).addClass('shade');
-		}
+		},
+        switchView: function(name, data) {
+            var Views = {
+                    songlist: SongListView,
+
+                },
+                View = Views[name];
+
+            if(!View) return;
+
+            this.currentView = View;
+
+            var html = View.getHTML();
+
+            // ake
+            // var xx=target.offset().top-$('#header').height();
+            // li[0].style['z-index']=li.attr('data-index');
+            // li[0].style['-webkit-transform']='translate3d(0px,'+(-xx)+'px,0px)';
+            //$('#mainlist').html(get_list()).addClass('curl').removeClass('flip');
+            $('#mainlist').html(html);
+            View.onInitRender(data);
+        }
 	}
 	exports.HearU=HearU;
 })(this);

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" id="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="hearU">
+    <link rel="stylesheet" type="text/css" href="css/stroll.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/view.css">
+    <link rel="stylesheet" type="text/css" href="css/uxiconfont.css">
+    <title>我的歌单</title>
+    <!--
+    <script type="text/tpl">
+        curl flip fly-simplified tilt zipper
+    </script>
+    -->
+</head>
+<body >
+<div id="page">
+    <div id="sidebar" class="slider side-bar"></div>
+    <div id="header">
+        <span class="topbtn appbtn"></span>
+        <span class="topbtn musicbtn"></span>
+        <div class="main-title slider">我的歌单</div>
+    </div>
+    <div id="wrapper">
+        <div id="scroller">
+            <div class="pull-more pull-down" id="pulldown" style="display:none;">
+                <div class="pull-more-wrapper">
+                    <span class="pull-more-icon"></span>
+                    <span class="pull-more-label">下拉创建新歌单</span>
+                </div>
+            </div>
+            <div id="mainlist" class="">
+                <ul id="albumlist">
+                    <li class="song-list item playing" data-index="1">
+                        <div class="slider">
+                            <span class="list-name">你若不红，天理难容。第二辑<b class="list-num">(20)</b></span>
+                            <i class="icon-pause"></i>
+                            <!--
+                            <?php echo $item;?>
+                            -->
+                        </div>
+                        <span class="check sideIcon"><i class="icon-heart"></i></span>
+                        <span class="cross sideIcon"><i class="icon-trash"></i></span>
+                        <div class="editor">
+                            <div class="edit-bar">
+                                <i class="icon-cancle"></i>
+                                <input class="edit-input" value="你若不红，天理难容。第二辑" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="song-list item editing" data-index="2">
+
+                        <div class="slider">
+                            <span class="list-name">好听的歌<b class="list-num">(2)</b></span>
+                            <i class="icon-play"></i>
+                            <!--
+                            <?php echo $item;?>
+                            -->
+                        </div>
+                        <span class="check sideIcon"><i class="icon-heart"></i></span>
+                        <span class="cross sideIcon"><i class="icon-trash"></i></span>
+                        <div class="editor">
+                            <div class="edit-bar">
+                                <i class="icon-cancle"></i>
+                                <input class="edit-input" value="好听的歌" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="song-list item" data-index="3">
+                        <div class="slider">
+                            <span class="list-name">钢琴曲<b class="list-num">(2)</b></span>
+                            <i class="icon-play"></i>
+                            <!--
+                            <?php echo $item;?>
+                            -->
+                        </div>
+                        <span class="check sideIcon"><i class="icon-heart"></i></span>
+                        <span class="cross sideIcon"><i class="icon-trash"></i></span>
+                        <div class="editor">
+                            <div class="edit-bar">
+                                <i class="icon-cancle"></i>
+                                <input class="edit-input" value="钢琴曲" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="song-list item" data-index="4">
+                        <div class="slider">
+                            <span class="list-name">钢琴曲2<b class="list-num">(1)</b></span>
+                            <i class="icon-play"></i>
+                            <!--
+                            <?php echo $item;?>
+                            -->
+                        </div>
+                        <span class="check sideIcon"><i class="icon-heart"></i></span>
+                        <span class="cross sideIcon"><i class="icon-trash"></i></span>
+                        <div class="editor">
+                            <div class="edit-bar">
+                                <i class="icon-cancle"></i>
+                                <input class="edit-input" value="钢琴曲2" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="edit-wrapper">
+    <div id="edit">
+        <input type="text" placeholder="请输入歌单名称">
+    </div>
+</div>
+<!--
+<script type="text/javascript1" src="http://192.168.1.104:8080/target/target-script-min.js#anonymous"></script>
+-->
+<script src="js/zepto.min.js"></script>
+<script src="js/throttle.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/hammer.js"></script>
+<script type="text/javascript" src="./js/songlistview.js"></script>
+<script type="text/javascript" src="./js/player.js"></script>
+<script type="text/javascript" src="./js/initplayer.js"></script>
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/header.js"></script>
+<script>
+    $(function(){
+        HearU.init();
+    });
+</script>
+</body>
+</html>

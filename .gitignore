@@ -17,3 +17,11 @@ logs
 results
 
 npm-debug.log
+
+*.xml
+
+.DS_Store
+
+.idea/workspace.xml
+
+*.xml
