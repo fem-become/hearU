@@ -100,7 +100,7 @@
 
             this.audio = audio;
             this.list = [];
-            this.playedIndex = 0;
+            this.playedIndex = undefined;
             this.playing = false;
 
             this.on('ended', function() {
@@ -109,19 +109,18 @@
         },
         setList: function(list) {
             this.list = list;
-            this.playedIndex = 0;
+            this.playedIndex = undefined;
         },
         play: function(index) {
             var self = this,
                 audio = this.audio,
-                idx = index === undefined ? self.playedIndex : index,
-                song = self.list[idx];
+                song = self.getSongInfo(index);
             if(!song || !song.src) {
                 return;
             }
             this.playing = true;
 
-            self.playedIndex = idx;
+            self.playedIndex = song.index;
 
             audio.load(song.src);
 
@@ -177,6 +176,14 @@
         },
         fire: function(type, data) {
             $(this.audio.element).trigger(type, data);
+        },
+        getSongInfo: function(index) {
+            var idx = parseInt(index === undefined ? this.playedIndex : index, 10),
+                song = this.list[idx];
+
+            song && (song['index'] = idx);
+
+            return song;
         }
     });
 

@@ -6,16 +6,11 @@
 		ALBUM_LIST_VIEW=1,
 		SONG_LIST_VIEW=2,
 		PULL_BAEL={
-			1:{
-				'pull':'下拉创建新歌单',
-				'release':'松开创建新歌单',
-				'switch':'切换到歌曲列表'
-			},
-			2:{
-				'pull':'下拉添加新歌',
-				'release':'松开添加新歌',
-				'switch':'切换到歌单列表'
-			}
+            'songlist': {
+                'pull': "下拉songlist",
+                release: "松开songlist",
+                switch: "切换songlist"
+            }
 		};
 
 	var scroll_config={
@@ -28,16 +23,16 @@
 					var x=Math.abs(Math.abs(this.y)/ITEM_HEIGHT);
 					if(x>1){
 						x=1;
-						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view+'']['release']);
+						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['release']);
 						$('#pulldown').attr('data-status','1');
 					}else{
-						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view+'']['pull']);
+						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['pull']);
 						$('#pulldown').attr('data-status','0');
 					}
 					$('#pulldown .pull-more-wrapper')[0].style['-webkit-transform']='rotateX('+90*(1-x)+'deg)';
 
 					if(this.y>ITEM_HEIGHT*2){
-						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view]['switch']);
+						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['switch']);
 						$('#pulldown .pull-more-wrapper').removeClass('item-create');
 						$('#pulldown').attr('data-status','2');
 					}else{
@@ -55,10 +50,8 @@
 				if(status==1){
 					HearU.createItem();
 				}else if(status==2){
-					if(HearU.current_view==SONG_LIST_VIEW){
-						HearU.showAlbum();
-
-					}
+					//if(HearU.current_view==SONG_LIST_VIEW){
+                    HearU.current_view.pullDown();
 				}
 				$("#pulldown").attr('data-status','0');
 			},
@@ -94,7 +87,9 @@
 
 			$(this.sidebar).width(WIN_WIDTH*0.6);
 			this.is_editing=false;
-			this.current_view=ALBUM_LIST_VIEW;
+
+//			this.current_view=ALBUM_LIST_VIEW;
+
 			Hammer(document.getElementById('page'), {
 	            prevent_default: true,
 	            no_mouseevents: true
@@ -105,7 +100,11 @@
 
 	        this._initEdit();
 
-            this.switchView('songlist');
+            this.switchView('songlist', {
+                debug: true,
+                initFire: true,
+                alumbid: 1
+            });
 		},
 		handle:function(ev){
 			if(this.is_editing){
@@ -132,19 +131,25 @@
 			var self=this;
 				gesture=ev.gesture,
 				x=gesture.deltaX,
-				target=ev.target;
+				$target = $(ev.target);
 
-			if(target.className.indexOf(SLIDER_CLASS)==-1){
+			if(!$target.hasClass(SLIDER_CLASS)){
+                if($target.hasClass('icon-play')) {
+
+                    ev.gesture.stopDetect();
+                }
 				return;
 			}
-			var $target=$(target),$item=$target.parent();
+
+            var $item=$target.parent();
 			$target.removeClass('animate');
 			if(gesture.direction=='left'||gesture.direction=='right'){
 				self.scroll.disable();
+
 				if($target.hasClass('main-title')){
 					self.HeaderView.drag.call(self,x);
 				}else{
-					target.style['-webkit-transform']='translate3d(' + x + 'px,0px,0px)';
+					$target.css('-webkit-transform', 'translate3d(' + x + 'px,0px,0px)');
 					if(x>0){
 		            	$('.check',$item).css('opacity',x/ITEM_HEIGHT);
 		            }else{
@@ -173,15 +178,15 @@
 				}
 			}
 			else{
-				$('.check',$target.parent())[0].style['opacity']=0;
-				$('.cross',$target.parent())[0].style['opacity']=0;
+//				$('.check',$target.parent())[0].style['opacity']=0;
+//				$('.cross',$target.parent())[0].style['opacity']=0;
 				if(Math.abs(x)>WIN_WIDTH*0.6){
 					if(x<0){
 //		                target.style['-webkit-transform']='translate3d(-100%,0px,0px)';
-                        this.currentView.swipeLeft(ev);
+                        this.current_view.swipeLeft && this.current_view.swipeLeft(ev);
 		            }else{
 //		                target.style['-webkit-transform']='translate3d(100%,0px,0px)';
-                        this.currentView.swipeRight(ev);
+                        this.current_view.swipeRight && this.current_view.swipeRight(ev);
 		            }
 //	            	setTimeout(function(){
 //		                $target.parent().remove();
@@ -195,7 +200,7 @@
 			}
 		},
 		_hold:function(ev){
-			alert('hold event!');
+			this.current_view.hold && this.current_view.hold(ev);
 		},
 		_tap:function(ev){
 			var self=this;
@@ -204,16 +209,12 @@
 				target=ev.target,
 				$target=$(target);
 			if($target.hasClass('pull-up')){
-
-			}else if(!$target.parent().hasClass('song-list')){
-                if(!$target.hasClass("song")) {
-                    $target = $target.parent(".song");
-                }
-
-                SongListView.tap(ev, self.scroll);
-				return;
+                console.log(ev)
+                return;
+			}else {// if(!$target.parent().hasClass('song-list')){
+                this.current_view.tap && this.current_view.tap(ev);
+                return;
 			}
-            return;
 
 	    	this.scroll.scrollTo(0,0);
 	    	this.current_view=SONG_LIST_VIEW;
@@ -253,12 +254,12 @@
 					if(index*ITEM_HEIGHT<WIN_HEIGHT){
 						setTimeout(function(){
 							$(item).removeClass('past');
-						},150*(index+1));
+						}, 150*(index+1));
 					}else{
 						$(item).removeClass('past');
 						self.scroll.enable();
 						self.scroll.refresh();
-					}	
+                    }
 		    });
 		},
 		_initEdit:function(){
@@ -324,25 +325,28 @@
 			$(this.wrapper).addClass('shade');
 		},
         switchView: function(name, data) {
+            // Seesion.usserId
+            // data = {userId: "", };
             var Views = {
                     songlist: SongListView,
-
+                    selfAlbum: SelfAlbumList
                 },
                 View = Views[name];
 
             if(!View) return;
 
-            this.currentView = View;
+            this.current_view = View;
 
-            var html = View.getHTML();
+//            var html = View.getHTML(data);
+            //$('#mainlist').html(html);
 
             // ake
             // var xx=target.offset().top-$('#header').height();
             // li[0].style['z-index']=li.attr('data-index');
             // li[0].style['-webkit-transform']='translate3d(0px,'+(-xx)+'px,0px)';
             //$('#mainlist').html(get_list()).addClass('curl').removeClass('flip');
-            $('#mainlist').html(html);
-            View.onInitRender(data);
+            //$('#mainlist').html(html);
+            View.init(data);
         }
 	}
 	exports.HearU=HearU;
