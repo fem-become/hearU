@@ -103,6 +103,8 @@
 	        	self.handle.call(self,ev);
 	        });
 
+            this.player = new window._player.List();
+
             this.switchView('albumlist');
 
             this._initEdit();

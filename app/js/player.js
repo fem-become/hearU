@@ -189,5 +189,5 @@
 
     Player.List = PlayList;
 
-    global.Player = Player;
+    global._player = Player;
 })(window);

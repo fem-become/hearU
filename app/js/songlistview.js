@@ -56,7 +56,7 @@
         name: "songlist",
         getHTML: function(data) {
             var html=['<ul class="songlist">'], i = 0,
-                song = AudioPlayer.getSongInfo();
+                song = HearU.player.getSongInfo();
             $.each(SongListData,function(index,item){
                 if (song && item.name == song.name) {
                     html.push('<li class="song past item songplaying" data-index='+(index)+'><div class="slider">'+item.name+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
@@ -73,7 +73,7 @@
 
             this.metaData = data;
 
-            AudioPlayer.setList(SongListData);
+            HearU.player.setList(SongListData);
 
             $('#mainlist').addClass('curl');//.removeClass('flip');
             var list=$('#mainlist li');
@@ -103,7 +103,7 @@
         swipeRight: function(ev) {
             target.style['-webkit-transform']='translate3d(0px,0px,0px)';
 
-            var songData = AudioPlayer.getSongInfo();
+            var songData = HearU.player.getSongInfo();
             HearU.switchView("selfAlbum", $.extend({}, songData, this.metaData));
         },
         tap: function(ev) {
@@ -113,7 +113,7 @@
                 var $parent = $target.parent().parent();
 
                 // 重新设置列表。
-                AudioPlayer.play($parent.attr('data-index'));
+                HearU.player.play($parent.attr('data-index'));
 
                 $('.songplaying').removeClass('songplaying');
                 $parent.addClass('songplaying');

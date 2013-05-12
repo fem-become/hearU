@@ -143,12 +143,12 @@
                 } else {
                     var songdata = HearU.albumRecord[albumID],
                         songid = songdata[0].id;
-                    AudioPlayer.setList(songdata);
-                    AudioPlayer.play(songid);
+                    HearU.player.setList(songdata);
+                    HearU.player.play(songid);
                 }
             } else if ($target.hasClass("icon-pause")) {
                 $(".icon-pause").removeClass("icon-pause").addClass("icon-play");
-                AudioPlayer.pause();
+                HearU.player.pause();
             } else if (this.isChildOrSelf($target, $("li.song-list"))) {
                 //TODO: 确定后删除
                 var userID = global.session ? global.session.userid ? global.session.userid : 1 : 1;
