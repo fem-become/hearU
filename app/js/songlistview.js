@@ -93,11 +93,11 @@
             $target[0].style['-webkit-transform']='translate3d(-100%,0px,0px)';
 
             setTimeout(function() {
-                $target.parent().remove();
+            $target.parent().remove();
 
-                setTimeout(function () {
-                    HearU.scroll.refresh();
-                }, 0);
+            setTimeout(function () {
+                HearU.scroll.refresh();
+            }, 0);
             }, 300)
         },
         swipeRight: function(ev) {
@@ -119,15 +119,32 @@
                 $parent.addClass('songplaying');
 
                 console.log('play '+ $parent.attr('data-index'));
-            }else {
-                HearU.switchView('play', )
+            }else if(this.isChildOrSelf($target, $("li.song"))){
+                //HearU.switchView('play', )
+                console.log('switch to play page')
             }
         },
         pullDown: function() {
             console.log('pulldown by songlist')
             HearU.switchView('albumlist', this.metaData);
+        },
+        isChildOrSelf: function(target, p) {
+            return (target.closest(p).length > 0);
+        },
+        onEdit: function(ev) {
+            console.log('onedit', ev);
+
+            $('#edit').attr('data-status','0')[0].style['-webkit-transform']='rotateX(-90deg)';
+            setTimeout(function() {
+                $('.edit-wrapper').css('top','-100%');
+            }, 500);
+            $(self.wrapper).removeClass('shade');
+
+            HearU.is_editing = false;
+            HearU.scroll.enable();
+            HearU.scroll.refresh();
         }
     };
 
-    global.SongListView = SongListView;
+   global.SongListView = SongListView;
 })(window);

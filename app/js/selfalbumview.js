@@ -29,8 +29,8 @@
             html.push('</ul>');
             return html.join('');
         },
-        onInitRender: function(data) {
-            $('#mainlist').addClass('curl');//.removeClass('flip');
+        init: function(data) {
+            $('#mainlist').html(this.getHTML()).addClass('curl');//.removeClass('flip');
             console.log(data);
             var list=$('#mainlist li');
             list.each(function (index,item) {
@@ -59,6 +59,9 @@
         tap: function(ev) {
             console.log(ev.target);
             HearU.switchView("songlist")
+        },
+        onEdit: function() {
+
         }
     };
 

@@ -57,6 +57,7 @@ input:focus{
 	overflow: auto;
 	-webkit-transform-style: preserve-3d; 
 }
+/*
 .edit-wrapper{
 	-webkit-perspective-origin: top center;
 	-webkit-perspective: 400px;
@@ -66,7 +67,7 @@ input:focus{
 	z-index: 9999;
 	width: 100%;
 	overflow: hidden;
-	-webkit-backface-visibility: hidden;/*解决闪烁问题*/
+	-webkit-backface-visibility: hidden;解决闪烁问题
 }
 #edit{
 	height: 62px;
@@ -76,7 +77,7 @@ input:focus{
     -webkit-transition: -webkit-transform 0.3s linear;
 	-webkit-transform-origin: top center;
 	-webkit-transform: rotateX(-90deg);
-	-webkit-backface-visibility: hidden;/*解决闪烁问题*/
+	-webkit-backface-visibility: hidden;解决闪烁问题
 }
 #edit input{
 	border: 0 none;
@@ -95,6 +96,7 @@ input:focus{
 	border: 0 none;
 	background: none;
 }
+*/
 #scroller {
 	position:absolute; z-index:1;
 /*	-webkit-touch-callout:none;*/

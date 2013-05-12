@@ -49,7 +49,7 @@
 .icon-heart:before { content: '\016a'; }
 .icon-cancle:before { content: '\017a'; }
 .icon-pause:before { content: '\01a3'; color: #669900; }
-.icon-play:before { content: '\f019'; color: #666;}
+.icon-play:before { content: '\f019'; color: #666; }
 .songplaying .icon-play:before {
     content: '\01a3'; color: #666;
 }
