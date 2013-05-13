@@ -1,0 +1,176 @@
+#header {
+    font-size: 14px;
+    height: 39px;
+    line-height: 39px;
+    border-bottom: 1px solid #4C7400;
+    color: #FFF;
+    font-weight: bold;
+    background: -webkit-linear-gradient(top, #73AE01, #669900);
+}
+
+#header .topbtn {
+    width: 40px;
+    height: 28px;
+    margin: 6px 10px;
+    background: url("../images/icon.png") no-repeat;
+    cursor: pointer;
+}
+
+#header .appbtn {
+    float: left;
+    background-position: -20px -73px;
+}
+
+#header .musicbtn {
+    float: right;
+    background-position: -128px -73px;
+}
+
+#wrapper {
+    top: 40px;
+    background: #CCC;
+}
+
+#mainlist .song-list {
+    height: 44px;
+    font-size: 14px;
+    border-bottom: 1px solid #EEE;
+    background: #666;
+}
+
+#mainlist .song-list .slider {
+    height: 44px;
+    line-height: 44px;
+    background: -webkit-linear-gradient(top, #CCC, #EEE);
+}
+
+#mainlist .playing .slider {
+    color: #CCC;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(top, #666, #333);
+}
+
+#mainlist .song-list .slider .list-name {
+    padding-left: 5px;
+}
+
+#mainlist .song-list .slider .list-name .list-num {
+    font-size: 12px;
+}
+
+#mainlist .song-list .slider i {
+    margin-top: 2px;
+    float: right;
+    cursor: pointer;
+}
+
+#mainlist .sideIcon {
+    width: 44px;
+    height: 41px;
+    line-height: 44px;
+    padding-top: 3px;
+}
+
+.song-list .sideIcon .icon-heart {
+    margin-left: 10px;
+    color: #996600;
+}
+
+.song-list .sideIcon .icon-trash {
+    margin-right: 10px;
+    color: #878787;
+}
+
+/* 歌曲列表 */
+#mainlist .song {
+    color: #EEE;
+    font-size: 14px;
+    font-weight: bold;
+    width: 90%;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background: #CCC;
+}
+
+#mainlist .song .slider {
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(top, #999, #666);
+}
+
+#mainlist .songplaying .slider {
+    color: #666;
+    background: -webkit-linear-gradient(top, #FFFFCC, #FFFF99);
+}
+
+#mainlist .song .slider i {
+    margin-top: 2px;
+    float: right;
+    margin-right: 10px;
+}
+
+.song .sideIcon .icon-heart {
+    color: #996600;
+}
+
+.song .sideIcon .icon-trash {
+    color: #878787;
+}
+
+/* 搜索栏 */
+.edit-wrapper {
+    width: 100%;
+    height: 44px;
+    background: #666;
+    padding: 4px 0;
+    position: absolute;
+    left: 0;
+    top: -100%;
+    z-index: 9999;
+    overflow: hidden;
+    -webkit-perspective-origin: top center;
+    -webkit-perspective: 400px;
+    -webkit-backface-visibility: hidden; /*解决闪烁问题*/
+}
+
+.edit-wrapper #edit {
+    width: 98%;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #FFF;
+    -webkit-transition-property: rotateX;
+    -webkit-transition: -webkit-transform 0.3s linear;
+    -webkit-transform-origin: top center;
+    -webkit-transform: rotateX(-90deg);
+    -webkit-backface-visibility: hidden; /*解决闪烁问题*/
+}
+
+.edit-wrapper #edit i {
+    color: #CCC;
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.edit-wrapper #edit input {
+    width: 85%;
+    height: 30px;
+    font-size: 16px;
+    margin-left: 10px;
+    padding-left: 10px;
+    line-height: 30px;
+}
+
+#edit input::-webkit-input-placeholder {
+    font-weight: bold;
+    color: #fff;
+}
+#edit input:focus{
+    border: 0 none;
+    background: none;
+}
+
