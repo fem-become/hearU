@@ -10,8 +10,7 @@
 	ObjectID = require('mongoskin').ObjectID;
 	exports.createUser = function(callback,res){
 		user.insert({name:"新用户"},function(err,item){
-			console.info(item);
-			callback({id:item[0]._id},res);
+			callback({_id:item[0]._id},res);
 		});
 	};
 	exports.createCollect = function(userId,name,callback,res){
@@ -23,7 +22,7 @@
 					collectId = item[0]._id;
 					collects.push(collectId);
 					user.update({_id:ObjectID(userId)},{$set:{collects:collects}},function(){
-						callback({id:collectId},res);
+						callback({_id:collectId},res);
 					});
 				});
 			}

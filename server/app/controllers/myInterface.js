@@ -18,7 +18,8 @@
 	};
 	//随机歌曲录入
 	exports.random = function(req, res){
-		song.random(sendJson,res);
+		var userId = req.query.userId;
+		song.random(userId,sendJson,res);
 	};
 	//创建用户
 	exports.createUser = function(req, res){
@@ -50,7 +51,7 @@
 		var key = req.query.key;
 		song.search(key,sendJson,res);
 	};
-	//删歌
+	//添歌
 	exports.addSong = function(req, res){
 		var query = req.query,
 		songId = query.songId,

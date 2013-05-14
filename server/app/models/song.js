@@ -31,11 +31,23 @@
 		}
 		return ret;
 	};
-	exports.random = function(callback,res){
+	exports.random = function(userId,callback,res){
 		var ret;
-		song.find().toArray(function(err,items){
-			ret = getRandomArray(items,5);
-			callback(ret,res);
+		var collects,
+		mySongs = [];
+		user.findOne({_id:ObjectID(userId)},function(err,item){
+			if(item){
+				collects = item.collects || [];
+				collect.find({_id:{$in : turnToObjectId(collects)}}).toArray(function(err,items){
+					for(var i=0,l=items.length;i<l;i++){
+						mySongs = mySongs.concat(items[i].songs);
+					}
+					song.find({_id:{$nin : turnToObjectId(mySongs)}}).toArray(function(err,items){
+						ret = getRandomArray(items,5);
+						callback(ret,res);
+					});
+				});
+			}
 		});
 	};
 	exports.findSongList = function(collectId,visitorId,callback,res){
@@ -78,7 +90,7 @@
 		});
 	};
 	exports.search = function(key,callback,res){
-		var condition = {name:{$regex:key}}; 
+		var condition = {$or:[{name:{$regex:key}},{artist:{$regex:key}}]}; 
 		song.find(condition).toArray(function(err,items){
 			callback(items,res);
 		});
