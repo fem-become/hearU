@@ -10,7 +10,9 @@
 	function SongDetail(){
 		if(!inited){
 			inited = true;
-			(ldata = player.list)[curIdx] && _refresh();
+			return (ldata = player.list)[curIdx] ? _refresh() : info;
+		} else {
+			return _refresh();
 		}
 	}
 	
@@ -23,8 +25,7 @@
 	    trash: trashSong,
 	    artist: searchByArtist,
 	    ownerList: getListByOwner,
-	    recommend: guessUllLike,
-	    getSongList: getCurrThreeSongs
+	    recommend: guessUllLike
 	});
 	
 	function _refresh(){
@@ -32,6 +33,7 @@
 		info.currentSong = ldata[curIdx];
 		info.prevSong = ldata[curIdx-1] || null; //ldata[ldata.length-1];
 		info.nextSong = ldata[curIdx+1] || null; //ldata[0];
+		return info;
 	}
 	function playUp(){
 		!player.playing && player.play(curIdx);
@@ -71,9 +73,6 @@
 	}
 	function guessUllLike(){
 		hoo.switchView('songlist', { userId: -1, albumId: -1 });
-	}
-	function getCurrThreeSongs(){
-		return info;
 	}
 	
 	hoo.SongDetail = SongDetail;
