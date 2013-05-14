@@ -23,7 +23,8 @@
 	    trash: trashSong,
 	    artist: searchByArtist,
 	    ownerList: getListByOwner,
-	    recommend: guessUllLike
+	    recommend: guessUllLike,
+	    getSongList: getCurrThreeSongs
 	});
 	
 	function _refresh(){
@@ -41,12 +42,10 @@
 	function goPrev(){
 		_refresh();
 		player.prev();
-		return info;
 	}
 	function goNext(){
 		_refresh();
 		player.next();
-		return info;
 	}
 	function favorSong(callback){
 		/* favorSong.send({
@@ -62,7 +61,7 @@
 			songId:info.currentSong.songId
 		}, callback); */
 	}
-	function searchByArtist(keyword,callback){
+	function searchByArtist(keyword){
 		/* searchSongs.send({
 			key:keyword
 		}, callback); */
@@ -71,7 +70,12 @@
 		hoo.switchView('albumlist', { userId: info.currentSong.userId });
 	}
 	function guessUllLike(){
-		hoo.switchView('songlist', { userId: -1 });
+		hoo.switchView('songlist', { userId: -1, albumId: -1 });
 	}
+	function getCurrThreeSongs(){
+		return info;
+	}
+	
+	hoo.SongDetail = SongDetail;
 	
 })(this.HearU);
