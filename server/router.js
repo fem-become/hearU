@@ -16,19 +16,19 @@
             myInterface.createUser(req, res);
         });
         //歌单列表页面
-    	app.get('/collect/list/:userId', function(req, res){
+    	app.get('/collect/list', function(req, res){
             myInterface.myList(req, res);
         });
         //歌曲列表页面
-        app.get('/song/list/:collectId', function(req, res){
+        app.get('/song/list', function(req, res){
             myInterface.songList(req, res);
         });
         //歌单详情
-        app.get('/collect/detail/:collectId', function(req, res){
+        app.get('/collect/detail', function(req, res){
             myInterface.findCollect(req, res);
         });
         //歌曲详情
-        app.get('/song/detail/:songId', function(req, res){
+        app.get('/song/detail', function(req, res){
             myInterface.findSong(req, res);
         });
         //搜歌
@@ -50,6 +50,14 @@
         //删歌单
         app.get('/collect/remove', function(req, res){
             myInterface.removeCollect(req, res);
+        });
+        //收藏歌单
+        app.get('/collect/add', function(req, res){
+            myInterface.addCollect(req, res);
+        });
+        //创建歌单
+        app.get('/collect/create', function(req, res){
+            myInterface.createCollect(req, res);
         });
         //检测歌是否已收藏过
         app.get('/song/isCollected', function(req, res){

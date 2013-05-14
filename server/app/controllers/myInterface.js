@@ -7,9 +7,13 @@
 	var collect = require("../models/collect.js"),
 	song = require("../models/song.js"),
 	user = require("../models/user.js"),
-	sendJson = function(o,res){
+	sendJson = function(o,res,isFail){
+		var ret = {
+			isSuccess:!isFail,
+			data : o
+		};
 		res.writeHead(200, {'Content-Type': 'application/json;charset=utf-8'});
-		res.write(JSON.stringify(o));
+		res.write(JSON.stringify(ret));
 		res.end();
 	};
 	//随机歌曲录入
@@ -22,27 +26,28 @@
 	};
 	//歌单列表页面
 	exports.myList = function(req, res){
-		var userId = req.params.userId;
-		collect.findCollectList(userId,sendJson,res);
+		var userId = req.query.userId,
+		visitorId = req.query.visitorId;
+		collect.findCollectList(userId,visitorId,sendJson,res);
 	};
 	//歌曲列表页面
 	exports.songList = function(req, res){
-		var collectId = req.params.collectId;
-		song.findSongList(collectId,sendJson,res);
+		var collectId = req.query.collectId,
+		visitorId = req.query.visitorId;
+		song.findSongList(collectId,visitorId,sendJson,res);
 	};
 	//歌单详情
 	exports.findCollect = function(req, res){
-		var collectId = req.params.collectId;
+		var collectId = req.query.collectId;
 		collect.find(collectId,sendJson,res);
 	};
 	//歌曲详情
 	exports.findSong = function(req, res){
-		var songId = req.params.songId;
+		var songId = req.query.songId;
 		song.find(songId,sendJson,res);
 	};
 	exports.searchSongs = function(req, res){
 		var key = req.query.key;
-		console.info(key);
 		song.search(key,sendJson,res);
 	};
 	//删歌
@@ -67,10 +72,22 @@
 		collectId = query.collectId;
 		collect.removeSong(songId,collectId,sendJson,res);
 	};
+	//收藏歌单
+	exports.addCollect = function(req, res){
+		var query = req.query,
+		userId = query.userId,
+		collectId = query.collectId;
+		user.addCollect(userId, collectId,sendJson,res);
+	};
+	//创建歌单
+	exports.createCollect = function(req, res){
+		var query = req.query,
+		userId = query.userId,
+		name = query.name;
+		user.createCollect(userId, name,sendJson,res);
+	};
 	//删歌单
 	exports.removeCollect = function(req, res){
-		console.info(userId);
-		console.info(collectId);
 		var query = req.query,
 		userId = query.userId,
 		collectId = query.collectId;

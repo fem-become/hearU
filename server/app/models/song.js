@@ -38,13 +38,36 @@
 			callback(ret,res);
 		});
 	};
-	exports.findSongList = function(collectId,callback,res){
-		var songs;
+	exports.findSongList = function(collectId,visitorId,callback,res){
+		var songs,
+		mySongs = [],
+		songId;
 		collect.findOne({_id:ObjectID(collectId)},function(err,item){
 			if(item){
-				songs = item.songs;
+				songs = item.songs || [];
 				song.find({_id:{$in : turnToObjectId(songs)}}).toArray(function(err,items){
-					callback(items,res);
+					if(visitorId){
+						user.findOne({_id:ObjectID(visitorId)},function(err,item){
+							if(item){
+								collects = item.collects || [];
+								collect.find({_id:{$in : turnToObjectId(collects)}}).toArray(function(err,collects){
+									for(var i=0,l=collects.length;i<l;i++){
+										mySongs = mySongs.concat(collects[i].songs);
+									}
+									for(var i=0,l=items.length;i<l;i++){
+										songId = items[i]._id.toString();
+										if(mySongs.indexOf(songId)>-1){
+											items[i].hasFavor = true;
+										}
+									}
+									callback(items,res);
+								});
+							}
+						});
+					}
+					else{
+						callback(items,res);
+					}
 				});
 			}
 		});
@@ -55,7 +78,6 @@
 		});
 	};
 	exports.search = function(key,callback,res){
-		console.info(key);
 		var condition = {name:{$regex:key}}; 
 		song.find(condition).toArray(function(err,items){
 			callback(items,res);
