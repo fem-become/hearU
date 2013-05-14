@@ -10,6 +10,12 @@
 		hoo.sessionId = localStorage.getItem('user');
 	}
 	function launchPlayer(list){
+		list.forEach(function(v){
+			v.songId = v._id;
+			v.collectId = -1;
+			v.userId = -1;
+			v.hasFavor = false;
+		});
 		player.setList(list);
 		player.play(0);
 		hoo.switchView('songdetailview');
@@ -22,10 +28,10 @@
 			hoo.switchView('albumlist', { userId: hoo.sessionId });
 			cb(hoo.sessionId);
 		} else {
-			createUser.send({}, function(userId){
-				localStorage.setItem('user', userId);
+			hoo.requestAPI('/user/create', {}, function(data){
+				localStorage.setItem('user', data._id);
 				setUserLogin();
-				getSongList.send({ userId: -1, albumId: -1 }, launchPlayer);
+				hoo.requestAPI('/song/random', {}, launchPlayer);
 			});
 		}
 	}

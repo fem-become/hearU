@@ -31,8 +31,8 @@
 	function _refresh(){
 		curIdx = player.playedIndex;
 		info.currentSong = ldata[curIdx];
-		info.prevSong = ldata[curIdx-1] || null; //ldata[ldata.length-1];
-		info.nextSong = ldata[curIdx+1] || null; //ldata[0];
+		info.prevSong = ldata[curIdx-1] || ldata[ldata.length-1];
+		info.nextSong = ldata[curIdx+1] || ldata[0];
 		return info;
 	}
 	function playUp(){
@@ -50,29 +50,32 @@
 		player.next();
 	}
 	function favorSong(callback){
-		/* favorSong.send({
-			userId:info.currentSong.userId,
-			albumId:info.currentSong.albumId,
-			songId:info.currentSong.songId
-		}, callback); */
+		hoo.openSelect(info.currentSong.songId, info.currentSong.collectId);
 	}
 	function trash(callback){
-		/* removeSong.send({
-			userId:info.currentSong.userId,
-			albumId:info.currentSong.albumId,
-			songId:info.currentSong.songId
-		}, callback); */
+		hoo.requestAPI('/collect/removeSong', {
+			collectId: info.currentSong.collectId,
+			songId: info.currentSong.songId
+		}, callback);
 	}
 	function searchByArtist(keyword){
-		/* searchSongs.send({
-			key:keyword
-		}, callback); */
+		hoo.requestAPI('/song/search', {
+			key: keyword
+		}, callback);
 	}
 	function getListByOwner(){
 		hoo.switchView('albumlist', { userId: info.currentSong.userId });
 	}
 	function guessUllLike(){
-		hoo.switchView('songlist', { userId: -1, albumId: -1 });
+		hoo.requestAPI('/song/random', {}, function(list){
+			list.forEach(function(v){
+				v.songId = v._id;
+				v.collectId = -1;
+				v.userId = -1;
+				v.hasFavor = false;
+			});
+			hoo.switchView('songlist', { songs: list });
+		});
 	}
 	
 	hoo.SongDetail = SongDetail;

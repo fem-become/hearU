@@ -327,7 +327,23 @@
             //$('#mainlist').html(get_list()).addClass('curl').removeClass('flip');
             //$('#mainlist').html(html);
             View.init(data);
-        }
+        },
+        requestAPI: function(url, params, callback) {
+            //TODO: modify title
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: params,
+                dataType: 'json',
+                success: function(json) {
+                    //TODO: title变为原来的
+                    callback(json.data);
+                },
+                error: function() {
+                    //TODO: 提示失败
+                }
+            });
+        } 
 	}
 	exports.HearU=HearU;
 })(this);
