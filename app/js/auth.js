@@ -7,7 +7,7 @@
 	
 	function setUserLogin(){
 		isLogin = true;
-		hoo.sessionId = localStorage.getItem('user');
+		sessionId = localStorage.getItem('user');
 	}
 	function launchPlayer(list){
 		list.forEach(function(v){
@@ -19,14 +19,14 @@
 		player.setList(list);
 		player.play(0);
 		hoo.switchView('songdetailview');
-		cb(hoo.sessionId);
+		cb(sessionId);
 	}
 	function init(callback){
 		if(typeof callback == 'function') cb = callback;
 		if(isLogin){
 			setUserLogin();
-			hoo.switchView('albumlist', { userId: hoo.sessionId });
-			cb(hoo.sessionId);
+			hoo.switchView('albumlist', { userId: sessionId });
+			cb(sessionId);
 		} else {
 			hoo.requestAPI('/user/create', {}, function(data){
 				localStorage.setItem('user', data._id);
@@ -36,6 +36,7 @@
 		}
 	}
 	
+	this.sessionId = 0;
 	hoo.authorize = init;
 	
 })(this.HearU);
