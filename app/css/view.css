@@ -26,6 +26,41 @@
     background-position: -128px -73px;
 }
 
+/*for left menu*/
+.slider-header{
+    font-size: 16px;
+    height: 39px;
+    line-height: 39px;
+    border-bottom: 1px solid #010101;
+    color: #FFF;
+    background: -webkit-linear-gradient(top, #303030, #010101);
+    padding:0px 15px;
+}
+
+.my-menu li{
+    line-height:44px;
+    position:relative;
+    border-bottom:1px solid #666;
+    list-style:none;
+    padding:0px 10px;
+    font-size: 14px;
+}
+.my-menu li a:link,.my-menu li a:visited,.my-menu li a:hover{
+    color:#999;
+    text-decoration:none;
+}
+
+.my-menu li i{
+    color:#999;
+    vertical-align: middle;
+}
+.my-menu li i.icon-right-open{
+    position:absolute;
+    top:3px;
+    right:10px;
+    color: #999;
+}
+
 #wrapper {
     top: 40px;
     background: #CCC;
@@ -174,3 +209,102 @@
     background: none;
 }
 
+
+
+.search-wrapper {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    -webkit-perspective-origin: top center;
+    -webkit-perspective: 400px;
+    -webkit-backface-visibility: hidden;
+}
+
+.search-wrapper .search-box {
+    background-color: #666;
+    padding: 10px;
+    position: relative;
+    z-index: 20;
+    -webkit-transition: -webkit-transform 0.3s linear;
+    -webkit-transform-origin: top center;
+    -webkit-transform: rotateX(-90deg);
+    -webkit-backface-visibility: hidden;
+    width: 90%;
+    margin: 0 auto;
+}
+.search-wrapper .icon-cancel {
+    position: absolute;
+    right: 10px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: red;
+    margin-top: -10px;
+}
+.search-box input {
+    width: 90%;
+    font-size: 20px;
+    border-radius: 6px;
+    padding: 5px;
+    display: block;
+}
+.search-wrapper #search-scroll {
+    height: 1000px;
+}
+.search-wrapper .shim {
+    background-color: #666;
+    width: 100%;
+    height: 1000px;
+    opacity: 0.95;
+    position: absolute;
+    z-index: 10;
+    display: none;
+}
+
+.search-wrapper .mainlist {
+    display: none;
+    position: relative;
+    z-index: 30;
+}
+.search-wrapper .mainlist .song {
+    list-style: none;
+    overflow: hidden;
+    line-height: 36px;
+    position: relative;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    color: #EEE;
+    font-size: 14px;
+    font-weight: bold;
+    width: 90%;
+    height: 40px;
+    margin: 0 auto;
+}
+.search-wrapper .mainlist .item {
+    margin-bottom: 20px;
+}
+.search-wrapper .mainlist .slider {
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    /*background-color: #666;*/
+    background: -webkit-linear-gradient(top, #999,#666);
+}
+.search-wrapper .songplaying .slider {
+    color: #666;
+    background: -webkit-linear-gradient(top, #FFFFCC, #FFFF99);
+}
+.search-wrapper .mainlist .icon-play {
+    margin-top: 2px;
+    float: right;
+    margin-right: 10px;
+}
+.expand-search .shim,
+.expand-search .mainlist{
+    display: block;
+}

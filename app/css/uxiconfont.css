@@ -50,6 +50,13 @@
 .icon-cancle:before { content: '\017a'; }
 .icon-pause:before { content: '\01a3'; color: #669900; }
 .icon-play:before { content: '\f019'; color: #666; }
+.icon-playing:before { content: '\016e'; }
+.icon-songsList:before { content: '\0186'; }
+.icon-recomend:before { content: '\0169'; }
+.icon-out:before { content: '\00e8'; }
+.icon-right-open:before { content: '\0192'; font-size: 16px; }
+.icon-left-open:before { content: '\0193';}
+.icon-circle:before { content: '\01d6'; color: #666; }
 .songplaying .icon-play:before {
     content: '\01a3'; color: #666;
 }

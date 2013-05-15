@@ -53,7 +53,8 @@
                 return;
             }
             if(status==1){
-                HearU.createItem();
+//                HearU.createItem();
+                HearU.current_view.inputDown && HearU.current_view.inputDown();
             }else if(status==2){
                 HearU.current_view.pullDown && HearU.current_view.pullDown();
             }
@@ -63,37 +64,30 @@
 
         }
     },
-    scroll=null,
+    scroll = null,
     //all_events=["touch", "release", "hold", "tap", "doubletap", "dragstart", "drag", "dragend", "dragleft", "dragright", "dragup", "dragdown","swipe"];
     all_events = "release hold tap drag".split(/\s+/g);
 
-	var data=['强力劲爆DJ舞曲','网络歌曲情缘','中国风，中国情','刘德华20年经典重现','净化心灵的西藏轻音乐','分手需要练习的','歌声带你走过绿意','我在旧时光中回忆你','黄霑配乐黄飞鸿系列电影原声','谢谢这些歌郁闷时陪着我','听起来你很开心','在身心疲惫时，把自己融入歌声','都曾反复播放的歌','安静时光，静听一首国语歌','如果你看见，这些歌给你听','每个人的内心都是孤独','伤感永远只留给自己','期待着的温暖歌声','好听的电子氛围音乐','不同感觉的爵士说唱','让人放松的爵士乐','不朽的金属之声','流行舞曲金曲选','超酷牛仔乡村音乐精选','鲍勃迪伦民谣歌曲选','神秘的非洲音乐辑','古典音乐大合唱','好听人气RNB女声歌曲','好听手风琴乐曲选'];
-	function get_list(){
-		var html=[], i = 0;
-		$.each(data,function(index,item){
-            if (i++ == 0) {
-                html.push('<li class="song past item songplaying" data-index='+(index+1)+'><div class="slider">'+item+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
-            } else {
-			    html.push('<li class="song past item" data-index='+(index+1)+'><div class="slider">'+item+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
-            }
-        });
-		return html.join('');
-	}
+	var HearU = {
 
-	var HearU={
 		init: function() {
-			var self=this;
+			var self = this;
 			this.wrapper=document.querySelector('#wrapper');
 			this.sidebar=document.querySelector('#sidebar');
 			this.header=document.querySelector('#header');
 			this.edit=$('#edit');
 			this.scroll= new iScroll('wrapper',scroll_config);
 
+            this.searchScroll = new iScroll('search-scroll', {
+                hScroll: false,
+                vScrollbar: false,
+                lockDirection: true
+            });
+
 			$(this.sidebar).width(WIN_WIDTH*0.6);
-			this.is_editing=false;
-            //昊川 @5-12
+			this.is_editing = false;
 			this.current_view = null;
-            this.albumRecord = {};
+            this.albumRecord = [];
 
 			Hammer(document.getElementById('page'), {
 	            prevent_default: true,
@@ -105,10 +99,13 @@
 
             this.player = new window._player.List();
 
-            this.switchView('albumlist');
+            window.sessionId = -1;
+            this.switchView('albumlist', {id: 1});
 
             this._initEdit();
+            this.initSearch();
 		},
+
 		handle:function(ev){
 			if(this.is_editing){
 				//$('#edit input').blur();
@@ -130,37 +127,43 @@
 					break;
 			}
 		},
-		_drag:function(ev){
-			var self=this,
-				gesture=ev.gesture,
-				x=gesture.deltaX,
+
+		_drag: function(ev){
+			var self = this,
+				gesture = ev.gesture,
+				x = gesture.deltaX,
 				$target = $(ev.target);
 
 			if(!$target.hasClass(SLIDER_CLASS)){
                 if($target.hasClass('icon-play')) {
-
                     ev.gesture.stopDetect();
                 }
 				return;
 			}
 
-            var $item=$target.parent();
+            var $item = $target.parent();
 			$target.removeClass('animate');
-			if(gesture.direction=='left'||gesture.direction=='right'){
+			if (gesture.direction == 'left' || gesture.direction == 'right'){
 				self.scroll.disable();
 
 				if($target.hasClass('main-title')){
 					self.HeaderView.drag.call(self,x);
 				}else{
 					$target.css('-webkit-transform', 'translate3d(' + x + 'px,0px,0px)');
-					if(x>0){
-		            	$('.check',$item).css('opacity',x/ITEM_HEIGHT);
-		            }else{
-		            	$('.cross',$item).css('opacity',-x/ITEM_HEIGHT);
+
+                    if(this.current_view.handleIcon && this.current_view.handleIcon(ev, x)) {
+                        return;
+                    }
+
+                    if(x > 0) {
+		            	$('.check', $item).css('opacity', x/ITEM_HEIGHT);
+		            } else {
+		            	$('.cross', $item).css('opacity', -x/ITEM_HEIGHT);
 		            }
 				}
 			}
 		},
+
 		_release:function(ev){
 			var self=this;
 				gesture=ev.gesture,
@@ -173,102 +176,62 @@
 			var $target=$(target);
 			$target.addClass('animate');
 
-            if($target.hasClass('main-title')){
+            if ($target.hasClass('main-title')){
 				self.HeaderView.release.call(self,x);
-			}else if($target.hasClass('side-bar')){
+			} else if ($target.hasClass('side-bar')){
 				if(gesture.direction=='left'){
 					self.HeaderView.release.call(self,-1);
 				}
-			}
-			else{
-				$('.check',$target.parent())[0].style['opacity']=0;
-				$('.cross',$target.parent())[0].style['opacity']=0;
-				if(Math.abs(x)>WIN_WIDTH*0.6){
-					if(x<0){
-//		                target.style['-webkit-transform']='translate3d(-100%,0px,0px)';
+			} else {
+				$('.check', $target.parent())[0].style['opacity'] = 0;
+				$('.cross', $target.parent())[0].style['opacity'] = 0;
+				if (Math.abs(x) > WIN_WIDTH*0.6){
+					if(x < 0){
                         this.current_view.swipeLeft && this.current_view.swipeLeft(ev);
 		            }else{
-//		                target.style['-webkit-transform']='translate3d(100%,0px,0px)';
                         this.current_view.swipeRight && this.current_view.swipeRight(ev);
 		            }
-//	            	setTimeout(function(){
-//		                $target.parent().remove();
-//		                setTimeout(function () {
-//							self.scroll.refresh();
-//						}, 0);
-//		            },300);
-				}else{
+				} else {
 					target.style['-webkit-transform']='translate3d(0px,0px,0px)';
 				}
 			}
 		},
-		_hold:function(ev){
+
+		_hold: function(ev){
 			this.current_view.hold && this.current_view.hold(ev);
 		},
-		_tap:function(ev){
+
+		_tap: function(ev){
 			var self = this,
 				gesture = ev.gesture,
 				x = gesture.deltaX,
 				target = ev.target,
 				$target = $(target);
 
-			if ($target.hasClass('pull-up')) {
-                return;
-			}else {// if(!$target.parent().hasClass('song-list')){
-                this.current_view.tap && this.current_view.tap(ev);
-                return;
-			}
+			if (this.isChildOrSelf($target, $(".my-menu"))) {
+                $target = target.tagName.toUpperCase() == "LI" ? $(target) : $(target).parent();
+                var des = $target.data("des"),
+                    id = $target.data("id"),
+                    data = id ? {id: id} : {};
 
-            /*
-	    	this.scroll.scrollTo(0,0);
-	    	this.current_view=SONG_LIST_VIEW;
-	    	// var xx=target.offset().top-$('#header').height();
-	    	// li[0].style['z-index']=li.attr('data-index');
-	    	// li[0].style['-webkit-transform']='translate3d(0px,'+(-xx)+'px,0px)';
-	    	$('#mainlist').html(get_list()).addClass('curl').removeClass('flip');
-
-	    	var list=$('#mainlist li');
-	    	list.each(function (index,item) {
-                if(index*ITEM_HEIGHT<WIN_HEIGHT){
-                    setTimeout(function(){
-                        $(item).removeClass('past');
-                    },150*(index+1));
-                }else{
-                    $(item).removeClass('past');
+                self.HeaderView.closeSideBar.call(self);
+                self.switchView(des, data);
+			} else if($target.hasClass("topbtn")) {
+                if ($target.hasClass("appbtn")) {
+                    if (self.HeaderView.opened) {
+                        self.HeaderView.closeSideBar.call(self);
+                    } else {
+                        self.HeaderView.openSideBar.call(self);
+                    }
+                } else {
+                    self.openSelect();
                 }
-		    });*/
+            } else {// if(!$target.parent().hasClass('song-list')){
+                this.current_view.tap && this.current_view.tap(ev);
+			}
 		},
-        /*
-		render:function(data,view){
-			var self=this;
-			this.scroll.disable();
-			this.current_view=ALBUM_LIST_VIEW;
-		},
-		showAlbum:function(){
-			console.log('showAlbum');
-			var self=this;
-			//this.scroll.scrollTo(0,0);
-			this.scroll.disable();
-	    	this.current_view=ALBUM_LIST_VIEW;
-	    	// var xx=target.offset().top-$('#header').height();
-	    	// li[0].style['z-index']=li.attr('data-index');
-	    	// li[0].style['-webkit-transform']='translate3d(0px,'+(-xx)+'px,0px)';
-	    	$('#mainlist').html(get_list()).attr('class','flip');
-	    	var list=$('#mainlist li');
-	    	list.each(function (index,item) {
-					if(index*ITEM_HEIGHT<WIN_HEIGHT){
-						setTimeout(function(){
-							$(item).removeClass('past');
-						},150*(index+1));
-					}else{
-						$(item).removeClass('past');
-						self.scroll.enable();
-						self.scroll.refresh();
-					}	
-		    });
-		},
-		*/
-		_initEdit:function(){
+
+		_initEdit: function() {
 			var self=this;
 			this.edit.on('webkitTransitionEnd',function(ev){
 				if(+$(this).attr('data-status')){
@@ -289,11 +252,12 @@
 				this.value='';
 			});
 		},
-		createItem:function(){
+
+		createItem: function(){
 			if(this.is_editing){
 				return;
 			}
-			this.is_editing=true;
+			this.is_editing = true;
 			this.scroll.disable();
 			$(this.wrapper).addClass('shade');
 			$('.edit-wrapper').css('top',0);
@@ -303,31 +267,238 @@
 			},10);
 			$(this.wrapper).addClass('shade');
 		},
+
         switchView: function(name, data) {
             var Views = {
                     songlist: SongListView,
-                    albumlist: AlbumListView,
-                    selfAlbum: SelfAlbumList
+                    albumlist: AlbumListView
                 },
                 View = Views[name];
 
             if(!View) return;
 
             this.current_view = View;
-
-            // TODO
-
-//            var html = View.getHTML(data);
-            //$('#mainlist').html(html);
-
-            // ake
-            // var xx=target.offset().top-$('#header').height();
-            // li[0].style['z-index']=li.attr('data-index');
-            // li[0].style['-webkit-transform']='translate3d(0px,'+(-xx)+'px,0px)';
-            //$('#mainlist').html(get_list()).addClass('curl').removeClass('flip');
-            //$('#mainlist').html(html);
             View.init(data);
+        },
+
+        isChildOrSelf: function(target, p) {
+            return (target.closest(p).length > 0);
+        },
+
+        openSelect: function(songId, oldCollectId) {
+            //TODO: 从缓存中拿取我的歌单
+            var data=["\u5f3a\u529b\u52b2\u7206DJ\u821e\u66f2","\u7f51\u7edc\u6b4c\u66f2\u60c5\u7f18","\u4e2d\u56fd\u98ce\uff0c\u4e2d\u56fd\u60c5","\u5218\u5fb7\u534e20\u5e74\u7ecf\u5178\u91cd\u73b0","\u51c0\u5316\u5fc3\u7075\u7684\u897f\u85cf\u8f7b\u97f3\u4e50","\u5206\u624b\u9700\u8981\u7ec3\u4e60\u7684","\u6b4c\u58f0\u5e26\u4f60\u8d70\u8fc7\u7eff\u610f","\u6211\u5728\u65e7\u65f6\u5149\u4e2d\u56de\u5fc6\u4f60","\u9ec4\u9711\u914d\u4e50\u9ec4\u98de\u9e3f\u7cfb\u5217\u7535\u5f71\u539f\u58f0","\u8c22\u8c22\u8fd9\u4e9b\u6b4c\u90c1\u95f7\u65f6\u966a\u7740\u6211","\u542c\u8d77\u6765\u4f60\u5f88\u5f00\u5fc3","\u5728\u8eab\u5fc3\u75b2\u60eb\u65f6\uff0c\u628a\u81ea\u5df1\u878d\u5165\u6b4c\u58f0","\u90fd\u66fe\u53cd\u590d\u64ad\u653e\u7684\u6b4c","\u5b89\u9759\u65f6\u5149\uff0c\u9759\u542c\u4e00\u9996\u56fd\u8bed\u6b4c","\u5982\u679c\u4f60\u770b\u89c1\uff0c\u8fd9\u4e9b\u6b4c\u7ed9\u4f60\u542c","\u6bcf\u4e2a\u4eba\u7684\u5185\u5fc3\u90fd\u662f\u5b64\u72ec","\u4f24\u611f\u6c38\u8fdc\u53ea\u7559\u7ed9\u81ea\u5df1","\u671f\u5f85\u7740\u7684\u6e29\u6696\u6b4c\u58f0","\u597d\u542c\u7684\u7535\u5b50\u6c1b\u56f4\u97f3\u4e50","\u4e0d\u540c\u611f\u89c9\u7684\u7235\u58eb\u8bf4\u5531","\u8ba9\u4eba\u653e\u677e\u7684\u7235\u58eb\u4e50","\u4e0d\u673d\u7684\u91d1\u5c5e\u4e4b\u58f0","\u6d41\u884c\u821e\u66f2\u91d1\u66f2\u9009","\u8d85\u9177\u725b\u4ed4\u4e61\u6751\u97f3\u4e50\u7cbe\u9009","\u9c8d\u52c3\u8fea\u4f26\u6c11\u8c23\u6b4c\u66f2\u9009","\u795e\u79d8\u7684\u975e\u6d32\u97f3\u4e50\u8f91","\u53e4\u5178\u97f3\u4e50\u5927\u5408\u5531","\u597d\u542c\u4eba\u6c14RNB\u5973\u58f0\u6b4c\u66f2","\u597d\u542c\u624b\u98ce\u7434\u4e50\u66f2\u9009"];
+            var a = {};
+            $.each(data, function(index, item) {
+                a[index+1] = item;
+            })
+            SpinningWheel.addSlot(a);
+
+            SpinningWheel.setCancelAction(function(){});
+            SpinningWheel.setDoneAction(function(){
+                var data = this.getSelectedValues();
+                global.HearU.requestAPI("/collect/moveSong", {songId: songId, oldCollectId: oldCollectId, newCollectId: newCollectId}, function(d) {
+                    //do nothing
+                });
+            });
+            SpinningWheel.open();
+        },
+
+        requestAPI: function(url, params, callback) {
+            //TODO: modify title
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: params,
+                dataType: 'json',
+                success: function(data) {
+                    //TODO: title变为原来的
+                    callback(data);
+                },
+                error: function() {
+                    //TODO: 提示失败
+                }
+            });
+        },
+        setTitle: function(text) {
+            $('.main-title').html(text);
+        },
+        initSearch: function() {
+            var $input = $('#editbox'),
+                self = this;
+
+            $input.on('keydown', function(ev) {
+                var keyCode = ev.keyCode;
+                if(keyCode == 13) {
+                    if(self.current_view.search &&
+                        self.current_view.search() === false) {
+                        return;
+                    }
+
+                    self.search($input.val());
+                }else if(keyCode == 27) {
+                    self.closeSearch();
+                }
+                console.log(keyCode);
+            });
+
+            $('.icon-cancel').on('tap', function(ev) {
+                self.closeSearch();
+            });
+
+            self.closeSearch();
+
+            Hammer($('.search-wrapper')[0], {
+                prevent_default: true,
+                no_mouseevents: true
+            }).on(all_events.join(" "), function(ev){
+                    searchHandle.call(self,ev);
+                });
+
+            function searchHandle(ev) {
+                var gesture = ev.gesture,
+                    distance = gesture.deltaX,
+                    direction = gesture.direction,
+                    $target = $(ev.target);
+
+                switch(ev.type) {
+                    case 'drag': {
+
+                        if(!$target.hasClass(SLIDER_CLASS)){
+//                            if($target.hasClass('icon-play')) {
+////                                ev.gesture.stopDetect();
+//                            }
+                            return;
+                        }
+
+                        var $item=$target.parent();
+                        $target.removeClass('animate');
+                        if(direction == 'left' || direction=='right'){
+                            self.searchScroll.disable();
+                            $target.css('-webkit-transform', 'translate3d(' + distance + 'px,0px,0px)');
+                            if(distance > 0){
+                                $('.check',$item).css('opacity',distance/ITEM_HEIGHT);
+                            }else{
+                                $('.cross',$item).css('opacity',-distance/ITEM_HEIGHT);
+                            }
+                        }
+                    }
+                        break;
+                    case 'release': {
+                        self.scroll.enable();
+                        if(!$target.hasClass(SLIDER_CLASS)){
+                            return;
+                        }
+                        $target.addClass('animate');
+                        var $parent = $target.parent(),
+                            index = $parent.attr('data-index'),
+                            song = this.searchResult[index];
+
+                        $('.check',$target.parent()).css('opacity', 0);
+//                        $('.cross',$target.parent()).css('opacity',0);
+                        if(Math.abs(distance)>WIN_WIDTH*0.6){
+                            if(distance<0){
+//                                console.log('left')
+//                                this.current_view.swipeLeft && this.current_view.swipeLeft(ev);
+                            }else{
+                                console.log('open select', song.userId, song.collectId);
+//                                console.log('right');
+//                                this.current_view.swipeRight && this.current_view.swipeRight(ev);
+                            }
+
+                        }
+                        $target.css({
+                            '-webkit-transform':'translate3d(0px,0px,0px)'
+                        });
+                    }
+                        break;
+                    case 'tap': {
+                        if($target.hasClass('icon-play')) {
+                            var $parent = $target.parent().parent(),
+                                index = $parent.attr('data-index'),
+                                song = this.searchResult[index];
+                            var player = HearU.player,
+                                exist = false;
+                            $.each(this.searchResult, function(idx, item) {
+                                if(item.songId == song.songId) {
+                                    exist = true;
+                                    return false;
+                                }
+                            });
+                            if(!exist) {
+                                player.list.push(song);
+                            }
+                            player.play(player.list.length - 1);
+
+                            // 重新设置列表。
+
+                            $('.songplaying').removeClass('songplaying');
+                            if(player.playing) {
+                                $parent.addClass('songplaying');
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        search: function(keyword) {
+            console.log(keyword);
+            var data = this.searchResult = [{
+                name: "test",
+                userId: "123",
+                collectId: "222",
+                songId: "333",
+                src: "./resource/Behind-Blue-Eyes.mp3"
+            }];
+
+            var html = [];
+            $.each(data, function(idx, item) {
+                html.push('<li class="song item" data-index="'+idx+'">');
+                html.push('<div class="slider">'+item.name+'<i class="icon-play"></i></div>');
+                html.push('<span class="check sideIcon"><i class="icon-heart"></i></span>');
+                html.push('</li>');
+            });
+
+            $('.search-wrapper .songlist').html(html.join(''));
+        },
+        openSearch: function() {
+            this.scroll.disable();
+            var $wrapper = $('.search-wrapper');
+
+            $wrapper.css({
+                top: 0
+            });
+
+            $('.search-box', $wrapper).css({
+                '-webkit-transform': 'rotateX(0deg)'
+            });
+
+            $('.search-box').addClass('animated bounceInDown')
+
+//            $wrapper.css('top',0);
+//            setTimeout(function(){
+//                $('#editbox').css('-webkit-transform', 'rotateX(0deg)');
+//                //$('#edit input').focus();
+//            },10);
+
+            $wrapper.show();
+
+            $('.search-box input')[0].focus();
+        },
+        closeSearch: function() {
+            $('.search-wrapper').css({
+                'top':'-100%'
+            }).hide();
+
+            $('.search-wrapper .search-box').css({
+                '-webkit-transform': 'rotateX(-90deg)'
+            });
+
+            this.is_editing = false;
+            this.scroll.enable();
+            this.scroll.refresh();
         }
 	}
-	exports.HearU=HearU;
+	exports.HearU = HearU;
+
 })(this);

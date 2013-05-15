@@ -108,10 +108,11 @@
             });
         },
         setList: function(list) {
+            this.pause();
             this.list = list;
             this.playedIndex = undefined;
         },
-        play: function(index) {
+        _play: function(index) {
             var self = this,
                 audio = this.audio,
                 song = self.getSongInfo(index);
@@ -120,7 +121,7 @@
             }
             this.playing = true;
 
-            self.playedIndex = song.index;
+            self.playedIndex = song.index || 0;
 
             audio.load(song.src);
 
@@ -129,6 +130,13 @@
             audio.play();
 
 //            this.fire('play');
+        },
+        play: function(index) {
+            if(this.playing && this.playedIndex == index) {
+                this.pause();
+            }else {
+                this._play(index);
+            }
         },
         pause: function() {
             this.playing = false;
@@ -166,7 +174,11 @@
             this.fire('prev');
         },
         loop: function() {
+            if(this.playedIndex + 1 >= this.list.length){
+                this.play(0);
+            }else {
             this.next();
+            }
         },
         on: function(type, callback, context) {
             var target = this.audio.element;
