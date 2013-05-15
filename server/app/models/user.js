@@ -10,26 +10,21 @@
 	ObjectID = require('mongoskin').ObjectID;
 	exports.createUser = function(callback,res){
 		user.insert({name:"新用户"},function(err,item){
-			console.info(item);
-			callback({isSuccess:true,id:item[0]._id},res);
+			callback({_id:item[0]._id},res);
 		});
 	};
-	exports.removeCollect = function(userId,collectId,callback,res){
-		var collects;
-		console.info(userId);
-		console.info(collectId);
+	exports.createCollect = function(userId,name,callback,res){
+		var collectId;
 		user.findOne({_id:ObjectID(userId)},function(err,item){
 			if(item){
-				collects = item.collects;
-				for(var i=0,l=collects.length;i<l;i++){
-					if(collectId === collects[i]){
-						collects.splice(i,1);
-						break;
-					}
-				}
-				user.update({_id:ObjectID(userId)},{collects:collects},function(){
-					callback({isSuccess:true},res);
-				})
+				collects = item.collects || [];
+				collect.insert({name:name},function(err, item){
+					collectId = item[0]._id;
+					collects.push(collectId);
+					user.update({_id:ObjectID(userId)},{$set:{collects:collects}},function(){
+						callback({_id:collectId},res);
+					});
+				});
 			}
 		});
 	};
@@ -37,12 +32,29 @@
 		var collects;
 		user.findOne({_id:ObjectID(userId)},function(err,item){
 			if(item){
-				collects = item.collects;
-				if(collects.indexOf(collectId)!==-1){
+				collects = item.collects || [];
+				if(collects.indexOf(collectId) === -1){
 					collects.push(collectId);
+					user.update({_id:ObjectID(userId)},{$set:{collects:collects}},function(){
+						callback([],res);
+					});
 				}
-				user.update({_id:ObjectID(userId)},{collects:collects},function(){
-					callback({isSuccess:true},res);
+			}
+		});
+	};
+	exports.removeCollect = function(userId,collectId,callback,res){
+		var collects;
+		user.findOne({_id:ObjectID(userId)},function(err,item){
+			if(item){
+				collects = item.collects || [];
+				for(var i=0,l=collects.length;i<l;i++){
+					if(collectId === collects[i]){
+						collects.splice(i,1);
+						break;
+					}
+				}
+				user.update({_id:ObjectID(userId)},{$set:{collects:collects}},function(){
+					callback([],res);
 				})
 			}
 		});

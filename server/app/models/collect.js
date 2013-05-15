@@ -20,16 +20,33 @@
 		}
 		return ret;
 	};
-	exports.findCollectList = function(userId,callback,res){
-		var collects;
+	exports.findCollectList = function(userId,visitorId,callback,res){
+		var collects,
+		myCollects,
+		collectId;
 		user.findOne({_id:ObjectID(userId)},function(err,item){
 			if(item){
-				collects = item.collects;
+				collects = item.collects || [];
 				collect.find({_id:{$in : turnToObjectId(collects)}}).toArray(function(err,items){
-					callback(items,res);
+					if(visitorId){
+						user.findOne({_id:ObjectID(visitorId)},function(err,item){
+							myCollects = item.collects || [];
+							for(var i=0,l=items.length;i<l;i++){
+								collectId = items[i]._id.toString();
+								if(myCollects.indexOf(collectId)>-1){
+									items[i].hasFavor = true;
+								}
+							}
+							callback(items,res);
+						});
+					}
+					else{
+						callback(items,res);
+					}
 				});
 			}
 		});
+		
 	};
 	exports.find = function(collectId,callback,res){
 		collect.findOne({_id:ObjectID(collectId)},function(err,item){
@@ -42,27 +59,21 @@
 		var songs;
 		collect.findOne({_id:ObjectID(oldCollectId)},function(err,item){
 			if(item){
-				songs = item.songs;
-				console.info(songs);
-				console.info(songId);
+				songs = item.songs || [];
 				for(var i=0,l=songs.length;i<l;i++){
 					if(songId === songs[i]){
 						songs.splice(i,1);
 						break;
 					}
 				}
-				console.info(songs);
 				collect.update({_id:ObjectID(oldCollectId)},{$set:{songs:songs}},function(){
 					collect.findOne({_id:ObjectID(newCollectId)},function(err,item){
 						if(item){
-							console.info(item);
 							songs = item.songs || [];
-							console.info(songs);
-							console.info(songs.indexOf(songId));
 							if(songs.indexOf(songId)===-1){
 								songs.push(songId);
 								collect.update({_id:ObjectID(newCollectId)},{$set:{songs:songs}},function(){
-									callback({isSuccess:true},res);
+									callback([],res);
 								});
 							}
 						}
@@ -76,11 +87,10 @@
 		collect.findOne({_id:ObjectID(collectId)},function(err,item){
 			if(item){
 				songs = item.songs || [];
-				console.info(songs);
 				if(songs.indexOf(songId)===-1){
 					songs.push(songId);
 					collect.update({_id:ObjectID(collectId)},{$set:{songs:songs}},function(){
-						callback({isSuccess:true},res);
+						callback([],res);
 					});
 				}
 			}
@@ -90,12 +100,12 @@
 		var songs;
 		collect.findOne({_id:ObjectID(collectId)},function(err,item){
 			if(item){
-				songs = item.songs;
+				songs = item.songs || [];
 				for(var i=0,l=songs.length;i<l;i++){
 					if(songId === songs[i]){
 						songs.splice(i,1);
 						collect.update({_id:ObjectID(collectId)},{$set:{songs:songs}},function(){
-							callback({isSuccess:true},res);
+							callback([],res);
 						});
 					}
 				}
@@ -106,21 +116,17 @@
 		var collects,
 		songs = [];
 		user.findOne({_id:ObjectID(userId)},function(err,item){
-			console.info(item);
 			if(item){
-				collects = item.collects;
-				console.info(collects);
+				collects = item.collects || [];
 				collect.find({_id:{$in : turnToObjectId(collects)}}).toArray(function(err,items){
 					for(var i=0,l=items.length;i<l;i++){
 						songs = songs.concat(items[i].songs);
 					}
-					console.info(songs);
-					console.info(songId);
 					if(songs.indexOf(songId) === -1){
-						callback({isSuccess:false},res);
+						callback([],res,true);
 					}
 					else{
-						callback({isSuccess:true},res);
+						callback([],res);
 					}
 				});
 			}
