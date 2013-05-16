@@ -27,17 +27,19 @@
  		var album,
  		name,
  		ownSongs,
- 		songIds;
+ 		songIds,
+ 		index;
  		for(var i=0,l=albums.length;i<l;i++){
  			album = albums[i];
  			name = album.name;
+ 			index = i+1;
  			ownSongs = album.songs || [];
  			songDb.find({index:{$in:ownSongs}}).toArray(function(err,items){
  				songIds = [];
  				for(var j=0,len=items.length;j<len;j++){
  					songIds.push(items[j]._id.toString());
  				}
- 				collectDb.insert({name:name,songs:songIds,index:i+1},function(err){
+ 				collectDb.insert({name:name,songs:songIds,index:index},function(err){
 	 				if(err){
 	 					console.info('insert collect:'+err);
 	 				}
