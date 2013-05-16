@@ -115,10 +115,11 @@
                 userId = data.id;
             }
 
-            //self.requestAPI("/collect/list", {"userId": userId}, function(d) {
+            userId = "5194e43b015abe481900001f";
+            self.requestAPI("/collect/list", {"userId": userId}, function(d) {
                 $('#mainlist').html(this.getHTML(d));
                 self.albumRecord = d;
-            //});
+            });
         },
 
         swipeLeft: function(ev) {

@@ -47,7 +47,7 @@
 .icon-search:before { content: '\0151'; }
 .icon-trash:before { content: '\0164'; }
 .icon-heart:before { content: '\016a'; }
-.icon-cancle:before { content: '\017a'; }
+.icon-cancel:before { content: '\017a'; }
 .icon-pause:before { content: '\01a3'; color: #669900; }
 .icon-play:before { content: '\f019'; color: #666; }
 .icon-playing:before { content: '\016e'; }

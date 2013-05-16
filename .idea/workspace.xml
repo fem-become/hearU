@@ -3,14 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9a60657b-c206-4c86-b4c0-4c449b248e8b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/albumlistview.js" afterPath="$PROJECT_DIR$/app/js/albumlistview.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/app.js" afterPath="$PROJECT_DIR$/app/js/app.js" />
     </list>
     <ignored path="hearU.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368701140272" ignored="false" />
     <file path="/a.dummy" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606877026" ignored="false" />
     <file path="/hearu.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366629437486" ignored="false" />
-    <file path="/index.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368702488264" ignored="false" />
+    <file path="/index.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368708632207" ignored="false" />
     <file path="/hearu.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366532645233" ignored="false" />
     <file path="/dummy.xml" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366533243587" ignored="false" />
     <file path="/entrylist.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366716167552" ignored="false" />
@@ -70,14 +70,14 @@
     <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/imagequality-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
     <file path="/draglist.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366702414935" ignored="false" />
     <file path="/views.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368020125914" ignored="false" />
-    <file path="/app.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623643241" ignored="false" />
+    <file path="/app.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712289741" ignored="false" />
     <file path="/songlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623731964" ignored="false" />
-    <file path="/albumlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368702966823" ignored="false" />
+    <file path="/albumlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712485292" ignored="false" />
     <file path="/selfalbumview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368342853528" ignored="false" />
     <file path="/player.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623801179" ignored="false" />
     <file path="/initplayer.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368344860922" ignored="false" />
-    <file path="/view.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623540899" ignored="false" />
-    <file path="/uxiconfont.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368540416753" ignored="false" />
+    <file path="/view.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368709924825" ignored="false" />
+    <file path="/uxiconfont.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368705377103" ignored="false" />
     <file path="$PROJECT_DIR$/../../daily/multimages/publish.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368596506354" ignored="false" />
     <file path="/publish.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368596472854" ignored="false" />
     <file path="$PROJECT_DIR$/../../daily/20130515/success.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368599385528" ignored="false" />
@@ -95,6 +95,9 @@
     <file path="/combobox.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610113445" ignored="false" />
     <file path="$PROJECT_DIR$/../../daily/aria/assets/tree.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610218802" ignored="false" />
     <file path="/tree.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610179770" ignored="false" />
+    <file path="$PROJECT_DIR$/../../assets/trunk/v2/source/publish/multimages.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368704821745" ignored="false" />
+    <file path="/multimages.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368703593403" ignored="false" />
+    <file path="/spinningwheel.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368710589397" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,19 +117,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="43" selection-start="2966" selection-end="2966" vertical-scroll-proportion="-12.346154">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="zepto.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/zepto.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1537" column="31" selection-start="62085" selection-end="62085" vertical-scroll-proportion="0.0">
+            <state line="1543" column="55" selection-start="62290" selection-end="62290" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -137,7 +131,16 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="450" column="15" selection-start="16362" selection-end="16362" vertical-scroll-proportion="0.0">
+            <state line="329" column="29" selection-start="11325" selection-end="11325" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spinningwheel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/spinningwheel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="217" column="62" selection-start="6230" selection-end="6235" vertical-scroll-proportion="-15.96">
               <folding />
             </state>
           </provider>
@@ -146,7 +149,16 @@
       <file leaf-file-name="view.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/css/view.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="221" column="38" selection-start="4136" selection-end="4136" vertical-scroll-proportion="0.0">
+            <state line="229" column="23" selection-start="4290" selection-end="4290" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="0" selection-start="2504" selection-end="2504" vertical-scroll-proportion="-9.807693">
               <folding />
             </state>
           </provider>
@@ -155,7 +167,7 @@
       <file leaf-file-name="songlistview.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/songlistview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="12" selection-start="5022" selection-end="5068" vertical-scroll-proportion="0.0">
+            <state line="26" column="33" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -173,7 +185,7 @@
       <file leaf-file-name="albumlistview.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/albumlistview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="221" column="43" selection-start="8096" selection-end="8096" vertical-scroll-proportion="0.6363636">
+            <state line="120" column="37" selection-start="4081" selection-end="4081" vertical-scroll-proportion="0.6969697">
               <folding />
             </state>
           </provider>
@@ -197,7 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/demo/hearu.coffee" />
         <option value="$PROJECT_DIR$/demo/dragswitch.coffee" />
         <option value="$PROJECT_DIR$/demo/index.html" />
         <option value="$PROJECT_DIR$/app/js/views.js" />
@@ -205,13 +216,14 @@
         <option value="$PROJECT_DIR$/app/js/initplayer.js" />
         <option value="$PROJECT_DIR$/app/js/auth.js" />
         <option value="$PROJECT_DIR$/app/css/animate.css" />
-        <option value="$PROJECT_DIR$/app/css/uxiconfont.css" />
-        <option value="$PROJECT_DIR$/app/css/view.css" />
         <option value="$PROJECT_DIR$/app/js/player.js" />
         <option value="$PROJECT_DIR$/app/js/songlistview.js" />
-        <option value="$PROJECT_DIR$/app/js/app.js" />
-        <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/js/zepto.js" />
+        <option value="$PROJECT_DIR$/app/css/uxiconfont.css" />
+        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/css/view.css" />
+        <option value="$PROJECT_DIR$/app/js/spinningwheel.js" />
+        <option value="$PROJECT_DIR$/app/js/app.js" />
         <option value="$PROJECT_DIR$/app/js/albumlistview.js" />
       </list>
     </option>
@@ -520,11 +532,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/demo/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="11" selection-start="521" selection-end="521" vertical-scroll-proportion="0.3041145" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo/sslog.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="85" selection-end="171" vertical-scroll-proportion="0.02905983" />
@@ -561,19 +568,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/css/animate-min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="48008" selection-start="48008" selection-end="48008" vertical-scroll-proportion="0.0" />
+        <state line="0" column="48008" selection-start="48008" selection-end="48008" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/css/uxiconfont.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="41" selection-start="1622" selection-end="1622" vertical-scroll-proportion="0.33162394">
+        <state line="49" column="12" selection-start="1759" selection-end="1759" vertical-scroll-proportion="0.45454547">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/css/view.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="221" column="38" selection-start="4136" selection-end="4136" vertical-scroll-proportion="0.0">
+        <state line="229" column="23" selection-start="4290" selection-end="4290" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/zepto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1543" column="55" selection-start="62290" selection-end="62290" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/songlistview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="33" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -585,39 +610,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/songlistview.js">
+    <entry file="file://$PROJECT_DIR$/app/js/spinningwheel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="12" selection-start="5022" selection-end="5068" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="450" column="15" selection-start="16362" selection-end="16362" vertical-scroll-proportion="0.0">
+        <state line="217" column="62" selection-start="6230" selection-end="6235" vertical-scroll-proportion="-15.96">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="43" selection-start="2966" selection-end="2966" vertical-scroll-proportion="-12.346154">
+        <state line="60" column="0" selection-start="2504" selection-end="2504" vertical-scroll-proportion="-9.807693">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/zepto.js">
+    <entry file="file://$PROJECT_DIR$/app/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1537" column="31" selection-start="62085" selection-end="62085" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="329" column="29" selection-start="11325" selection-end="11325" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/albumlistview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="221" column="43" selection-start="8096" selection-end="8096" vertical-scroll-proportion="0.6363636">
+        <state line="120" column="37" selection-start="4081" selection-end="4081" vertical-scroll-proportion="0.6969697">
           <folding />
         </state>
       </provider>
