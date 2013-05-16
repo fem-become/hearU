@@ -40,7 +40,7 @@
  			ownSongs = album.songs || [];
  			songDb.find({index:{$in:ownSongs}}).toArray(function(err,items){
  				index++;
- 				name = album.name;
+ 				name = albums[index-1].name;
  				songIds = [];
  				for(var j=0,len=items.length;j<len;j++){
  					songIds.push(items[j]._id.toString());
@@ -57,7 +57,8 @@
  		var user,
  		name,
  		albums,
- 		albumIds;
+ 		albumIds,
+ 		index = 0;
  		if(hasImportUser){
  			return;
  		}
@@ -67,7 +68,8 @@
  			
  			albums = user.albums || [];
  			collectDb.find({index:{$in:albums}}).toArray(function(err,items){
- 				name = user.name;
+ 				index++;
+ 				name = users[index-1].name;
  				albumIds = [];
  				console.info(items);
  				for(var j=0,len=items.length;j<len;j++){
