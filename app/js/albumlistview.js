@@ -217,8 +217,9 @@
             }, 500);
             $(self.wrapper).removeClass('shade');
 
-            if($.trim(this.value)){
-                AlbumListView.addItem(this.value);
+            var input = $("#edit input").val();
+            if($.trim(input)){
+                AlbumListView.addItem(input);
             }
             self.is_editing = false;
             self.scroll.enable();
