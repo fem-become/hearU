@@ -11,6 +11,8 @@
  	songs = require('../../resources/data/songs.json'),
  	users = require('../../resources/data/users.json'),
  	albums = require('../../resources/data/albums.json'),
+ 	hasImportCollect = false,
+ 	hasImportUser = false,
  	importSongs = function(){
  		var song;
  		for(var i=0,l=songs.length;i<l;i++){
@@ -28,13 +30,17 @@
  		name,
  		ownSongs,
  		songIds,
- 		index;
+ 		index = 0;
+ 		if(hasImportCollect){
+ 			return;
+ 		}
+ 		hasImportCollect = true;
  		for(var i=0,l=albums.length;i<l;i++){
  			album = albums[i];
- 			name = album.name;
- 			index = i+1;
  			ownSongs = album.songs || [];
  			songDb.find({index:{$in:ownSongs}}).toArray(function(err,items){
+ 				index++;
+ 				name = album.name;
  				songIds = [];
  				for(var j=0,len=items.length;j<len;j++){
  					songIds.push(items[j]._id.toString());
@@ -52,15 +58,23 @@
  		name,
  		albums,
  		albumIds;
+ 		if(hasImportUser){
+ 			return;
+ 		}
+ 		hasImportUser = true;
  		for(var i=0,l=users.length;i<l;i++){
  			user = users[i];
- 			name = user.name;
+ 			
  			albums = user.albums || [];
  			collectDb.find({index:{$in:albums}}).toArray(function(err,items){
+ 				name = user.name;
  				albumIds = [];
+ 				console.info(items);
  				for(var j=0,len=items.length;j<len;j++){
+ 					console.info(items[j]);
  					albumIds.push(items[j]._id.toString());
  				}
+ 				console.info(albumIds);
  				userDb.insert({name:name,collects:albumIds},function(err){
 	 				if(err){
 	 					console.info('insert user:'+err);
