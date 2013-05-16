@@ -116,12 +116,14 @@
             var self = this,
                 audio = this.audio,
                 song = self.getSongInfo(index);
+            console.log(song, song.index, index);
             if(!song || !song.src) {
+                this.next();
                 return;
             }
             this.playing = true;
 
-            self.playedIndex = song.index || 0;
+            this.playedIndex = song.index || 0;
 
             audio.load(song.src);
 
@@ -132,6 +134,7 @@
 //            this.fire('play');
         },
         play: function(index) {
+            console.log(this.playing, this.playedIndex, index);
             if(this.playing && this.playedIndex == index) {
                 this.pause();
             }else {

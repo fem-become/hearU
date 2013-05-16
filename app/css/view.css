@@ -220,6 +220,7 @@
     -webkit-perspective-origin: top center;
     -webkit-perspective: 400px;
     -webkit-backface-visibility: hidden;
+    display: none;
 }
 
 .search-wrapper .search-box {

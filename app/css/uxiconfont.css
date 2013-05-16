@@ -60,3 +60,8 @@
 .songplaying .icon-play:before {
     content: '\01a3'; color: #666;
 }
+
+
+.fixed .icon-trash {
+    display: none;
+}

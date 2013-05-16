@@ -1,17 +1,14 @@
 (function(global) {
     "use strict";
 
-    // TODO 根据albumId获取歌曲数据，歌曲id中包含userId。若userId不一致，则不需要switch到歌单列表页面。
-    // TODO 是否收藏过，对应的操作。
-    //
     var WIN_WIDTH=$(window).width(),
         WIN_HEIGHT=$(window).height(),
         ITEM_HEIGHT=62;
 
-    var SongListData ={
+    var metaData ={
         name: "最爱列表",
         albumId: "",
-        list:[{
+    songs:[{
         name: '强力劲爆DJ舞曲',
             src:"./resource/You-And-Me.mp3",
             songId: "",
@@ -21,7 +18,11 @@
     },{
         name: 'You And Me',
         star: true,
-        src:"./resource/You-And-Me.mp3"
+        src:"./resource/You-And-Me.mp3",
+        songId: "",
+        collectId: "",
+        userId: "",
+        hasFavor: true
     },{
         name: 'Behind Blue Eyes',
         src:"./resource/Behind-Blue-Eyes.mp3"
@@ -58,29 +59,35 @@
         }]
     };
 
+    function isSameCollect() {
+        return HearU.player.getSongInfo(0) == metaData.songs[0];
+    }
+
     var SongListView = {
-        metaData: null,
         name: "songlist",
         getHTML: function(data) {
             var html=['<ul class="songlist">'], i = 0,
                 song = HearU.player.getSongInfo();
-            $.each(SongListData.list,function(index,item){
+            $.each(data.songs,function(index,item){
                 var clsPlay = (song && item.name == song.name) ? " songplaying" : "",
-                    clsFav  = item.hasFavor ? " fav" : "";
+                    clsFav  = item.hasFavor ? " fav" : "",
+                    myself = item.userId == global.sessionId,
+                    clsFixed = (item.hasFavor && !myself) || myself ? "" : " fixed";
 
-                html.push('<li class="song past item'+ clsPlay + clsFav + '" data-index='+(index)+'><div class="slider">'+item.name+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+                html.push('<li class="song past item'+ clsFixed + clsPlay + clsFav + '" data-index='+(index)+'><div class="slider">'+item.name+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
             });
             html.push('</ul>');
             return html.join('');
         },
         init: function(data) {
-            var html = this.getHTML(data);
+            metaData = metaData || data;
+
+            var html = this.getHTML(metaData);
             $('#mainlist').html(html);
-            HearU.setTitle(SongListData.name);
 
-            this.metaData = data;
+            HearU.setTitle(metaData.name);
 
-            HearU.player.setList(SongListData.list);
+//            HearU.player.setList(metaData.songs);
 
             $('#mainlist').addClass('curl');//.removeClass('flip');
             var list=$('#mainlist li');
@@ -97,25 +104,60 @@
         swipeLeft: function(ev) {
             var $target = $(ev.target);
 
-            $target[0].style['-webkit-transform']='translate3d(-100%,0px,0px)';
+            if($target.hasClass('slider')) {
+                $target = $target.parent();
+            }else if($target.hasClass('icon-play')){
+                $target = $target.parent().parent();
+            }
+
+            if($target.hasClass('fixed')) {
+                $target.find('.slider').css('-webkit-transform', 'translate3d(0px,0px,0px)');
+                return;
+            }
+
+            var index = $target.attr('data-index') * 1,
+                player = HearU.player;
+
+            // 如果是同一个列表，则同步删除列表中的歌曲。
+            if(isSameCollect()) {
+                player.list[index] = null;
+
+                // 如果删除的是正在播放的歌曲，则停止当前歌曲播放
+                // 自动播放下一首
+                if(player.playing && player.playedIndex == index) {
+                    player.pause();
+                    player.play(index + 1);
+
+                    $('.songplaying').removeClass('songplaying');
+                    $target.next().addClass('songplaying');
+                }
+            }
+
+            $target.find('.slider').css('-webkit-transform', 'translate3d(-100%,0px,0px)');
 
             setTimeout(function() {
-                $target.parent().remove();
+                $target.remove();
 
                 setTimeout(function () {
                     HearU.scroll.refresh();
                 }, 0);
-            }, 300)
-        },
-        handleIcon: function() {
-
+            }, 300);
         },
         swipeRight: function(ev) {
-            target.style['-webkit-transform']='translate3d(0px,0px,0px)';
+            var $target = $(ev.target);
 
+            if($target.hasClass('slider')) {
+                $target = $target.parent();
+            }else if($target.hasClass('icon-play')){
+                $target = $target.parent().parent();
+            }
 
-            var songData = HearU.player.getSongInfo();
-            HearU.openSelect(songData.songId, songData.collectId);
+            $target.find('.slider').css('-webkit-transform', 'translate3d(0px,0px,0px)');
+
+            var index = $target.attr('data-index');
+            var song = metaData.songs[index];
+
+            HearU.openSelect(song.songId, song.collectId);
         },
         tap: function(ev) {
             var $target = $(ev.target),
@@ -127,44 +169,35 @@
             }
             if(!$parent.hasClass('song')) return;
 
-                // 重新设置列表。
-                HearU.player.play($parent.attr('data-index'));
+            var player = HearU.player,
+                index = $parent.attr('data-index');
 
-                $('.songplaying').removeClass('songplaying');
+            // 如果不是同一个列表，则设置为当前列表。然后播放
+            if(!isSameCollect()) {
+                player.setList(metaData.songs);
+            }
+
+            player.play(index);
+
+            $('.songplaying').removeClass('songplaying');
             if(HearU.player.playing) {
                 $parent.addClass('songplaying');
             }
 
-                console.log('play '+ $parent.attr('data-index'));
+            console.log('play '+ $parent.attr('data-index'));
 
-                //HearU.switchView('play', )
-                console.log('switch to play page')
+            //HearU.switchView('play', )
+            console.log('switch to play page')
         },
         pullDown: function() {
             console.log('pulldown by songlist')
-            HearU.switchView('albumlist', this.metaData);
+            HearU.switchView('albumlist', metaData);
         },
         inputDown: function() {
             HearU.openSearch();
         },
         isChildOrSelf: function(target, p) {
             return (target.closest(p).length > 0);
-        },
-        search: function() {
-
-        },
-        onEdit: function(ev) {
-            console.log('onedit', ev);
-
-            $('#edit').attr('data-status','0')[0].style['-webkit-transform']='rotateX(-90deg)';
-            setTimeout(function() {
-                $('.edit-wrapper').css('top','-100%');
-            }, 500);
-            $(self.wrapper).removeClass('shade');
-
-            HearU.is_editing = false;
-            HearU.scroll.enable();
-            HearU.scroll.refresh();
         }
     };
 

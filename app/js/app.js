@@ -339,7 +339,6 @@
                 }else if(keyCode == 27) {
                     self.closeSearch();
                 }
-                console.log(keyCode);
             });
 
             $('.icon-cancel').on('tap', function(ev) {
@@ -401,8 +400,8 @@
 //                                console.log('left')
 //                                this.current_view.swipeLeft && this.current_view.swipeLeft(ev);
                             }else{
-                                console.log('open select', song.userId, song.collectId);
-//                                console.log('right');
+                                HearU.openSelect(song.songId, song.collectId);
+//                                console.log('open select', song.userId, song.collectId);
 //                                this.current_view.swipeRight && this.current_view.swipeRight(ev);
                             }
 
@@ -465,34 +464,21 @@
             this.scroll.disable();
             var $wrapper = $('.search-wrapper');
 
-            $wrapper.css({
-                top: 0
-            });
-
-            $('.search-box', $wrapper).css({
-                '-webkit-transform': 'rotateX(0deg)'
-            });
-
-            $('.search-box').addClass('animated bounceInDown')
-
-//            $wrapper.css('top',0);
-//            setTimeout(function(){
-//                $('#editbox').css('-webkit-transform', 'rotateX(0deg)');
-//                //$('#edit input').focus();
-//            },10);
+            $('.search-box').removeClass('animated bounceOutUp').addClass('animated bounceInDown')
 
             $wrapper.show();
+            $('.shim').show();
 
             $('.search-box input')[0].focus();
         },
         closeSearch: function() {
-            $('.search-wrapper').css({
-                'top':'-100%'
-            }).hide();
-
-            $('.search-wrapper .search-box').css({
-                '-webkit-transform': 'rotateX(-90deg)'
-            });
+            if($('.search-box').hasClass('bounceInDown')) {
+                $('.search-box').removeClass('animated bounceInDown').addClass('animated bounceOutUp')
+                setTimeout(function(){
+                    $('.search-wrapper').hide();
+                }, 1000);
+                $('.shim').hide();
+            }
 
             this.is_editing = false;
             this.scroll.enable();
