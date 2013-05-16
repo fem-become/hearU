@@ -4,7 +4,8 @@
  * @createTime : 2012-08-15
  */
 (function(){
-	var myInterface = require('./app/controllers/myInterface.js');
+	var myInterface = require('./app/controllers/myInterface.js'),
+    importData = require('./app/controllers/importData.js');
 
     module.exports = function(app){
         //随机歌曲录入
@@ -62,6 +63,18 @@
         //检测歌是否已收藏过
         app.get('/song/isCollected', function(req, res){
             myInterface.isCollected(req, res);
+        });
+        //歌曲入库
+        app.get('/song/import', function(req, res){
+            importData.importSongs(req, res);
+        });
+        //歌单入库
+        app.get('/collect/import', function(req, res){
+            importData.importCollects(req, res);
+        });
+        //人员入库
+        app.get('/user/import', function(req, res){
+            importData.importUsers(req, res);
         });
     };
 })();
