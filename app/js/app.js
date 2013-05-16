@@ -323,6 +323,7 @@
 
         requestAPI: function(url, params, callback) {
             //TODO: modify title
+            url = "http://10.13.16.58:3000" + url;
             $.ajax({
                 type: 'GET',
                 url: url,

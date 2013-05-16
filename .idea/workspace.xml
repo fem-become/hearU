@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a60657b-c206-4c86-b4c0-4c449b248e8b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/albumlistview.js" afterPath="$PROJECT_DIR$/app/js/albumlistview.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/app.js" afterPath="$PROJECT_DIR$/app/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/uxiconfont.css" afterPath="$PROJECT_DIR$/app/css/uxiconfont.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/view.css" afterPath="$PROJECT_DIR$/app/css/view.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hearU.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,9 +70,9 @@
     <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/imagequality-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
     <file path="/draglist.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366702414935" ignored="false" />
     <file path="/views.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368020125914" ignored="false" />
-    <file path="/app.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712053863" ignored="false" />
+    <file path="/app.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712289741" ignored="false" />
     <file path="/songlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623731964" ignored="false" />
-    <file path="/albumlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368702966823" ignored="false" />
+    <file path="/albumlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712485292" ignored="false" />
     <file path="/selfalbumview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368342853528" ignored="false" />
     <file path="/player.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623801179" ignored="false" />
     <file path="/initplayer.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368344860922" ignored="false" />
@@ -134,7 +131,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="308" column="15" selection-start="10717" selection-end="10717" vertical-scroll-proportion="0.0">
+            <state line="329" column="29" selection-start="11325" selection-end="11325" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -158,10 +155,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="33" selection-start="2598" selection-end="2598" vertical-scroll-proportion="0.5719626">
+            <state line="60" column="0" selection-start="2504" selection-end="2504" vertical-scroll-proportion="-9.807693">
               <folding />
             </state>
           </provider>
@@ -185,10 +182,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="albumlistview.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="albumlistview.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/albumlistview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="32" selection-start="7714" selection-end="7714" vertical-scroll-proportion="0.0">
+            <state line="120" column="37" selection-start="4081" selection-end="4081" vertical-scroll-proportion="0.6969697">
               <folding />
             </state>
           </provider>
@@ -222,12 +219,12 @@
         <option value="$PROJECT_DIR$/app/js/player.js" />
         <option value="$PROJECT_DIR$/app/js/songlistview.js" />
         <option value="$PROJECT_DIR$/app/js/zepto.js" />
-        <option value="$PROJECT_DIR$/app/js/albumlistview.js" />
         <option value="$PROJECT_DIR$/app/css/uxiconfont.css" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/css/view.css" />
         <option value="$PROJECT_DIR$/app/js/spinningwheel.js" />
         <option value="$PROJECT_DIR$/app/js/app.js" />
+        <option value="$PROJECT_DIR$/app/js/albumlistview.js" />
       </list>
     </option>
   </component>
@@ -599,13 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/albumlistview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="32" selection-start="7714" selection-end="7714" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/songlistview.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="33" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0">
@@ -627,16 +617,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/app.js">
+    <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="308" column="15" selection-start="10717" selection-end="10717" vertical-scroll-proportion="0.0">
+        <state line="60" column="0" selection-start="2504" selection-end="2504" vertical-scroll-proportion="-9.807693">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
+    <entry file="file://$PROJECT_DIR$/app/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="33" selection-start="2598" selection-end="2598" vertical-scroll-proportion="0.5719626">
+        <state line="329" column="29" selection-start="11325" selection-end="11325" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/albumlistview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="37" selection-start="4081" selection-end="4081" vertical-scroll-proportion="0.6969697">
           <folding />
         </state>
       </provider>
