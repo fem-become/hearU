@@ -25,6 +25,10 @@
 	exports.createUser = function(req, res){
 		user.createUser(sendJson,res);
 	};
+	//分配用户
+	exports.allotUser = function(req, res){
+		user.allot(sendJson,res);
+	};
 	//歌单列表页面
 	exports.myList = function(req, res){
 		var userId = req.query.userId,

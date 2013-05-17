@@ -7,10 +7,25 @@
 	var db = require("./config.js").db,
 	song = db.collection('song'),
 	user = db.collection('user'),
-	ObjectID = require('mongoskin').ObjectID;
+	ObjectID = require('mongoskin').ObjectID,
+	hasAllotedUserIds=[];
 	exports.createUser = function(callback,res){
 		user.insert({name:"新用户"},function(err,item){
 			callback({_id:item[0]._id},res);
+		});
+	};
+	exports.allot = function(callback,res){
+		var userId;
+		user.find({name:{$ne:"新用户"}}).toArray(function(err,items){
+			console.info(items.length);
+			for(var i=0,l=items.length;i<l;i++){
+				userId = items[i]._id.toString();
+				if(hasAllotedUserIds.indexOf(userId) === -1){
+					hasAllotedUserIds.push(userId);
+					break;
+				}
+			}
+			callback({_id:userId},res);
 		});
 	};
 	exports.createCollect = function(userId,name,callback,res){
@@ -59,4 +74,5 @@
 			}
 		});
 	};
+
 })();

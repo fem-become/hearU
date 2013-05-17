@@ -12,6 +12,10 @@
         app.get('/song/random', function(req, res){
             myInterface.random(req, res);
         });
+        //分配用户
+        app.get('/user/allot', function(req, res){
+            myInterface.allotUser(req, res);
+        });
         //创建用户
         app.get('/user/create', function(req, res){
             myInterface.createUser(req, res);
