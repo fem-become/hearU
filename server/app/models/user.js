@@ -10,8 +10,10 @@
 	ObjectID = require('mongoskin').ObjectID,
 	hasAllotedUserIds=[];
 	exports.createUser = function(callback,res){
-		user.insert({name:"新用户"},function(err,item){
-			callback({_id:item[0]._id},res);
+		user.find().toArray(function(err, items){
+			user.insert({name:"新用户"+items.length,collects:[]},function(err,item){
+				callback({_id:item[0]._id},res);
+			});
 		});
 	};
 	exports.allot = function(callback,res){
