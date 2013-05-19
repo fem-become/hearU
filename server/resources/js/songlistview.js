@@ -5,13 +5,14 @@
         WIN_HEIGHT=$(window).height(),
         ITEM_HEIGHT=62;
 
-    var metaData ={
+    var metaData = null;
+    var testdb = {
         name: "最爱列表",
         albumId: "",
     songs:[{
         name: '强力劲爆DJ舞曲',
             src:"./resource/You-And-Me.mp3",
-            songId: "",
+            _id: "",
             collectId: "",
             userId: "",
             hasFavor: true
@@ -19,7 +20,7 @@
         name: 'You And Me',
         star: true,
         src:"./resource/You-And-Me.mp3",
-        songId: "",
+        _id: "",
         collectId: "",
         userId: "",
         hasFavor: true
@@ -66,6 +67,8 @@
     var SongListView = {
         name: "songlist",
         getHTML: function(data) {
+            console.log(data);
+            if(!data) return;
             var html=['<ul class="songlist">'], i = 0,
                 song = HearU.player.getSongInfo();
             $.each(data.songs,function(index,item){
@@ -116,7 +119,8 @@
             }
 
             var index = $target.attr('data-index') * 1,
-                player = HearU.player;
+                player = HearU.player,
+                song = metaData.songs[index];
 
             // 如果是同一个列表，则同步删除列表中的歌曲。
             if(isSameCollect()) {
@@ -137,6 +141,9 @@
 
             setTimeout(function() {
                 $target.remove();
+                HearU.requestAPI('/collect/removeSong', {songId: song._id, collectId: song.collectId}, function() {
+                    console.log('remove song ', song.name, ' success');
+                });
 
                 setTimeout(function () {
                     HearU.scroll.refresh();
@@ -156,8 +163,9 @@
 
             var index = $target.attr('data-index');
             var song = metaData.songs[index];
+            alert(JSON.stringify(song));
 
-            HearU.openSelect(song.songId, song.collectId);
+            HearU.openSelect(song._id, song.collectId);
         },
         tap: function(ev) {
             var $target = $(ev.target),

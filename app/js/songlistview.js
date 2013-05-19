@@ -5,7 +5,8 @@
         WIN_HEIGHT=$(window).height(),
         ITEM_HEIGHT=62;
 
-    var metaData ={
+    var metaData = null;
+    var testdata = {
         name: "最爱列表",
         albumId: "",
     songs:[{

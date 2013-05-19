@@ -4,73 +4,6 @@
     var WIN_WIDTH = $(window).width(),
         WIN_HEIGHT = $(window).height();
 
-    var d=[{
-        id: 0,
-        name: '你若不红，天理难容。第二辑',
-        num: 20,
-        hasFocus: true,
-        songs: [{}, {}]
-    },{
-        id: 1,
-        name: '好听的歌',
-        num: 200,
-        hasFocus: true,
-        songs: [{}, {}]
-    },{
-        id: 2,
-        name: '钢琴曲',
-        num: 16,
-        hasFocus: true,
-        songs: [{}, {}]
-    },{
-        id: 3,
-        name: '你若不红，天理难容。第二辑',
-        num: 27,
-        hasFocus: true,
-        songs: [{}, {}]
-    }];
-
-    var songdata = [{
-        name: '强力劲爆DJ舞曲',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name: '网络歌曲情缘',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name: '中国风，中国情',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'刘德华20年经典重现',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'净化心灵的西藏轻音乐',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'分手需要练习的',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name: '歌声带你走过绿意',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'我在旧时光中回忆你',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'黄霑配乐黄飞鸿系列电影原声',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'谢谢这些歌郁闷时陪着我',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'听起来你很开心',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'在身心疲惫时，把自己融入歌声',
-        src:"./resource/You-And-Me.mp3"
-    },{
-        name:'都曾反复播放的歌',
-        src:"./resource/You-And-Me.mp3"
-    }];
-
     var AlbumListView = {
 
         name: "AlbumListView",
@@ -81,11 +14,7 @@
             var data = myAlbum;
             var html = ['<ul class="albumlist">'], i = 0;
             $.each(data, function(index, item) {
-                if (i++ == 0) {
-                    html.push('<li class="song-list item playing" data-id='+(item.id)+' data-focus='+(item.hasFocus)+'><div class="slider"><span class="list-name">'+item.name+'<b class="list-num">('+item.songs.length+')</b></span><i class="icon-pause"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
-                } else {
-                    html.push('<li class="song-list item" data-id='+(item.id)+' data-focus='+(item.hasFocus)+'><div class="slider"><span class="list-name">'+item.name+'<b class="list-num">('+item.songs.length+')</b></span><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
-                }
+                html.push('<li class="song-list item" data-id='+(item._id)+' data-focus='+(item.hasFocus)+'><div class="slider"><span class="list-name">'+item.name+'<b class="list-num">('+item.songs.length+')</b></span><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
             });
             html.push('</ul>');
             return html.join('');
@@ -107,6 +36,8 @@
         init: function(data) {
             var self = this;
             this.data = data;
+            //清空歌曲缓存
+            this.cacheSongList = {};
 
             var userId;
             //var self = global.HearU;
@@ -116,7 +47,8 @@
                 userId = data.userId;
             }
 
-            //userId = "5194e93a10bb480c16000028";
+            //for debug
+            userId = "5194e93a10bb480c16000028";
             HearU.requestAPI("/collect/list", {"userId": userId}, function(d) {
                 $('#mainlist').html(self.getHTML(d));
                 HearU.albumRecord = d;
@@ -179,12 +111,12 @@
                 $(".icon-pause").removeClass("icon-pause").addClass("icon-play");
                 $target.removeClass("icon-play").addClass("icon-pause");
 
-                var collectId = $li.attr('data-id'), songList;
+                var collectId = $li.data('id'), songList;
                 console.log("play "+collectId);
 
                 if (songList = this.cacheSongList[collectId]) {
                     HearU.player.setList(songList);
-                    HearU.player.play();
+                    HearU.player.play(0);
                 } else {
                     var userId = global.sessionId;
                     HearU.requestAPI("/song/list", {"collectId": collectId}, function(d) {
@@ -192,7 +124,7 @@
                             return $.extend(song, {"userId": userId, "collectId": collectId});
                         });
                         HearU.player.setList(songList);
-                        HearU.player.play();
+                        HearU.player.play(0);
                         self.cacheSongList[collectId] = songList;
                     });
                 }
@@ -201,8 +133,18 @@
                 HearU.player.pause();
             } else if (this.isChildOrSelf($target, $("li.song-list"))) {
                 var userId = global.sessionId,
-                    collectId = $target.closest("li.song-list").data("id");
-                HearU.switchView("songlist", {userId: userId, collectId: collectId, songs: self.cacheSongList});
+                    collectId = $target.closest("li.song-list").data("id"),
+                    songList = self.cacheSongList[collectId];
+                if (!songList) {
+                    HearU.requestAPI("/song/list", {"collectId": collectId}, function(d) {
+                        var songs = $.map(d, function(item) {
+                            return $.extend(item, {"userId": userId, "collectId": collectId});
+                        });
+                        HearU.switchView("songlist", {userId: userId, collectId: collectId, songs: songs});
+                    });
+                } else {
+                    HearU.switchView("songlist", {userId: userId, collectId: collectId, songs: songList});
+                }
             }
         },
 
@@ -255,7 +197,7 @@
                 if (cross.css("display") == "none") {
                     return true;
                 }
-                if (global.sessionId != this.data.id) {
+                if (global.sessionId != this.data.userId) {
                     cross.hide();
                     return true;
                 }

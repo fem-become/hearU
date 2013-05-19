@@ -72,15 +72,18 @@
 
 		init: function() {
 			var self = this;
-            
+
+            this.scroll= new iScroll('wrapper',scroll_config);
+
             this.player = new window._player.List();
-            this.authorize();
+            this.authorize(function(sessionId) {
+                window.sessionId = sessionId;
+            });
             
 			this.wrapper=document.querySelector('#wrapper');
 			this.sidebar=document.querySelector('#sidebar');
 			this.header=document.querySelector('#header');
 			this.edit=$('#edit');
-			this.scroll= new iScroll('wrapper',scroll_config);
 
             this.searchScroll = new iScroll('search-scroll', {
                 hScroll: false,
@@ -90,7 +93,7 @@
 
 			$(this.sidebar).width(WIN_WIDTH*0.6);
 			this.is_editing = false;
-			this.current_view = null;
+			//this.current_view = null;
             this.albumRecord = [];
 
 			Hammer(document.getElementById('page'), {
@@ -101,7 +104,7 @@
 	        	self.handle.call(self,ev);
 	        });
 
-            window.sessionId = -1;
+            //window.sessionId = -1;
             //this.switchView('albumlist', {id: 1});
 
             this._initEdit();
@@ -214,7 +217,7 @@
                 $target = target.tagName.toUpperCase() == "LI" ? $(target) : $(target).parent();
                 var des = $target.data("des"),
                     id = $target.data("id"),
-                    data = id ? {id: id} : {};
+                    data = id ? {userId: id} : {};
 
                 self.HeaderView.closeSideBar.call(self);
                 self.switchView(des, data);
@@ -243,7 +246,7 @@
 				}
 			})
 			$('#edit input').on('blur', function(ev) {
-                self.current_view.onEdit(ev);
+                self.current_view.onEdit && self.current_view.onEdit(ev);
             })
 			.on('keydown',function(ev){
 				if(ev.keyCode==13){
@@ -281,18 +284,31 @@
 
             this.current_view = View;
             View.init(data);
+            HearU.scroll.refresh();
         },
 
         isChildOrSelf: function(target, p) {
             return (target.closest(p).length > 0);
         },
 
-        openSelect: function(songId, oldCollectId) {
+        openSelect: function(songId, oldCollectId, cb) {
             if (this.hasSelect) {
                 return;
             }
-            //TODO: 从缓存中拿取我的歌单
-            var data=["\u5f3a\u529b\u52b2\u7206DJ\u821e\u66f2","\u7f51\u7edc\u6b4c\u66f2\u60c5\u7f18","\u4e2d\u56fd\u98ce\uff0c\u4e2d\u56fd\u60c5","\u5218\u5fb7\u534e20\u5e74\u7ecf\u5178\u91cd\u73b0","\u51c0\u5316\u5fc3\u7075\u7684\u897f\u85cf\u8f7b\u97f3\u4e50","\u5206\u624b\u9700\u8981\u7ec3\u4e60\u7684","\u6b4c\u58f0\u5e26\u4f60\u8d70\u8fc7\u7eff\u610f","\u6211\u5728\u65e7\u65f6\u5149\u4e2d\u56de\u5fc6\u4f60","\u9ec4\u9711\u914d\u4e50\u9ec4\u98de\u9e3f\u7cfb\u5217\u7535\u5f71\u539f\u58f0","\u8c22\u8c22\u8fd9\u4e9b\u6b4c\u90c1\u95f7\u65f6\u966a\u7740\u6211","\u542c\u8d77\u6765\u4f60\u5f88\u5f00\u5fc3","\u5728\u8eab\u5fc3\u75b2\u60eb\u65f6\uff0c\u628a\u81ea\u5df1\u878d\u5165\u6b4c\u58f0","\u90fd\u66fe\u53cd\u590d\u64ad\u653e\u7684\u6b4c","\u5b89\u9759\u65f6\u5149\uff0c\u9759\u542c\u4e00\u9996\u56fd\u8bed\u6b4c","\u5982\u679c\u4f60\u770b\u89c1\uff0c\u8fd9\u4e9b\u6b4c\u7ed9\u4f60\u542c","\u6bcf\u4e2a\u4eba\u7684\u5185\u5fc3\u90fd\u662f\u5b64\u72ec","\u4f24\u611f\u6c38\u8fdc\u53ea\u7559\u7ed9\u81ea\u5df1","\u671f\u5f85\u7740\u7684\u6e29\u6696\u6b4c\u58f0","\u597d\u542c\u7684\u7535\u5b50\u6c1b\u56f4\u97f3\u4e50","\u4e0d\u540c\u611f\u89c9\u7684\u7235\u58eb\u8bf4\u5531","\u8ba9\u4eba\u653e\u677e\u7684\u7235\u58eb\u4e50","\u4e0d\u673d\u7684\u91d1\u5c5e\u4e4b\u58f0","\u6d41\u884c\u821e\u66f2\u91d1\u66f2\u9009","\u8d85\u9177\u725b\u4ed4\u4e61\u6751\u97f3\u4e50\u7cbe\u9009","\u9c8d\u52c3\u8fea\u4f26\u6c11\u8c23\u6b4c\u66f2\u9009","\u795e\u79d8\u7684\u975e\u6d32\u97f3\u4e50\u8f91","\u53e4\u5178\u97f3\u4e50\u5927\u5408\u5531","\u597d\u542c\u4eba\u6c14RNB\u5973\u58f0\u6b4c\u66f2","\u597d\u542c\u624b\u98ce\u7434\u4e50\u66f2\u9009"];
+            //从缓存中读取歌单数据
+            var data = this.albumRecord.map(function(item) {
+                return item.name;
+            });
+
+            function findIdbyName(name) {
+                for (var i = 0, l = HearU.albumRecord.length; i < l; i++) {
+                    if (HearU.albumRecord[i].name == name) {
+                        return HearU.albumRecord[i]._id;
+                    }
+                }
+            }
+
+
             var a = {};
             $.each(data, function(index, item) {
                 a[index+1] = item;
@@ -303,14 +319,19 @@
                 HearU.closeSelect();
             });
             SpinningWheel.setDoneAction(function(){
-                var data = this.getSelectedValues();
-                global.HearU.requestAPI("/collect/moveSong", {songId: songId, oldCollectId: oldCollectId, newCollectId: newCollectId}, function(d) {
+                var data = this.getSelectedValues(),
+                    newCollectId = findIdbyName(data.values);
+
+                HearU.requestAPI("/collect/moveSong", {songId: songId, oldCollectId: oldCollectId, newCollectId: newCollectId}, function(d) {
                     //do nothing
                 });
                 HearU.closeSelect();
             });
             SpinningWheel.open();
             this.hasSelect = true;
+            if (cb && $.isFunction(cb)) {
+                cb();
+            }
         },
 
         closeSelect: function() {
@@ -412,7 +433,7 @@
                         var $parent = $target.parent(),
                             index = $parent.attr('data-index'),
                             song = this.searchResult[index];
-
+console.log(song);
                         $('.check',$target.parent()).css('opacity', 0);
 //                        $('.cross',$target.parent()).css('opacity',0);
                         if(Math.abs(distance)>WIN_WIDTH*0.6){
@@ -420,7 +441,7 @@
 //                                console.log('left')
 //                                this.current_view.swipeLeft && this.current_view.swipeLeft(ev);
                             }else{
-                                HearU.openSelect(song.songId, song.collectId);
+                                HearU.openSelect(song._id, song.collectId);
 //                                console.log('open select', song.userId, song.collectId);
 //                                this.current_view.swipeRight && this.current_view.swipeRight(ev);
                             }
@@ -461,23 +482,20 @@
             }
         },
         search: function(keyword) {
-            var data = this.searchResult = [{
-                name: "test",
-                userId: "123",
-                collectId: "222",
-                songId: "333",
-                src: "./resource/Behind-Blue-Eyes.mp3"
-            }];
 
-            var html = [];
-            $.each(data, function(idx, item) {
-                html.push('<li class="song item" data-index="'+idx+'">');
-                html.push('<div class="slider">'+item.name+'<i class="icon-play"></i></div>');
-                html.push('<span class="check sideIcon"><i class="icon-heart"></i></span>');
-                html.push('</li>');
-            });
+            HearU.requestAPI('/song/search', {key: keyword}, function(dt) {
+                var data = HearU.searchResult = dt;
 
-            $('.search-wrapper .songlist').html(html.join(''));
+                var html = [];
+                $.each(data, function(idx, item) {
+                    html.push('<li class="song item" data-index="'+idx+'">');
+                    html.push('<div class="slider">'+item.name+'<i class="icon-play"></i></div>');
+                    html.push('<span class="check sideIcon"><i class="icon-heart"></i></span>');
+                    html.push('</li>');
+                });
+
+                $('.search-wrapper .songlist').html(html.join(''));
+            })
         },
         openSearch: function() {
             this.closeSelect();
