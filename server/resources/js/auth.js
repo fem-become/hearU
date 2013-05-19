@@ -2,7 +2,7 @@
 	
 	if(!hoo && !(player = hoo.player)) return;
 	
-	var isLogin = localStorage.getItem('user') > 0,
+	var isLogin = localStorage.getItem('user') != null,
 		cb = function(){};
 	
 	function setUserLogin(){
@@ -16,9 +16,9 @@
 			v.userId = -1;
 			v.hasFavor = false;
 		});
-		player.setList(list);
-		player.play(0);
-		hoo.switchView('songdetailview');
+		hoo.player.setList(list);
+		hoo.player.play(0);
+		//hoo.switchView('songdetailview');
 		cb(sessionId);
 	}
 	function init(callback){
@@ -31,7 +31,7 @@
 			hoo.requestAPI('/user/create', {}, function(data){
 				localStorage.setItem('user', data._id);
 				setUserLogin();
-				hoo.requestAPI('/song/random', {}, launchPlayer);
+				hoo.requestAPI('/song/random', {userId: data._id}, launchPlayer);
 			});
 		}
 	}

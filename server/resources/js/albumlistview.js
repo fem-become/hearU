@@ -110,13 +110,13 @@
 
             var userId;
             //var self = global.HearU;
-            if (data.id == -1) {
+            if (data.userId == -1) {
                 userId = global.sessionId;
             } else {
-                userId = data.id;
+                userId = data.userId;
             }
 
-            userId = "5194e93a10bb480c16000028";
+            //userId = "5194e93a10bb480c16000028";
             HearU.requestAPI("/collect/list", {"userId": userId}, function(d) {
                 $('#mainlist').html(self.getHTML(d));
                 HearU.albumRecord = d;

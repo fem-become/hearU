@@ -72,6 +72,10 @@
 
 		init: function() {
 			var self = this;
+            
+            this.player = new window._player.List();
+            this.authorize();
+            
 			this.wrapper=document.querySelector('#wrapper');
 			this.sidebar=document.querySelector('#sidebar');
 			this.header=document.querySelector('#header');
@@ -97,10 +101,8 @@
 	        	self.handle.call(self,ev);
 	        });
 
-            this.player = new window._player.List();
-
             window.sessionId = -1;
-            this.switchView('albumlist', {id: 1});
+            //this.switchView('albumlist', {id: 1});
 
             this._initEdit();
             this.initSearch();
