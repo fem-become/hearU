@@ -55,7 +55,7 @@
 						console.info(err);
 						return;
 					}
-					collectId = item[0]._id;
+					collectId = item[0]._id.toString();
 					collects.push(collectId);
 					user.update({_id:ObjectID(userId)},{$set:{collects:collects}},function(){
 						callback({_id:collectId},res);
