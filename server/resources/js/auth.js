@@ -2,12 +2,13 @@
 	
 	if(!hoo && !(player = hoo.player)) return;
 	
-	var isLogin = localStorage.getItem('user') != null,
+	var user = localStorage.getItem('h_user'),
+		isLogin = user != null,
 		cb = function(){};
 	
 	function setUserLogin(){
 		isLogin = true;
-		sessionId = localStorage.getItem('user');
+		user = localStorage.getItem('h_user');
 	}
 	function launchPlayer(list){
 		list.forEach(function(v){
@@ -18,25 +19,27 @@
 		});
 		hoo.player.setList(list);
 		hoo.player.play(0);
-		//hoo.switchView('songdetailview');
-		cb(sessionId);
+		hoo.switchView('songdetailview');
+		cb(user.id, user.name);
 	}
 	function init(callback){
 		if(typeof callback == 'function') cb = callback;
 		if(isLogin){
 			setUserLogin();
-			hoo.switchView('albumlist', { userId: sessionId });
-			cb(sessionId);
+			hoo.switchView('albumlist', { userId: user.id, userName: name });
+			cb(user.id, user.name);
 		} else {
 			hoo.requestAPI('/user/create', {}, function(data){
-				localStorage.setItem('user', data._id);
+				localStorage.setItem('h_user', {
+					id: data._id,
+					name: data.userName
+				});
 				setUserLogin();
-				hoo.requestAPI('/song/random', {userId: data._id}, launchPlayer);
+				hoo.requestAPI('/song/random', { userId: data._id }, launchPlayer);
 			});
 		}
 	}
 	
-	this.sessionId = 0;
 	hoo.authorize = init;
 	
 })(this.HearU);
