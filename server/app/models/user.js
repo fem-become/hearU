@@ -7,12 +7,15 @@
 	var db = require("./config.js").db,
 	song = db.collection('song'),
 	user = db.collection('user'),
+	collect = db.collection('collect'),
 	ObjectID = require('mongoskin').ObjectID,
 	hasAllotedUserIds=[];
 	exports.createUser = function(callback,res){
+		var userName;
 		user.find().toArray(function(err, items){
-			user.insert({name:"新用户"+items.length,collects:[]},function(err,item){
-				callback({_id:item[0]._id},res);
+			userName = "新用户"+items.length;
+			user.insert({name:userName,collects:[]},function(err,item){
+				callback({_id:item[0]._id,userName:userName},res);
 			});
 		});
 	};
@@ -36,6 +39,10 @@
 			if(item){
 				collects = item.collects || [];
 				collect.insert({name:name},function(err, item){
+					if(err){
+						console.info(err);
+						return;
+					}
 					collectId = item[0]._id;
 					collects.push(collectId);
 					user.update({_id:ObjectID(userId)},{$set:{collects:collects}},function(){
