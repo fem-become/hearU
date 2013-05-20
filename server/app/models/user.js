@@ -11,17 +11,30 @@
 	ObjectID = require('mongoskin').ObjectID,
 	hasAllotedUserIds=[];
 	exports.createUser = function(callback,res){
-		var userName;
+		var index,
+		userName,
+		collectId;
 		user.find().toArray(function(err, items){
-			userName = "新用户"+items.length;
-			user.insert({name:userName,collects:[]},function(err,item){
-				callback({_id:item[0]._id,userName:userName},res);
+			index = items.length;
+			userName = "新用户"+index;
+			collect.insert({name:'新歌单'+index,songs:[]},function(err,item){
+				if(err){
+					console.info(err);
+					callback(null,res,true);
+					return;
+				}
+				console.info(item);
+				collectId = item[0]._id.toString();
+				user.insert({name:userName,collects:[collectId]},function(err,item){
+					callback({_id:item[0]._id,userName:userName},res);
+				});
 			});
 		});
 	};
 	exports.allot = function(callback,res){
 		var userId;
 		user.find({name:{$ne:"新用户"}}).toArray(function(err,items){
+			console.info(items.length);
 			for(var i=0,l=items.length;i<l;i++){
 				userId = items[i]._id.toString();
 				if(hasAllotedUserIds.indexOf(userId) === -1){

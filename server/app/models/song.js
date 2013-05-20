@@ -42,6 +42,9 @@
 						mySongs = mySongs.concat(items[i].songs);
 					}
 					song.find({_id:{$nin : turnToObjectId(mySongs)}}).toArray(function(err,items){
+						for(var j=0,len=items.length;j<l;j++){
+							items[j].hasFavor = false;
+						}
 						ret = getRandomArray(items,5);
 						callback(ret,res);
 					});
