@@ -11,6 +11,7 @@
 	ObjectID = require('mongoskin').ObjectID,
 	turnToObjectId = function(a){
 		var ret = [];
+		console.info(a);
 		for(var i=0,l=a.length;i<l;i++){
 			if(!a[i]){
 				return;
@@ -42,10 +43,10 @@
 						mySongs = mySongs.concat(items[i].songs);
 					}
 					song.find({_id:{$nin : turnToObjectId(mySongs)}}).toArray(function(err,items){
-						for(var j=0,len=items.length;j<l;j++){
-							items[j].hasFavor = false;
-						}
 						ret = getRandomArray(items,5);
+						for(var j=0,len=ret.length;j<len;j++){
+							ret[j].hasFavor = false;
+						}
 						callback(ret,res);
 					});
 				});
