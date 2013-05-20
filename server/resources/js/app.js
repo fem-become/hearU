@@ -112,8 +112,8 @@
             this._initEdit();
             this.initSearch();
             
-            this.authorize(function(user) {
-                window.sessionId = user.id;
+            this.authorize(function(id, userName) {
+                window.sessionId = id;
                 $('#launch').hide();
             });
 		},
@@ -227,7 +227,16 @@
                     data = id ? {userId: id} : {};
 
                 self.HeaderView.closeSideBar.call(self);
-                self.switchView(des, data);
+                if(des == "songdetail" && id == -1) {
+                    HearU.requestAPI("/song/random", {userId: sessionId}, function(dt) {
+                        HearU.player.setList(dt);
+                        HearU.player.play(0);
+                        self.switchView(des, data);
+                    });
+                }else {
+                    self.switchView(des, data);
+                }
+                
 			} else if($target.hasClass("topbtn")) {
                 if ($target.hasClass("appbtn")) {
                     if (self.HeaderView.opened) {

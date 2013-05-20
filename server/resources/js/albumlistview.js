@@ -41,14 +41,16 @@
 
             var userId;
             //var self = global.HearU;
-            if (data.userId == -1) {
-                userId = global.sessionId;
+            if (data.userId == -1 || data.userId == window.sessionId) {
+                userId = window.sessionId
+                HearU.setTitle("我的歌单");
             } else {
                 userId = data.userId;
+                HearU.setTitle(data.userName+"的歌单");
             }
 
             //for debug
-            userId = "5194e93a10bb480c16000028";
+            //userId = "5194e93a10bb480c16000028";
             HearU.requestAPI("/collect/list", {"userId": userId}, function(d) {
                 $('#mainlist').html(self.getHTML(d));
                 HearU.albumRecord = d;

@@ -87,6 +87,7 @@
 
             var html = this.getHTML(metaData);
             $('#mainlist').html(html);
+            console.log(data);
 
             HearU.setTitle(metaData.name);
 

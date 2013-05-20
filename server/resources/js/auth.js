@@ -2,13 +2,13 @@
 	
 	if(!hoo && !(player = hoo.player)) return;
 	
-	var user = localStorage.getItem('h_user'),
+	var user = JSON.parse(localStorage.getItem('h_user')),
 		isLogin = user != null,
 		cb = function(){};
 	
 	function setUserLogin(){
 		isLogin = true;
-		user = localStorage.getItem('h_user');
+		user = JSON.parse(localStorage.getItem('h_user'));
 	}
 	function launchPlayer(list){
 		list.forEach(function(v){
@@ -19,21 +19,21 @@
 		});
 		hoo.player.setList(list);
 		hoo.player.play(0);
-		hoo.switchView('songdetailview');
-		cb(user.id, user.name);
+        cb(user.id, user.name);
+		hoo.switchView('songdetail');	
 	}
 	function init(callback){
 		if(typeof callback == 'function') cb = callback;
 		if(isLogin){
 			setUserLogin();
-			hoo.switchView('albumlist', { userId: user.id, userName: name });
-			cb(user.id, user.name);
+            cb(user.id, user.name);
+			hoo.switchView('albumlist', { userId: user.id, userName: user.name });
 		} else {
 			hoo.requestAPI('/user/create', {}, function(data){
-				localStorage.setItem('h_user', {
+				localStorage.setItem('h_user', JSON.stringify({
 					id: data._id,
 					name: data.userName
-				});
+				}));
 				setUserLogin();
 				hoo.requestAPI('/song/random', { userId: data._id }, launchPlayer);
 			});
