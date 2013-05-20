@@ -11,7 +11,11 @@
 	ObjectID = require('mongoskin').ObjectID,
 	turnToObjectId = function(a){
 		var ret = [];
+<<<<<<< HEAD
 		console.info(a);
+=======
+        console.info(a);
+>>>>>>> update
 		for(var i=0,l=a.length;i<l;i++){
 			if(!a[i]){
 				return;

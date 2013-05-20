@@ -215,6 +215,12 @@
             song && (song['index'] = idx);
 
             return song;
+        },
+        getDuration: function() {
+            return this.audio.element.duration;
+        },
+        getCurrentTime: function() {
+            return this.audio.element.currentTime;
         }
     });
 
