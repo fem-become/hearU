@@ -12,7 +12,7 @@
 			inited = true;
 			return (ldata = player.list)[curIdx] ? _refresh() : info;
 		} else {
-			return _refresh();
+			return null;
 		}
 	}
 	
@@ -42,12 +42,12 @@
 		player.playing && player.pause();
 	}
 	function goPrev(){
-		_refresh();
 		player.prev();
+		return _refresh();
 	}
 	function goNext(){
-		_refresh();
 		player.next();
+		return _refresh();
 	}
 	function favorSong(callback){
 		hoo.openSelect(info.currentSong.songId, info.currentSong.collectId);

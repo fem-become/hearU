@@ -27,7 +27,7 @@
         addItem: function(name) {
             var userId = global.sessionId;
             global.HearU.requestAPI("/collect/create", {"userId": userId, "name": name}, function(d) {
-                var li = $('<li class="song-list item" data-id='+(d._id)+' data-focus='true'><div class="slider">'+name+'<b class="list-num">(0)</b><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+                var li = $('<li class="song-list item" data-id='+(d._id)+' data-focus="true"><div class="slider">'+name+'<b class="list-num">(0)</b><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
                 $('ul.albumlist').prepend(li);
                 global.HearU.albumRecord.push({userId: userId, collectId: d._id, name: name, hasFocus: true});
             });

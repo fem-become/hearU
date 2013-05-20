@@ -81,9 +81,6 @@
             this.scroll= new iScroll('wrapper',scroll_config);
 
             this.player = new window._player.List();
-            this.authorize(function(sessionId) {
-                window.sessionId = sessionId;
-            });
             
 			this.wrapper=document.querySelector('#wrapper');
 			this.sidebar=document.querySelector('#sidebar');
@@ -114,6 +111,11 @@
 
             this._initEdit();
             this.initSearch();
+            
+            this.authorize(function(user) {
+                window.sessionId = user.id;
+                $('#launch').hide();
+            });
 		},
 
 		handle:function(ev){

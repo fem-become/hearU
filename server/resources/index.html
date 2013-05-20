@@ -6,6 +6,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="hearU">
+    
+    <link rel="apple-touch-icon" not-need-sizes="57x57" href="ico-ip.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico-ip-retina.png">
+
+    <!-- Launching in iPhone portrait -->
+    <link rel="apple-touch-startup-image" href="startup-ip.png"        
+      media="(device-width:320px)">
+    <link rel="apple-touch-startup-image" href="startup-ip-retina.png" 
+      media="(device-width:320px) and (-webkit-min-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="startup-ip5-retina.png" 
+      media="(device-width:320px) and (device-height:568px) and (-webkit-min-device-pixel-ratio: 2)">
+    
     <link rel="stylesheet" type="text/css" href="css/stroll.css">
     <link rel="stylesheet" type="text/css" href="css/app.css">
     <link rel="stylesheet" type="text/css" href="css/view.css">
@@ -15,6 +27,7 @@
     <title>我的歌单</title>
 </head>
 <body >
+<div id="launch"></div>
 <div id="page">
     <div id="sidebar" class="slider side-bar">
         <header class="slider-header">
