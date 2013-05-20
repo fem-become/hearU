@@ -108,7 +108,7 @@ input:focus{
 
 }
 
-#scroller ul {
+#mainlist > ul {
 	list-style:none;
 	padding:0;
 	margin:0;
@@ -116,11 +116,11 @@ input:focus{
 	text-align:left;
 	
 }
-.shade #scroller ul li{
+.shade #mainlist > ul li{
 	opacity: .05;
 }
 
-#scroller li {
+#mainlist> ul li {
 	height:62px;
 	overflow: hidden;
 	line-height:62px;

@@ -19,7 +19,6 @@
 	exports.allot = function(callback,res){
 		var userId;
 		user.find({name:{$ne:"新用户"}}).toArray(function(err,items){
-			console.info(items.length);
 			for(var i=0,l=items.length;i<l;i++){
 				userId = items[i]._id.toString();
 				if(hasAllotedUserIds.indexOf(userId) === -1){

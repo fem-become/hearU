@@ -14,7 +14,7 @@
             var data = myAlbum;
             var html = ['<ul class="albumlist">'], i = 0;
             $.each(data, function(index, item) {
-                html.push('<li class="song-list item" data-id='+(item._id)+' data-focus='+(item.hasFocus)+'><div class="slider"><span class="list-name">'+item.name+'<b class="list-num">('+item.songs.length+')</b></span><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+                html.push('<li class="song-list item" data-id='+(item._id)+' data-focus='+(item.hasFocus)+'><div class="slider">'+item.name+'<b class="list-num">('+item.songs.length+')</b><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
             });
             html.push('</ul>');
             return html.join('');
@@ -26,10 +26,10 @@
 
         addItem: function(name) {
             var userId = global.sessionId;
-            global.HearU.requerstAPI("/collect/create", {"userId": userId, "name": name}, function(d) {
-                var li = $('<li class="song-list item" data-id='+(d.id)+'><div class="slider"><span class="list-name">'+name+'<b class="list-num">(0)</b></span><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+            global.HearU.requestAPI("/collect/create", {"userId": userId, "name": name}, function(d) {
+                var li = $('<li class="song-list item" data-id='+(d._id)+' data-focus='true'><div class="slider">'+name+'<b class="list-num">(0)</b><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
                 $('ul.albumlist').prepend(li);
-                global.HearU.albumRecord.push({userId: userId, collectId: d.id, name: name, hasFocus: true});
+                global.HearU.albumRecord.push({userId: userId, collectId: d._id, name: name, hasFocus: true});
             });
         },
 
@@ -161,8 +161,8 @@
             }, 500);
             $(self.wrapper).removeClass('shade');
 
-            var input = $("#edit input").val();
-            if($.trim(input)){
+            var input = $.trim($("#edit input").val());
+            if(input) {
                 AlbumListView.addItem(input);
             }
             self.is_editing = false;

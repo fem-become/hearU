@@ -15,6 +15,11 @@
 				'pull':'下拉添加新歌',
 				'release':'松开添加新歌',
 				'switch':'切换到歌单列表'
+},
+            songdetail:{
+                'pull':'下拉添加新歌',
+                'release':'松开添加新歌',
+                'switch':'切换到歌单列表'
 			}
 		};
 
@@ -229,7 +234,7 @@
                         self.HeaderView.openSideBar.call(self);
                     }
                 } else {
-                    self.openSelect();
+                    self.switchView('songdetail');
                 }
             } else {// if(!$target.parent().hasClass('song-list')){
                 this.current_view.tap && this.current_view.tap(ev);
@@ -276,6 +281,7 @@
         switchView: function(name, data) {
             var Views = {
                     songlist: SongListView,
+                    songdetail:SongDetailView,
                     albumlist: AlbumListView
                 },
                 View = Views[name];

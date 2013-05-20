@@ -12,9 +12,13 @@ lib-cov
 .idea
 app/resources/*
 
+*.mp3
+*.bak
+
 pids
 logs
 results
 
 npm-debug.log
 server/node_modules/*
+server/resources/resources

@@ -2,121 +2,109 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a60657b-c206-4c86-b4c0-4c449b248e8b" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\Behind-Blue-Eyes.mp3" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\You-And-Me.mp3" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\05.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\06.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\07.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\08.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\09.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\10.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\covers\11.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\songs\01\01.mp3" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ake\Documents\GitHub\hearU\server\resources\resource\songs\01\02.mp3" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/songlistview.js" afterPath="$PROJECT_DIR$/app/js/songlistview.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/css/app.css" afterPath="$PROJECT_DIR$/server/resources/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/css/view.css" afterPath="$PROJECT_DIR$/server/resources/css/view.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/index.html" afterPath="$PROJECT_DIR$/server/resources/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/js/albumlistview.js" afterPath="$PROJECT_DIR$/server/resources/js/albumlistview.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/js/app.js" afterPath="$PROJECT_DIR$/server/resources/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/js/player.js" afterPath="$PROJECT_DIR$/server/resources/js/player.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/js/songdetail.js" afterPath="$PROJECT_DIR$/server/resources/js/songdetail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/resources/js/songlistview.js" afterPath="$PROJECT_DIR$/server/resources/js/songlistview.js" />
     </list>
     <ignored path="hearU.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368701140272" ignored="false" />
-    <file path="/a.dummy" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606877026" ignored="false" />
-    <file path="/hearu.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366629437486" ignored="false" />
-    <file path="/index.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368708632207" ignored="false" />
-    <file path="/hearu.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366532645233" ignored="false" />
-    <file path="/dummy.xml" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366533243587" ignored="false" />
-    <file path="/entrylist.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366716167552" ignored="false" />
-    <file path="/normalize.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366533503256" ignored="false" />
-    <file path="/horidtra.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366535269788" ignored="false" />
-    <file path="/horidrag.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366615306833" ignored="false" />
-    <file path="/test.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366554328780" ignored="false" />
-    <file path="/sslog.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366562568364" ignored="false" />
-    <file path="/framework.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366683682078" ignored="false" />
-    <file path="/horidrag.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366633136374" ignored="false" />
-    <file path="/dragswitch.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366715900550" ignored="false" />
-    <file path="/hearu.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366716306178" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/javascripts/src/detail.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366707357876" ignored="false" />
-    <file path="/detail.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366686175533" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/build/albums-build.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366707469151" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/build/style.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366688841110" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/src/scripts/wangpu/decoration/shopmonitor.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698845920" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/manage.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691319053" ignored="false" />
-    <file path="/manage.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691319053" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/foundation/_util.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689409591" ignored="false" />
-    <file path="/_util.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689409097" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/activity.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366692247980" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/manage.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/messagecenter.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/settings.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/success.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/xiaobao.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/javascripts/src/exception.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366688804765" ignored="false" />
-    <file path="/exception.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366688711520" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/settings.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689724197" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/manage.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689825187" ignored="false" />
-    <file path="/manage.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689825187" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/xiaobao.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690722662" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/foundation/_form.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690482330" ignored="false" />
-    <file path="/_form.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690477019" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/activity.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691114790" ignored="false" />
-    <file path="/activity.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691114317" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/sidebar.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691251071" ignored="false" />
-    <file path="/sidebar.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691251071" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/activity.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691393786" ignored="false" />
-    <file path="/activity.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691393786" ignored="false" />
-    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/javascripts/hy/xiaobao.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366695542290" ignored="false" />
-    <file path="/shopmonitor.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698814577" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/src/scripts/wangpu/decoration/init.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366696225202" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/base-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/init.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/init.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/base.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/init-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/shopmonitor-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/shopmonitor.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/src/scripts/wangpu/decoration/imagequality.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698316808" ignored="false" />
-    <file path="/imagequality.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698784337" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/isv-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/isv.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/imagequality.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/imagequality-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
-    <file path="/draglist.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366702414935" ignored="false" />
-    <file path="/views.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368020125914" ignored="false" />
-    <file path="/app.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712289741" ignored="false" />
-    <file path="/songlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623731964" ignored="false" />
-    <file path="/albumlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712485292" ignored="false" />
-    <file path="/selfalbumview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368342853528" ignored="false" />
-    <file path="/player.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623801179" ignored="false" />
-    <file path="/initplayer.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368344860922" ignored="false" />
-    <file path="/view.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368709924825" ignored="false" />
-    <file path="/uxiconfont.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368705377103" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/multimages/publish.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368596506354" ignored="false" />
-    <file path="/publish.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368596472854" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/20130515/success.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368599385528" ignored="false" />
-    <file path="/success.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368599385528" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/proxy.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605739201" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/category.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606083085" ignored="false" />
-    <file path="/category.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605107653" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/assets/cateselect.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605981141" ignored="false" />
-    <file path="/cateselect.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605956858" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/reload_cats.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606338419" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/reload_cats.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606397432" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/assets/select.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610719222" ignored="false" />
-    <file path="/select.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610647763" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/assets/combobox.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610309563" ignored="false" />
-    <file path="/combobox.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610113445" ignored="false" />
-    <file path="$PROJECT_DIR$/../../daily/aria/assets/tree.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610218802" ignored="false" />
-    <file path="/tree.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610179770" ignored="false" />
-    <file path="$PROJECT_DIR$/../../assets/trunk/v2/source/publish/multimages.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368704821745" ignored="false" />
-    <file path="/multimages.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368703593403" ignored="false" />
     <file path="/spinningwheel.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368710589397" ignored="false" />
+    <file path="/multimages.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368703593403" ignored="false" />
+    <file path="$PROJECT_DIR$/../../assets/trunk/v2/source/publish/multimages.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368704821745" ignored="false" />
+    <file path="/tree.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610179770" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/assets/tree.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610218802" ignored="false" />
+    <file path="/combobox.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610113445" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/assets/combobox.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610309563" ignored="false" />
+    <file path="/select.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610647763" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/assets/select.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368610719222" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/reload_cats.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606397432" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/reload_cats.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606338419" ignored="false" />
+    <file path="/cateselect.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605956858" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/assets/cateselect.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605981141" ignored="false" />
+    <file path="/category.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605107653" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/category.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606083085" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/aria/proxy.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368605739201" ignored="false" />
+    <file path="/success.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368599385528" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/20130515/success.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368599385528" ignored="false" />
+    <file path="/publish.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368596472854" ignored="false" />
+    <file path="$PROJECT_DIR$/../../daily/multimages/publish.htm" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368596506354" ignored="false" />
+    <file path="/uxiconfont.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368705377103" ignored="false" />
+    <file path="/view.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368709924825" ignored="false" />
+    <file path="/initplayer.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368344860922" ignored="false" />
+    <file path="/player.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623801179" ignored="false" />
+    <file path="/selfalbumview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368342853528" ignored="false" />
+    <file path="/albumlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712485292" ignored="false" />
+    <file path="/songlistview.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368623731964" ignored="false" />
+    <file path="/app.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368712289741" ignored="false" />
+    <file path="/views.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368020125914" ignored="false" />
+    <file path="/draglist.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366702414935" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/imagequality-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/imagequality.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/isv.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/isv-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="/imagequality.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698784337" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/src/scripts/wangpu/decoration/imagequality.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698316808" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/shopmonitor.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/shopmonitor-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/init-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/base.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/decoration/init.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/init.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/build-combo/wangpu/base-min.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366700103262" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/src/scripts/wangpu/decoration/init.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366696225202" ignored="false" />
+    <file path="/shopmonitor.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698814577" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/javascripts/hy/xiaobao.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366695542290" ignored="false" />
+    <file path="/activity.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691393786" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/activity.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691393786" ignored="false" />
+    <file path="/sidebar.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691251071" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/sidebar.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691251071" ignored="false" />
+    <file path="/activity.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691114317" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/activity.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691114790" ignored="false" />
+    <file path="/_form.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690477019" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/foundation/_form.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690482330" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/xiaobao.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690722662" ignored="false" />
+    <file path="/manage.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689825187" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/manage.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689825187" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/settings.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689724197" ignored="false" />
+    <file path="/exception.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366688711520" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/javascripts/src/exception.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366688804765" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/xiaobao.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/success.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/settings.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/messagecenter.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/manage.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366690490576" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/activity.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366692247980" ignored="false" />
+    <file path="/_util.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689409097" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/stylesheets/foundation/_util.scss" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366689409591" ignored="false" />
+    <file path="/manage.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691319053" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy_platform/src/demo/manage.php" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366691319053" ignored="false" />
+    <file path="$PROJECT_DIR$/../../shop-team/products/platinum/src/scripts/wangpu/decoration/shopmonitor.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366698845920" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/build/style.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366688841110" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/build/albums-build.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366707469151" ignored="false" />
+    <file path="/detail.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366686175533" ignored="false" />
+    <file path="$PROJECT_DIR$/../../houyuan/hy/assets/javascripts/src/detail.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366707357876" ignored="false" />
+    <file path="/hearu.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366716306178" ignored="false" />
+    <file path="/dragswitch.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366715900550" ignored="false" />
+    <file path="/horidrag.coffee" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366633136374" ignored="false" />
+    <file path="/framework.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366683682078" ignored="false" />
+    <file path="/sslog.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366562568364" ignored="false" />
+    <file path="/test.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366554328780" ignored="false" />
+    <file path="/horidrag.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366615306833" ignored="false" />
+    <file path="/horidtra.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366535269788" ignored="false" />
+    <file path="/normalize.css" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366533503256" ignored="false" />
+    <file path="/entrylist.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366716167552" ignored="false" />
+    <file path="/dummy.xml" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366533243587" ignored="false" />
+    <file path="/hearu.less" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366532645233" ignored="false" />
+    <file path="/index.html" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368708632207" ignored="false" />
+    <file path="/hearu.js" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1366629437486" ignored="false" />
+    <file path="/a.dummy" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368606877026" ignored="false" />
+    <file path="/Dummy.txt" changelist="9a60657b-c206-4c86-b4c0-4c449b248e8b" time="1368701140272" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,28 +124,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/resources/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="297" column="15" selection-start="8637" selection-end="8637" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="songlistview.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/resources/js/songlistview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="40" selection-start="5382" selection-end="5382" vertical-scroll-proportion="-16.0">
+            <state line="174" column="13" selection-start="5656" selection-end="5656" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="albumlistview.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="player.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/resources/js/player.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="46" selection-start="1032" selection-end="1032" vertical-scroll-proportion="0.02293578">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="audio.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/audioplayer/audio.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="657" column="61" selection-start="34256" selection-end="34256" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1368970087971" expanded="true" signature="1317:1348" placeholder="..." />
+                <marker date="1368970087971" expanded="true" signature="1349:1405" placeholder="..." />
+                <marker date="1368970087971" expanded="true" signature="3109:3273" placeholder="..." />
+                <marker date="1368970087971" expanded="true" signature="3308:3411" placeholder="..." />
+                <marker date="1368970087971" expanded="true" signature="3442:3545" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/resources/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="131" column="34" selection-start="5981" selection-end="5981" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="song.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/app/models/song.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="56" selection-start="2111" selection-end="2111" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myInterface.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/app/controllers/myInterface.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="39" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/resources/css/view.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="1" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uxiconfont.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/resources/css/uxiconfont.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="0" selection-start="2302" selection-end="2303" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="albumlistview.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/resources/js/albumlistview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="45" selection-start="5141" selection-end="5142" vertical-scroll-proportion="0.37198067">
+            <state line="126" column="45" selection-start="5078" selection-end="5079" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -176,12 +224,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/js/selfalbumview.js" />
-        <option value="$PROJECT_DIR$/app/js/initplayer.js" />
-        <option value="$PROJECT_DIR$/app/js/auth.js" />
-        <option value="$PROJECT_DIR$/app/css/animate.css" />
-        <option value="$PROJECT_DIR$/app/js/player.js" />
-        <option value="$PROJECT_DIR$/app/js/zepto.js" />
         <option value="$PROJECT_DIR$/app/css/uxiconfont.css" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/css/view.css" />
@@ -189,16 +231,24 @@
         <option value="$PROJECT_DIR$/app/js/app.js" />
         <option value="$PROJECT_DIR$/app/js/albumlistview.js" />
         <option value="$PROJECT_DIR$/app/js/songlistview.js" />
-        <option value="$PROJECT_DIR$/server/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/server/resources/js/songlistview.js" />
         <option value="$PROJECT_DIR$/server/resources/js/albumlistview.js" />
+        <option value="$PROJECT_DIR$/server/resources/js/songlistview.js" />
+        <option value="$PROJECT_DIR$/server/resources/css/view.css" />
+        <option value="$PROJECT_DIR$/server/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/server/resources/css/app.css" />
+        <option value="$PROJECT_DIR$/server/app/controllers/myInterface.js" />
+        <option value="$PROJECT_DIR$/server/resources/index.html" />
+        <option value="$PROJECT_DIR$/demo/audioplayer/audio.js" />
+        <option value="$PROJECT_DIR$/server/resources/js/player.js" />
       </list>
     </option>
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="62" />
-    <option name="width" value="1239" />
-    <option name="height" value="1050" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1634" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -233,7 +283,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -244,91 +294,11 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hearU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/works/assets/sell/hotel_ticket" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
@@ -401,18 +371,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="0" width="1239" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="54" y="-8" width="1634" height="1066" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854864" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854864" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30133557" sideWeight="0.67145133" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22661644" sideWeight="0.67145133" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286119" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286119" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -421,7 +391,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Pomodoro" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Pomodoro" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -477,114 +447,106 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/js/albumlistview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="37" selection-start="4081" selection-end="4081" vertical-scroll-proportion="0.43269232">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="32" selection-start="624" selection-end="624" vertical-scroll-proportion="0.024038462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/songlistview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="20" selection-start="185" selection-end="185" vertical-scroll-proportion="0.18691589">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/users.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/songs.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="714" selection-start="714" selection-end="714" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/resources/js/songdetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="43" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.28154206">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/app/models/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="29" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.44392523" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app/controllers/importData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="28" selection-start="6103" selection-end="6104" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/resources/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="4" selection-start="1978" selection-end="1980" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/resources/js/songlistview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="174" column="13" selection-start="5656" selection-end="5656" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/resources/css/view.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="1" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/app/models/song.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="11" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.8130841">
+        <state line="74" column="56" selection-start="2111" selection-end="2111" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/app/models/user.js">
+    <entry file="file://$PROJECT_DIR$/server/resources/css/uxiconfont.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="29" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.44392523">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/app/controllers/importData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/app/controllers/myInterface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="38" selection-start="1419" selection-end="1419" vertical-scroll-proportion="0.023364486">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/app/models/collect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.5186915">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="297" column="15" selection-start="8637" selection-end="8637" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/resources/js/songlistview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="40" selection-start="5382" selection-end="5382" vertical-scroll-proportion="-16.0">
+        <state line="62" column="0" selection-start="2302" selection-end="2303" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/resources/js/albumlistview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="45" selection-start="5141" selection-end="5142" vertical-scroll-proportion="0.37198067">
+        <state line="126" column="45" selection-start="5078" selection-end="5079" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app/controllers/myInterface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="39" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app/models/collect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="19" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/resources/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="34" selection-start="5981" selection-end="5981" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/audioplayer/audio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="657" column="61" selection-start="34256" selection-end="34256" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1368970087971" expanded="true" signature="1317:1348" placeholder="..." />
+            <marker date="1368970087971" expanded="true" signature="1349:1405" placeholder="..." />
+            <marker date="1368970087971" expanded="true" signature="3109:3273" placeholder="..." />
+            <marker date="1368970087971" expanded="true" signature="3308:3411" placeholder="..." />
+            <marker date="1368970087971" expanded="true" signature="3442:3545" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/resources/js/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="46" selection-start="1032" selection-end="1032" vertical-scroll-proportion="0.02293578">
           <folding />
         </state>
       </provider>

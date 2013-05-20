@@ -194,8 +194,7 @@
 
             console.log('play '+ $parent.attr('data-index'));
 
-            //HearU.switchView('play', )
-            console.log('switch to play page')
+            HearU.switchView('songdetail');
         },
         pullDown: function() {
             console.log('pulldown by songlist')

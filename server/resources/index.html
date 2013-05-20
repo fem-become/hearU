@@ -21,7 +21,7 @@
             Hear You
         </header>
         <ul class="my-menu">
-            <li data-des="playView"><i class="icon-playing"></i> <a href="#">正在播放</a><i class="icon-right-open"></i></li>
+            <li data-des="songdetail"><i class="icon-playing"></i> <a href="#">正在播放</a><i class="icon-right-open"></i></li>
             <li data-des="albumlist" data-id="-1"><i class="icon-songsList"></i> <a href="#">我的歌单</a><i class="icon-right-open"></i></li>
             <li data-des="songlist" data-id="-1"><i class="icon-recomend"></i> <a href="#">每日推荐</a><i class="icon-right-open"></i></li>
             <li data-des="playView"><i class="icon-out"></i> <a href="#">退出登录</a><i class="icon-right-open"></i></li>
@@ -68,20 +68,68 @@
     </div>
 </div>
 
+<script type="text/tpl" id="songDetalTpl">
+<section class="play-detail" id="PlayDetail">
+ <div class="song-play-wrapper">
+    <div class="play-list">
+        <div class="play-list-item">
+            <ul class="song-play-cover">
+                <li>03:09</li>
+                <li class="song-cover-img"><i class="icon-left-open"></i><img src="http://img.xiami.com/./images/album/img68/7068/1637504261363750426_5.jpeg" width="150" alt=""><i class="icon-right-open"></i></li>
+                <li class="song-play-tool"><i class="icon-pause"></i><i class="icon-heart"></i><i class="icon-trash"></i></li>
+            </ul>
+        </div>
+        <div class="play-list-item">
+            <ul class="song-play-cover">
+                <li>03:09</li>
+                <li class="song-cover-img"><i class="icon-left-open"></i><img src="http://img.xiami.com/images/collect/726/26/21302726_1367653398_4.jpg" width="150" alt=""><i class="icon-right-open"></i></li>
+                <li class="song-play-tool"><i class="icon-pause"></i><i class="icon-heart"></i><i class="icon-trash"></i></li>
+            </ul>
+        </div>
+        <div class="play-list-item">
+            <ul class="song-play-cover">
+                <li>03:09</li>
+                <li class="song-cover-img"><i class="icon-left-open"></i><img src="http://img.xiami.com/images/album/img63/55563/678246691367824687_2.jpg" width="150" alt=""><i class="icon-right-open"></i></li>
+                <li class="song-play-tool"><i class="icon-pause"></i><i class="icon-heart"></i><i class="icon-trash"></i></li>
+            </ul>
+        </div>
+    </div>
+    <div class="song-actions">
+        <ul class="recomend-song-list">
+            <li class="first-recomend"><a href="#" class="selected">查找朱倩的其它歌曲</a></li>
+            <li><a href="#">查看收藏者的其它歌曲</a></li>
+            <li class="last-recomend"><a href="#">猜你会喜欢的歌</a></li>
+        </ul>
+    </div>
+</div>
+</section>
+</script>
+
 <!--
 <script type="text/javascript1" src="http://192.168.1.104:8080/target/target-script-min.js#anonymous"></script>
 -->
 <script src="js/zepto.js"></script>
 <script src="js/throttle.js"></script>
-<script src="js/iscroll.js"></script>
+<script src="http://10.7.50.0/hearu/hearU/server/resources/js/iscroll.js"></script>
+<!-- <script src="http://10.7.50.0/hearu/hearU/server/resources/js/iscroll.js"></script> -->
 <script src="js/hammer.js"></script>
-<script src="js/spinningwheel.js"></script>
-<script src="./js/albumlistview.js"></script>
-<script type="text/javascript" src="./js/songlistview.js"></script>
-<script type="text/javascript" src="./js/player.js"></script>
-<script src="js/app.js"></script>
-<script src="js/auth.js"></script>
+<!-- <script src="./js/spinningwheel.js"></script> -->
+<!-- <script src="./js/app.js"></script> -->
+<script src="http://10.7.50.0/hearu/hearU/server/resources/js/spinningwheel.js"></script>
+<script src="http://10.7.50.0/hearu/hearU/server/resources/js/app.js"></script>
 <script src="js/config.js"></script>
+
+<script src="./js/albumlistview.js"></script>
+<script src="http://10.7.50.0/hearu/hearU/server/resources/js/carousel.js"></script>
+<!-- <script src="./js/carousel.js"></script> -->
+<script type="text/javascript" src="./js/player.js"></script>
+<script type="text/javascript" src="./js/songlistview.js"></script>
+<!-- <script type="text/javascript" src="./js/songdetail.js"></script> -->
+<!-- <script type="text/javascript" src="./js/songdetailview.js"></script> -->
+<script type="text/javascript" src="http://10.7.50.0/hearu/hearU/server/resources/js/songdetail.js"></script>
+<script type="text/javascript" src="http://10.7.50.0/hearu/hearU/server/resources/js/songdetailview.js"></script>
+
+<script src="js/auth.js"></script>
 <script src="js/header.js"></script>
 <script>
     $(function(){

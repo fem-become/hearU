@@ -52,7 +52,7 @@
 	function favorSong(callback){
 		hoo.openSelect(info.currentSong.songId, info.currentSong.collectId);
 	}
-	function trash(callback){
+	function trashSong(callback){
 		hoo.requestAPI('/collect/removeSong', {
 			collectId: info.currentSong.collectId,
 			songId: info.currentSong.songId
