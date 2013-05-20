@@ -30,6 +30,33 @@
 			ret.push(a.splice(getRandom(a.length-1),1)[0]);
 		}
 		return ret;
+	},
+	richSong = function(songs,index,res,callback){
+		var song = songs[index],
+		songId = song._id.toString(),
+		collectId;
+		song.hasFavor = false;
+		collect.findOne({songs:{$in:[songId]}},function(err,item){
+			if(item){
+				collectId = item._id.toString();
+				song.collectId = collectId;
+				user.findOne({collects:{$in:[collectId]}},function(err,item){
+					song.userId = item._id.toString();
+					song.userName = item.name;
+					if(index === songs.length-1){
+						callback(songs,res);
+						return;
+					}
+					else{
+						richSong(songs,++index,res,callback);
+					}
+				});
+			}
+			else{
+				callback(null,res,true);
+			}
+		});
+		return songs;
 	};
 	exports.random = function(userId,callback,res){
 		var ret;
@@ -43,11 +70,9 @@
 						mySongs = mySongs.concat(items[i].songs);
 					}
 					song.find({_id:{$nin : turnToObjectId(mySongs)}}).toArray(function(err,items){
-						ret = getRandomArray(items,5);
-						for(var j=0,len=ret.length;j<len;j++){
-							ret[j].hasFavor = false;
-						}
-						callback(ret,res);
+						ret = getRandomArray(items,30);
+						var index = 0
+						richSong(ret,index,res,callback);
 					});
 				});
 			}
@@ -93,9 +118,12 @@
 		});
 	};
 	exports.search = function(key,callback,res){
-		var condition = {$or:[{name:{$regex:key}},{artist:{$regex:key}}]}; 
+		var condition = {$or:[{name:{$regex:key}},{artist:{$regex:key}}]},
+		item,
+		songIds = [],
+		index = 0; 
 		song.find(condition).toArray(function(err,items){
-			callback(items,res);
+			richSong(items,index,res,callback);
 		});
 	};
 })();
