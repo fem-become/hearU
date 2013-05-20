@@ -40,6 +40,7 @@
 			if(item){
 				collectId = item._id.toString();
 				song.collectId = collectId;
+				song.collectName = item.name;
 				user.findOne({collects:{$in:[collectId]}},function(err,item){
 					song.userId = item._id.toString();
 					song.userName = item.name;
