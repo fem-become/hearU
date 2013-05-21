@@ -48,11 +48,13 @@
 	exports.createCollect = function(userId,name,callback,res){
 		var collectId;
 		user.findOne({_id:ObjectID(userId)},function(err,item){
+        console.info(item);
 			if(item){
 				collects = item.collects || [];
-				collect.insert({name:name},function(err, item){
+				collect.insert({name:name,songs:[]},function(err, item){
 					if(err){
 						console.info(err);
+                        callback(null,res,true);
 						return;
 					}
 					collectId = item[0]._id.toString();
@@ -62,6 +64,9 @@
 					});
 				});
 			}
+            else{
+                callback(null,res,true);
+            }
 		});
 	};
 	exports.addCollect = function(userId,collectId,callback,res){

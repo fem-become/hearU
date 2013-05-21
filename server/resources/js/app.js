@@ -17,8 +17,8 @@
 				'switch':'切换到歌单列表'
 },
             songdetail:{
-                'pull':'下拉添加新歌',
-                'release':'松开添加新歌',
+                'pull':'下拉切换到歌单列表',
+                'release':'松开切换到歌单列表',
                 'switch':'切换到歌单列表'
 			}
 		};
@@ -227,13 +227,18 @@
                     data = id ? {userId: id} : {};
 
                 self.HeaderView.closeSideBar.call(self);
-                if(des == "songdetail" && id == -1) {
+                if (des == "songdetail" && id == -1) {
                     HearU.requestAPI("/song/random", {userId: sessionId}, function(dt) {
                         HearU.player.setList(dt);
                         HearU.player.play(0);
                         self.switchView(des, data);
                     });
-                }else {
+                } else if (des == "exit") {
+                    if(localstorage) {
+                        localstorage.removeItem("h_user");
+                        window.location = window.location.href.replace(/#./,'');
+                    }
+                } else {
                     self.switchView(des, data);
                 }
                 

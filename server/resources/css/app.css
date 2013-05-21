@@ -102,6 +102,7 @@ input:focus{
 /*	-webkit-touch-callout:none;*/
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 	width:100%;
+    min-height: 100%;
 	padding:0;
 	-webkit-backface-visibility: hidden;/*解决闪烁问题*/
 	-webkit-transform-style: preserve-3d; 
@@ -186,7 +187,7 @@ input:focus{
 	-webkit-transition-property:background-color;
 }
 .pull-more .pull-more-wrapper.item-create{
-	background:#6A0000;
+	background:-webkit-linear-gradient(top, #73AE01, #669900);
 }
 
 .edit-panel{

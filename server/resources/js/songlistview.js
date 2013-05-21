@@ -87,9 +87,8 @@
 
             var html = this.getHTML(metaData);
             $('#mainlist').html(html);
-            console.log(data);
-
-            HearU.setTitle(metaData.name);
+            var sampleSong = metaData.songs && metaData.songs[0];
+            HearU.setTitle(data.title || sampleSong.collectName);
 
 //            HearU.player.setList(metaData.songs);
 

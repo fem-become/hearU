@@ -356,6 +356,10 @@
     position: relative;
     color: #464646;
 }
+  .play-detail .song-cover-img img {
+    width: 150px;
+    height: 150px;
+  }
 .play-detail .song-cover-img i:before{
     color: #999;
     font-size: 24px;

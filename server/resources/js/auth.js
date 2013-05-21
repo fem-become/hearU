@@ -13,14 +13,11 @@
 	function launchPlayer(list){
 		list.forEach(function(v){
 			v.songId = v._id;
-			v.collectId = -1;
-			v.userId = -1;
-			v.hasFavor = false;
 		});
 		hoo.player.setList(list);
 		hoo.player.play(0);
         cb(user.id, user.name);
-		hoo.switchView('songdetail');	
+		hoo.switchView('songdetail', {random: true});
 	}
 	function init(callback){
 		if(typeof callback == 'function') cb = callback;

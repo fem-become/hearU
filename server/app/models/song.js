@@ -24,6 +24,7 @@
 		return parseInt(Math.random()*n);
 	},
 	getRandomArray = function(a,time){
+    console.info(a);
 		var ret = [],
 		l = Math.min(time,a.length);
 		for(var i=0;i<l;i++){
@@ -66,10 +67,13 @@
 		user.findOne({_id:ObjectID(userId)},function(err,item){
 			if(item){
 				collects = item.collects || [];
-				collect.find({_id:{$in : turnToObjectId(collects)}}).toArray(function(err,items){
+				collect.find({_id:{$in : turnToObjectId(collects)}}).toArray(function(err,items){;
 					for(var i=0,l=items.length;i<l;i++){
-						mySongs = mySongs.concat(items[i].songs);
+						mySongs = mySongs.concat(items[i].songs || []);
 					}
+                    console.info('----------------------');
+                    console.info(mySongs);
+                    console.info('----------------------');
 					song.find({_id:{$nin : turnToObjectId(mySongs)}}).toArray(function(err,items){
 						ret = getRandomArray(items,30);
 						var index = 0
@@ -124,7 +128,12 @@
 		songIds = [],
 		index = 0; 
 		song.find(condition).toArray(function(err,items){
-			richSong(items,index,res,callback);
+            if(items.length){
+                richSong(items,index,res,callback);
+            }
+			else{
+                callback([],res,true);
+            }
 		});
 	};
 })();
