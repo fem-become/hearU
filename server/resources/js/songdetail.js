@@ -28,6 +28,14 @@
 	            playTime.html(parseTime(ev.target.currentTime));
 	        }
 	    });
+		
+		player.on('play',function() {
+			var currentSong=player.getSongInfo();
+			var items=$('.play-list-item');
+			if(items){
+				$('img',items[1]).attr('src',currentSong.cover);
+			}
+		});
 
 		var inited,
 			curIdx = 0,
@@ -80,17 +88,25 @@
 		function favorSong(callback){
 			hoo.openSelect(info.currentSong._id, info.currentSong.collectId);
 		}
-		function trashSong(callback){
+		function trashSong(){
 			hoo.requestAPI('/collect/removeSong', {
 				collectId: info.currentSong.collectId,
 				songId: info.currentSong._id
-			}, callback);
+			}, function() {
+				goNext();
+			});
 		}
 		function searchByArtist(){
 			hoo.requestAPI('/song/search', {
 				key: player.getSongInfo().artist
 			}, function (data) {
-				hoo.switchView('songlist',{songs:data});
+				hoo.switchView('songlist',{
+						songs:data,userId: info.currentSong.userId,
+						userName:info.currentSong.userName,
+						userId: -1,
+						collectId:info.currentSong.collectId,
+						title: info.currentSong.artist + ' 的歌曲'
+				});
 			});
 		}
 		function getListByOwner(){
@@ -101,7 +117,11 @@
 				list.forEach(function(v){
 					v.songId = v._id;
 				});
-				hoo.switchView('songlist', { songs: list });
+				hoo.switchView('songlist', { 
+                    userId: -1,
+                    title: '每日推荐',
+                    songs: list 
+                });
 			});
 		}
 		

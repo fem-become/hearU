@@ -16,9 +16,9 @@
             var songList = HearU.SongDetail(),currentSong=songList.currentSong;
             
             $('#mainlist').html(html);
-            setTimeout(function () {
+            setTimeout(function (){
                 $('.play-detail').removeClass('hide');
-            },500)
+            },500);
             $('.J_PlayTime').html('00:00');
             HearU.scroll.refresh();
             var carousel = new Carousel("#PlayDetail");
@@ -35,14 +35,17 @@
                 $('#J_Songer').html(songList.currentSong.artist);
                 self.carousel.setPaneDimensions();
                 if(window.sessionId==songList.currentSong.userId){
-                    $('.icon-trash').hide();
-                }else{
                     $('.icon-trash').show();
+                }else{
+                    $('.icon-trash').hide();
                 }
+                console.log(songList.currentSong);
                 if(songList.currentSong.hasFavor){
                     $('.icon-heart').addClass('has-favor');
+                    $('.icon-trash').show();
                 }else{
                     $('.icon-heart').removeClass('has-favor');
+                    $('.icon-trash').hide();
                 }
                 var pane=$('.play-list-item');
                     pane.each(function(index,item) {
@@ -59,6 +62,7 @@
             }
             $('.play-list').on('webkitTransitionEnd',function(){
                 var $target=$(this),transform=$target.css('-webkit-transform');
+                $target.removeClass('animate').css('-webkit-transform','translate3d(-33.333333333333336%, 0px, 0px) scale3d(1, 1, 1)');
                 if(transform.indexOf('66')>-1){
                     var pane=$('.play-list-item');
                     HearU.setTitle(songList.nextSong.name);
@@ -72,7 +76,7 @@
                     $(pane[pane.length-1]).prependTo(pane.parent());
                     updateSongInfo();
                 }
-                $target.removeClass('animate').css('-webkit-transform','translate3d(-33.333333333333336%, 0px, 0px) scale3d(1, 1, 1)');
+                
             });
             HearU.setTitle(currentSong.name);
         },
@@ -114,10 +118,20 @@
         pullDown: function() {
             var title = undefined;
             if(metaData && metaData.userId == -1) {
-                title = "每日推荐"
+                title = "每日推荐";
             }
-            var currentSong=HearU.player.getSongInfo();
-            HearU.switchView('songlist', {title: title, songs: HearU.player.list,userId:currentSong.userId,userName:currentSong.userName,collectId:currentSong.collectId});
+            var currentSong=HearU.player.getSongInfo(),
+                userId = (metaData&& metaData.userId == -1) ? -1 : currentSong.userId,
+                username = currentSong.userName || (metaData && metaData.userName),
+                title = title || (metaData && metaData.title);
+                
+            HearU.switchView('songlist', {
+                title: title, 
+                songs: HearU.player.list,
+                userId: userId,
+                userName: username,
+                collectId:currentSong.collectId
+            });
         },
         inputDown: function() {
             //HearU.openSearch();

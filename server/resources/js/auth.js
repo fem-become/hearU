@@ -18,14 +18,15 @@
 			v.songId = v._id;
 		});
 		hoo.player.setList(list);
-		
-		timer = setTimeout(playTheSong, 100)
+		hoo.player.play();
+		//timer = setTimeout(playTheSong, 100)
 		
         cb(user.id, user.name);
 
 		hoo.switchView('songdetail', {random: true});
+        $('#launch').hide();
 
-		alert("playing:" + hoo.player.getPlayState());
+		//alert("playing:" + hoo.player.getPlayState());
 	}
 
 
@@ -41,10 +42,27 @@
 
 	function init(callback){
 		if(typeof callback == 'function') cb = callback;
-		if(isLogin){
+        
+		if(isLogin) {
 			setUserLogin();
             cb(user.id, user.name);
-			hoo.switchView('albumlist', { userId: user.id, userName: user.name });
+            
+            hoo.requestAPI("/collect/list", {"userId": user.id, "visitorId": user.id}, function(d) {
+                var total = 0;
+                hoo.albumRecord = d;
+                for (var i = 0, l = d.length; i < l; i++) {
+                    total += d[i].songs.length;
+                    if (total > 0) {
+                        break;
+                    }
+                }
+                if (total > 0) {
+                    hoo.switchView('albumlist', { userId: user.id, userName: user.name });   
+                } else {
+                    hoo.requestAPI('/song/random', { userId: user.id }, launchPlayer);
+                }
+                $('#launch').hide();
+            });
 		} else {
 			hoo.requestAPI('/user/create', {}, function(data){
 				localStorage.setItem('h_user', JSON.stringify({

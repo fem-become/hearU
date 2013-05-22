@@ -14,7 +14,8 @@
             var data = myAlbum;
             var html = ['<ul class="albumlist">'], i = 0;
             $.each(data, function(index, item) {
-                html.push('<li class="song-list item past" data-id='+(item._id)+' data-focus='+(item.hasFavor)+'><div class="slider">'+item.name+'<b class="list-num">('+item.songs.length+')</b><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+                item.name = item.name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                html.push('<li class="song-list item past" data-id='+(item._id)+' data-focus='+(item.hasFavor)+'><div class="slider"><i class="icon-play"></i>'+item.name+'<b class="list-num">('+item.songs.length+')</b></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
             });
             html.push('</ul>');
             return html.join('');
@@ -27,6 +28,7 @@
         addItem: function(name) {
             var userId = global.sessionId;
             global.HearU.requestAPI("/collect/create", {"userId": userId, "name": name}, function(d) {
+                name = name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
                 var li = $('<li class="song-list item" data-id='+(d._id)+' data-focus="true"><div class="slider">'+name+'<b class="list-num">(0)</b><i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
                 $('ul.albumlist').prepend(li);
                 global.HearU.albumRecord.push({_id: d._id, name: name, hasFavor: true, songs:[]});
@@ -44,6 +46,7 @@
             //清空他人歌单缓存
             this.otherAlbum = [];
             this.isOther = false;
+            this.curUserName = data.userName;
             var userId;
             //var self = global.HearU;
             if (data.userId == -1 || data.userId == window.sessionId) {

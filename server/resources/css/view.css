@@ -85,7 +85,9 @@
     background: -webkit-linear-gradient(top, #666, #333);
     padding-left: 10px;
 }
-
+.slider .content {
+    overflow: hidden;
+}
 #mainlist .song-list .slider .list-name .list-num {
     font-size: 12px;
 }
@@ -335,7 +337,7 @@
 }
 .play-detail .song-play-cover{
     color: #d4d2d2;
-    
+    margin-top: 20px;
 }
 .play-detail .song-play-cover li{
     line-height:1.5em;
@@ -370,6 +372,7 @@
     top:40%;
     left: 5%;
     font-size: 18px;
+    z-index: 999;
 }
 .play-detail .icon-right-open{
     position: absolute;
@@ -411,6 +414,7 @@
     -webkit-backface-visibility: hidden;
     -webkit-transform: translate3d(0,0,0) scale3d(1,1,1);
     -webkit-transform-style: preserve-3d;
+    margin-top: -15px;
 }
 
 #PlayDetail .play-list.animate {

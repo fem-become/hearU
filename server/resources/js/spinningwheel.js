@@ -200,8 +200,10 @@
 			};
 			
 			this.reset();
-			
-			document.body.removeChild(document.getElementById('sw-wrapper'));
+			var sw=document.getElementById('sw-wrapper');
+			if(sw){
+				document.body.removeChild(sw);
+			}
 		},
 		
 		close: function () {
