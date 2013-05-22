@@ -119,18 +119,29 @@
 			callback(doc,res);
 		});
 	};
-	exports.search = function(key,callback,res){
+	exports.search = function(key,userId,callback,res){
 		var condition = {$or:[{name:{$regex:key}},{artist:{$regex:key}}]},
 		item,
+		songId,
+		mySongs,
 		songIds = [],
-		index = 0; 
-		song.find(condition).toArray(function(err,items){
-            if(items.length){
-                richSong(items,index,res,callback);
-            }
-			else{
-                callback([],res,true);
-            }
+		index = 0;
+		user.findOne({_id:ObjectID(userId)},function(err,item){
+			if(item){
+				mySongs = item.songs;
+				song.find(condition).toArray(function(err,items){
+		            if(items.length){
+		            	for(var i=0,l=items.length;i<l;i++){
+		            		songId = items[i]._id.toString();
+		            		items[i].hasFavor = (mySongs.indexOf(songId) > -1);
+		            	}
+		                richSong(items,index,res,callback);
+		            }
+					else{
+		                callback([],res,true);
+		            }
+				});
+			}
 		});
 	};
 })();

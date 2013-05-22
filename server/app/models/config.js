@@ -5,5 +5,5 @@
  */
 (function(){
 	var mongo = require('mongoskin');
-		exports.db = mongo.db('127.0.0.1:27017/hearU');
+		exports.db = mongo.db('10.13.16.36:27017/hearU');
 })();

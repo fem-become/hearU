@@ -55,6 +55,9 @@
 		});
 	};
 	exports.moveSong = function(songId,oldCollectId,newCollectId,callback,res){
+		if(!songId || songId==='undefined'){
+			return;
+		}
 		var songs;
 		collect.findOne({_id:ObjectID(oldCollectId)},function(err,item){
 			if(item){
@@ -83,6 +86,9 @@
 	};
 	exports.addSong = function(songId,collectId,callback,res){
 		var songs;
+		if(!songId || songId==='undefined'){
+			return;
+		}
 		collect.findOne({_id:ObjectID(collectId)},function(err,item){
 			if(item){
 				songs = item.songs || [];

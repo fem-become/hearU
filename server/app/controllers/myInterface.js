@@ -53,8 +53,9 @@
 		song.find(songId,sendJson,res);
 	};
 	exports.searchSongs = function(req, res){
-		var key = req.query.key;
-		song.search(key,sendJson,res);
+		var key = req.query.key,
+		userId = req.query.userId;
+		song.search(key,userId,sendJson,res);
 	};
 	//添歌
 	exports.addSong = function(req, res){
