@@ -156,7 +156,6 @@ input:focus{
 	right: 0;
 }
 #sidebar{
-	background: url("images/imagedoc-darknoise.png") repeat scroll 0 0 #222222;
 	height: 100%;
 	position: absolute;
 	left: 0;

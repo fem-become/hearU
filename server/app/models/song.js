@@ -71,9 +71,6 @@
 					for(var i=0,l=items.length;i<l;i++){
 						mySongs = mySongs.concat(items[i].songs || []);
 					}
-                    console.info('----------------------');
-                    console.info(mySongs);
-                    console.info('----------------------');
 					song.find({_id:{$nin : turnToObjectId(mySongs)}}).toArray(function(err,items){
 						ret = getRandomArray(items,30);
 						var index = 0

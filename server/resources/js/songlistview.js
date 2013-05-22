@@ -3,7 +3,7 @@
 
     var WIN_WIDTH=$(window).width(),
         WIN_HEIGHT=$(window).height(),
-        ITEM_HEIGHT=62;
+        ITEM_HEIGHT=40;
 
     var metaData = null;
     var testdb = {
@@ -83,7 +83,7 @@
             return html.join('');
         },
         init: function(data) {
-            metaData = metaData || data;
+            metaData = this.metaData = data;
 
             var html = this.getHTML(metaData);
             $('#mainlist').html(html);
@@ -91,8 +91,8 @@
             HearU.setTitle(data.title || sampleSong.collectName);
 
 //            HearU.player.setList(metaData.songs);
-
-            $('#mainlist').addClass('curl');//.removeClass('flip');
+console.log('songlist:', data);
+            $('#mainlist').addClass('tilt').removeClass('flip');
             var list=$('#mainlist li');
             list.each(function (index,item) {
                 if(index*ITEM_HEIGHT<WIN_HEIGHT){
@@ -150,6 +150,17 @@
                 }, 0);
             }, 300);
         },
+        animIcon: function(ev, x) {
+            var $target = $(ev.target),
+                check = $(".check", $target.parent()),
+                cross = $(".cross", $target.parent());
+        
+            if (x > 0) {
+                check.addClass("animated animate-repeat pulse");        
+            } else {
+                cross.addClass("animated animate-repeat shake");  
+            }
+        }, 
         swipeRight: function(ev) {
             var $target = $(ev.target);
 
@@ -163,7 +174,6 @@
 
             var index = $target.attr('data-index');
             var song = metaData.songs[index];
-            alert(JSON.stringify(song));
 
             HearU.openSelect(song._id, song.collectId);
         },

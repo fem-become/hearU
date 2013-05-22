@@ -15,6 +15,7 @@
                 audio = document.createElement("audio");
                 $(audio).appendTo(document.body);
             }
+            audio.autoplay = false;
 
             this.element = audio;
 
@@ -24,23 +25,18 @@
             var self = this,
                 audio = this.element;
 
-            /*
-             E.on(audio, 'loadstart', function(ev) {
-             });
-             E.on(audio, 'ended', function(ev) {
-             self.fire('ended');
-             });
-             E.on(audio, 'error', function() {
-
-             });
-             E.on(audio, 'timeupdate progress', function(ev) {
-             });
-             */
-
-            E.on(audio, 'timeupdate', function() {
-                console.log(audio.currentTime)
-                self.currentTime = audio.currentTime;
+/*
+            E.on(audio, 'loadstart', function(ev) {
             });
+            E.on(audio, 'ended', function(ev) {
+                self.fire('ended');
+            });
+            E.on(audio, 'error', function() {
+
+            });
+            E.on(audio, 'timeupdate progress', function(ev) {
+            });
+*/
             // more event
             // loadstart,progress,suspend,abort,error,emptied
             // stalled,loadedmetadata,loadeddata,canplay,canplaythrough
@@ -56,8 +52,6 @@
             audio = audio || self.element;
 
             $(audio).attr('preload', "auto");
-
-            $(audio).attr('autoplay', true);
 
             /*
              var timer = S.later(function() {
@@ -80,23 +74,14 @@
             audio.load();
         },
         play: function() {
-            try {
-                this.element.currentTime = this.currentTime;
-            }catch(ex) {}
             this.element.play();
         },
         pause: function() {
-            try {
-                this.currentTime = this.element.currentTime;
-            }catch(ex) {};
             this.element.pause();
-            console.trace();
         },
         stop: function() {
             this.element.pause();
-            try {
-                this.currentTime = this.element.currentTime = 0;
-            }catch(ex) {};
+            this.currentTime = this.element.currentTime = 0;
         },
         skipTo: function(percent) {
             var time = this.element.duration * percent;
@@ -116,13 +101,11 @@
             this.audio = audio;
             this.list = [];
             this.playedIndex = undefined;
+            this.playing = false;
 
             this.on('ended', function() {
                 self.loop();
             });
-        },
-        getPlayState: function() {
-            return !this.audio.element.paused;
         },
         setList: function(list) {
             this.pause();
@@ -132,35 +115,38 @@
         _play: function(index) {
             var self = this,
                 audio = this.audio,
-                song = self.getSongInfo(index) || self.getSongInfo(0);
+                song = self.getSongInfo(index);
+            console.log(song, song.index, index);
             if(!song || !song.src) {
+                this.next();
                 return;
             }
+            this.playing = true;
 
-            if(this.playedIndex != song.index) {
-                this.playedIndex = song.index || 0;
+            this.playedIndex = song.index || 0;
 
-                audio.load(song.src);
+            audio.load(song.src);
 
-                audio.preload();
-            }
+            audio.preload();
 
             audio.play();
-            // self.playing = true;
+
 //            this.fire('play');
         },
         play: function(index) {
-            if(this.getPlayState() && this.playedIndex == index) {
+            console.log(this.playing, this.playedIndex, index);
+            if(this.playing && this.playedIndex == index) {
                 this.pause();
             }else {
                 this._play(index);
             }
         },
         pause: function() {
+            this.playing = false;
+
             this.audio.pause();
 
 //            this.fire('pause');
-            return this.playedIndex;
         },
         add: function(song) {
             this.list.push(song);
@@ -171,14 +157,12 @@
             }
         },
         next: function() {
-            this.loop();
-        },
-        _next: function() {
             var audio = this.audio;
 
             audio.stop();
+            this.playing = false;
 
-            this.play((this.playedIndex || 0) + 1);
+            this.play(this.playedIndex + 1);
 
             this.fire('next');
         },
@@ -186,6 +170,7 @@
             var audio = this.audio;
 
             audio.stop();
+            this.playing = false;
 
             this.play(this.playedIndex -1);
 
@@ -195,7 +180,7 @@
             if(this.playedIndex + 1 >= this.list.length){
                 this.play(0);
             }else {
-                this._next();
+            this.next();
             }
         },
         on: function(type, callback, context) {
@@ -215,12 +200,7 @@
 
             return song;
         },
-        getDuration: function() {
-            return this.audio.element.duration;
-        },
-        getCurrentTime: function() {
-            return this.audio.element.currentTime;
-        }
+        getCurrentTime: function() {return 100}
     });
 
     Player.List = PlayList;

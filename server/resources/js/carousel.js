@@ -29,7 +29,7 @@
         };
 
 
-       
+        this.setPaneDimensions=setPaneDimensions;
         this.showPane = function( index ) {
             index = Math.max(0, Math.min(index, pane_count-1));
             current_pane = index;
@@ -60,10 +60,11 @@
 
         function handleHammer(ev) {
             ev.gesture.preventDefault();
-
+            
             switch(ev.type) {
                 case 'dragright':
                 case 'dragleft':
+                    $(".icon-open").hide();
                     var pane_offset = -(100/pane_count);
                     var drag_offset = ((100/pane_width)*ev.gesture.deltaX) / pane_count;
 
@@ -71,6 +72,7 @@
                     break;
 
                 case 'release':
+                    $(".icon-open").show();
                     var dir=ev.gesture.direction;
                     if(!ev.gesture.deltaX){
                         return;

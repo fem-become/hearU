@@ -10,15 +10,35 @@
 		isLogin = true;
 		user = JSON.parse(localStorage.getItem('h_user'));
 	}
+
+	var timer = null;
+
 	function launchPlayer(list){
 		list.forEach(function(v){
 			v.songId = v._id;
 		});
 		hoo.player.setList(list);
-		hoo.player.play(0);
+		
+		timer = setTimeout(playTheSong, 100)
+		
         cb(user.id, user.name);
+
 		hoo.switchView('songdetail', {random: true});
+
+		alert("playing:" + hoo.player.getPlayState());
 	}
+
+
+	function playTheSong() {
+		hoo.player.play();	
+
+		if(hoo.player.getPlayState() == false) {
+			timer = setTimeout(playTheSong, 100);
+		}else {
+			timer = null;
+		}
+	}
+
 	function init(callback){
 		if(typeof callback == 'function') cb = callback;
 		if(isLogin){

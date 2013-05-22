@@ -18,12 +18,12 @@
     <link rel="apple-touch-startup-image" href="startup-ip5-retina.png" 
       media="(device-width:320px) and (device-height:568px) and (-webkit-min-device-pixel-ratio: 2)">
     
+    <link rel="stylesheet" type="text/css" href="css/uxiconfont.css">
+    <link rel="stylesheet" href="css/animate-min.css"/>
     <link rel="stylesheet" type="text/css" href="css/stroll.css">
     <link rel="stylesheet" type="text/css" href="css/app.css">
     <link rel="stylesheet" type="text/css" href="css/view.css">
     <link rel="stylesheet" type="text/css" href="css/spinningwheel.css">
-    <link rel="stylesheet" type="text/css" href="css/uxiconfont.css">
-    <link rel="stylesheet" href="css/animate-min.css"/>
     <title>我的歌单</title>
 </head>
 <body >
@@ -82,34 +82,31 @@
 </div>
 
 <script type="text/tpl" id="songDetalTpl">
-<section class="play-detail" id="PlayDetail">
+<section class="play-detail hide">
  <div class="song-play-wrapper">
-    <div class="play-list">
-        <div class="play-list-item">
-            <ul class="song-play-cover">
-                <li>03:09</li>
-                <li class="song-cover-img"><i class="icon-left-open"></i><img src="http://img.xiami.com/./images/album/img68/7068/1637504261363750426_5.jpeg" width="150" alt=""><i class="icon-right-open"></i></li>
-                <li class="song-play-tool"><i class="icon-pause"></i><i class="icon-heart"></i><i class="icon-trash"></i></li>
-            </ul>
-        </div>
-        <div class="play-list-item">
-            <ul class="song-play-cover">
-                <li>03:09</li>
-                <li class="song-cover-img"><i class="icon-left-open"></i><img src="http://img.xiami.com/images/collect/726/26/21302726_1367653398_4.jpg" width="150" alt=""><i class="icon-right-open"></i></li>
-                <li class="song-play-tool"><i class="icon-pause"></i><i class="icon-heart"></i><i class="icon-trash"></i></li>
-            </ul>
-        </div>
-        <div class="play-list-item">
-            <ul class="song-play-cover">
-                <li>03:09</li>
-                <li class="song-cover-img"><i class="icon-left-open"></i><img src="http://img.xiami.com/images/album/img63/55563/678246691367824687_2.jpg" width="150" alt=""><i class="icon-right-open"></i></li>
-                <li class="song-play-tool"><i class="icon-pause"></i><i class="icon-heart"></i><i class="icon-trash"></i></li>
-            </ul>
-        </div>
-    </div>
+    <ul class="song-play-cover">
+        <li class="J_PlayTime">00:00</li>
+        <li class="song-cover-img">
+            <i class="icon-open icon-left-open"></i>
+              <div id="PlayDetail">
+                <div class="play-list">
+                    <div class="play-list-item">
+                        <img src="http://img.xiami.com/./images/album/img68/7068/1637504261363750426_5.jpeg" width="150" alt="">
+                    </div>
+                    <div class="play-list-item">
+                        <img src="http://img.xiami.com/./images/album/img68/7068/1637504261363750426_5.jpeg" width="150" alt="">
+                    </div>
+                    <div class="play-list-item">
+                        <img src="http://img.xiami.com/./images/album/img68/7068/1637504261363750426_5.jpeg" width="150" alt="">
+                    </div>
+                </div>
+              </div>
+            <i class="icon-open icon-right-open"></i></li>
+        <li class="song-play-tool"><i class="icon-pause"></i><i class="icon-heart"></i><i class="icon-trash"></i></li>
+    </ul>
     <div class="song-actions">
         <ul class="recomend-song-list">
-            <li class="first-recomend"><a href="#" class="others-singer">查找朱倩的其它歌曲</a></li>
+            <li class="first-recomend"><a href="#" class="others-singer">查找<span id="J_Songer"></span>的其它歌曲</a></li>
             <li><a href="#" class="others-song">查看收藏者的其它歌曲</a></li>
             <li class="last-recomend"><a href="#" class="others-guess">猜你会喜欢的歌</a></li>
         </ul>
@@ -123,12 +120,11 @@
 -->
 <script src="js/zepto.js"></script>
 <script src="js/throttle.js"></script>
-<script src="http://10.7.50.0/hearu/hearU/server/resources/js/iscroll.js"></script>
+<script src="js/iscroll.js"></script>
 <!-- <script src="http://10.7.50.0/hearu/hearU/server/resources/js/iscroll.js"></script> -->
 <script src="js/hammer.js"></script>
-<!-- <script src="./js/spinningwheel.js"></script> -->
-<!-- <script src="./js/app.js"></script> -->
-<script src="http://10.7.50.0/hearu/hearU/server/resources/js/spinningwheel.js"></script>
+<script src="./js/spinningwheel.js"></script>
+<!-- <script src="http://10.7.50.0/hearu/hearU/server/resources/js/spinningwheel.js"></script> -->
 <!--
 <script src="http://10.7.50.0/hearu/hearU/server/resources/js/app.js"></script>
 -->
@@ -136,14 +132,14 @@
 <script src="js/config.js"></script>
 
 <script src="./js/albumlistview.js"></script>
-<script src="http://10.7.50.0/hearu/hearU/server/resources/js/carousel.js"></script>
-<!-- <script src="./js/carousel.js"></script> -->
+<!-- <script src="http://10.7.50.0/hearu/hearU/server/resources/js/carousel.js"></script> -->
+<script src="./js/carousel.js"></script>
 <script type="text/javascript" src="./js/player.js"></script>
 <script type="text/javascript" src="./js/songlistview.js"></script>
-<!-- <script type="text/javascript" src="./js/songdetail.js"></script> -->
-<!-- <script type="text/javascript" src="./js/songdetailview.js"></script> -->
-<script type="text/javascript" src="http://10.7.50.0/hearu/hearU/server/resources/js/songdetail.js"></script>
-<script type="text/javascript" src="http://10.7.50.0/hearu/hearU/server/resources/js/songdetailview.js"></script>
+<script type="text/javascript" src="./js/songdetail.js"></script>
+<script type="text/javascript" src="./js/songdetailview.js"></script>
+<!-- <script type="text/javascript" src="http://10.7.50.0/hearu/hearU/server/resources/js/songdetail.js"></script> -->
+<!-- <script type="text/javascript" src="http://10.7.50.0/hearu/hearU/server/resources/js/songdetailview.js"></script> -->
 
 <script src="js/auth.js"></script>
 <script src="js/header.js"></script>
