@@ -35,7 +35,6 @@
             current_pane = index;
 
             var offset = -((100/pane_count)*current_pane);
-            
             setContainerOffset(offset, true);
         };
 

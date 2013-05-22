@@ -9,11 +9,11 @@
 			"AlbumListView":{
 				'pull':'下拉创建新歌单',
 				'release':'松开创建新歌单',
-				'switch':'切换到歌曲列表'
+				'switch':''
 			},
 			songlist:{
-				'pull':'下拉添加新歌',
-				'release':'松开添加新歌',
+				'pull':'下拉搜索歌曲',
+				'release':'松开搜索歌曲',
 				'switch':'切换到歌单列表'
         },
             songdetail:{
@@ -36,29 +36,41 @@
                 var x=Math.abs(Math.abs(this.y)/ITEM_HEIGHT);
                 if(x>1){
                     x=1;
-						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['release']);
+					$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['release']);
                     $('#pulldown').attr('data-status','1');
                 }else{
-						$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['pull']);
+					$('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['pull']);
                     $('#pulldown').attr('data-status','0');
                 }
                 $('#pulldown .pull-more-wrapper')[0].style['-webkit-transform']='rotateX('+90*(1-x)+'deg)';
 
                 if(this.y>ITEM_HEIGHT*2){
-                    $('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['switch']);
-                    $('#pulldown .pull-more-wrapper').removeClass('item-create');
-                    $('#pulldown').attr('data-status','2');
+                    if (HearU.current_view.handlePulldown && HearU.current_view.handlePulldown()) {
+                        return;
+                    } else if(!HearU.current_view.handlePulldown || !HearU.current_view.handlePulldown()) {
+                        $('#pulldown .pull-more-label').html(PULL_BAEL[HearU.current_view.name]['switch']);
+                        $('#pulldown .pull-more-wrapper').removeClass('item-create');
+                        $('#pulldown').attr('data-status','2');
+                    }
                 }else{
                     $('#pulldown .pull-more-wrapper').addClass('item-create');
                 }
             }
         }),
-        onScrollEnd:function(){
+        onScrollEnd: $.throttle(100, function(){
             if(HearU.current_view.isOther){
                 return;
             }
+            
+            console.log(HearU.current_view.name);
             var status=+$("#pulldown").attr('data-status');
             if(HearU.is_editing){
+                return;
+            }
+            console.log(status);
+            if(HearU.current_view.name=='songdetail'&&status){
+                HearU.current_view.pullDown && HearU.current_view.pullDown();
+                $("#pulldown").attr('data-status','0');
                 return;
             }
             if(status==1){
@@ -68,7 +80,7 @@
                 HearU.current_view.pullDown && HearU.current_view.pullDown();
             }
             $("#pulldown").attr('data-status','0');
-        },
+        }),
         onRefresh:function(){
 
         }
@@ -118,7 +130,6 @@
             
             this.authorize(function(id, userName) {
                 window.sessionId = id;
-                $('#launch').hide();
             });
 		},
 
@@ -212,8 +223,8 @@
                     cross.removeClass("animated animate-repeat shake");
                 }
             
-				check[0].style['opacity'] = 0;
-				cross[0].style['opacity'] = 0;
+				if(check) check[0].style['opacity'] = 0;
+				if(cross) cross[0].style['opacity'] = 0;
 				if (Math.abs(x) > WIN_WIDTH*0.3){
 					if(x < 0){
                         this.current_view.swipeLeft && this.current_view.swipeLeft(ev);
@@ -251,9 +262,9 @@
                         self.switchView(des, data);
                     });
                 } else if (des == "exit") {
-                    if(localstorage) {
-                        localstorage.removeItem("h_user");
-                        window.location = window.location.href.replace(/#./,'');
+                    if(localStorage) {
+                        window.localStorage.removeItem("h_user");
+                        location.reload(true);
                     }
                 } else {
                     self.switchView(des, data);
@@ -267,7 +278,7 @@
                         self.HeaderView.openSideBar.call(self);
                     }
                 } else {
-                    self.switchView('songdetail');
+                    self.switchView('songdetail', {userId: -1});
                 }
             } else {// if(!$target.parent().hasClass('song-list')){
                 this.current_view.tap && this.current_view.tap(ev);
@@ -275,7 +286,7 @@
 		},
 
 		_initEdit: function() {
-			var self=this;
+			var self = this;
 			this.edit.on('webkitTransitionEnd',function(ev){
 				if(+$(this).attr('data-status')){
 					$(this).find('input').focus();
@@ -294,6 +305,19 @@
 			.on('focus',function(){
 				this.value='';
 			});
+            $(".search-exit").on('click', function() {
+                var self = HearU;
+                console.log('click');
+                $('#edit').attr('data-status','0')[0].style['-webkit-transform']='rotateX(-90deg)';
+                setTimeout(function() {
+                    $('.edit-wrapper').css('top','-100%');
+                }, 500);
+                $(self.wrapper).removeClass('shade');
+
+                self.is_editing = false;
+                self.scroll.enable();
+                self.scroll.refresh();
+            });
 		},
 
 		createItem: function(){
@@ -388,7 +412,6 @@
 
         requestAPI: function(url, params, callback) {
             //TODO: modify title
-            url = "http://10.13.16.36:3000" + url;
             $.ajax({
                 type: 'GET',
                 url: url,
@@ -473,9 +496,15 @@
                             $target.css('-webkit-transform', 'translate3d(' + distance + 'px,0px,0px)');
                 
                             if(distance > 0){
-                                $('.check',$item).addClass("animated animate-repeat pulse");
+                                if(Math.abs(distance) > WIN_WIDTH*0.3) {
+                                    $('.check',$item).addClass("animated animate-repeat pulse");
+                                }
+                                $('.check', $item).css('opacity', distance/ITEM_HEIGHT);
                             }else{
-                                $('.cross',$item).addClass("animated animate-repeat shake");
+                                if(Math.abs(distance) > WIN_WIDTH*0.3) {
+                                    $('.cross',$item).addClass("animated animate-repeat shake");
+                                }
+                                $('.cross', $item).css('opacity', distance/ITEM_HEIGHT);
                             }
                         }
                     }
@@ -490,9 +519,9 @@
                         var $parent = $target.parent(),
                             index = $parent.attr('data-index'),
                             song = this.searchResult[index];
-console.log(song);
+
                         $('.check',$target.parent()).css('opacity', 0);
-//                        $('.cross',$target.parent()).css('opacity',0);
+                        $('.cross',$target.parent()).css('opacity',0);
                         if(Math.abs(distance)>WIN_WIDTH*0.3){
                             if(distance<0){
 //                                console.log('left')
@@ -500,8 +529,14 @@ console.log(song);
                             }else{
                                 HearU.openSelect(song._id, song.collectId, null, function(collectId) {
                                     var view = HearU.current_view;
-                                    if(view.name == 'songlist' && view.metaData.collectId == collectId) {
+                                    if(view.name == 'songlist' 
+                                        && view.metaData.collectId == collectId) {
+                                        
                                         view.metaData.songs.push(song);
+                                        console.log('fav the searched song', song);
+                                        song.hasFavor = true;
+                                        song.userId = window.sessionId;
+                                        
                                         HearU.switchView('songlist', view.metaData);
                                     }
                                 });
@@ -516,7 +551,6 @@ console.log(song);
                     }
                         break;
                     case 'tap': {
-                        console.log($target)
                         var $parent;
                         if($target.hasClass('icon-play')) {
                             $parent = $target.parent().parent();
@@ -526,18 +560,20 @@ console.log(song);
                         }
                         if(!$parent || !$parent.hasClass('song')) return;
                         
-                        console.log($parent);
+                        console.log('tap', $parent);
                             
                         var index = $parent.attr('data-index'),
                             song = HearU.searchResult[index];
                         var player = HearU.player,
                             exist = false;
+
                         $.each(HearU.player.list, function(idx, item) {
                             if(item._id == song._id) {
                                 exist = idx;
                                 return false;
                             }
                         });
+                        console.log(song, exist);
                         if(exist === false) {
                             player.list.push(song);
                             
@@ -549,7 +585,7 @@ console.log(song);
                         // 重新设置列表。
 
                         $('.songplaying').removeClass('songplaying');
-                        if(player.playing) {
+                        if(player.getPlayState()) {
                             $parent.addClass('songplaying');
                         }
                     }
@@ -564,7 +600,7 @@ console.log(song);
                 var html = [];
                 $.each(data, function(idx, item) {
                     html.push('<li class="song item" data-index="'+idx+'">');
-                    html.push('<div class="slider">'+item.name+'<i class="icon-play"></i></div>');
+                    html.push('<div class="slider">'+item.name + " - " + item.artist+'<i class="icon-play"></i></div>');
                     html.push('<span class="check sideIcon"><i class="icon-heart"></i></span>');
                     html.push('</li>');
                 });

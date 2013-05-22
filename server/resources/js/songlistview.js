@@ -73,11 +73,11 @@
                 song = HearU.player.getSongInfo();
             $.each(data.songs,function(index,item){
                 var clsPlay = (song && item.name == song.name) ? " songplaying" : "",
-                    clsFav  = item.hasFavor ? " fav" : "",
+                    clsFav  = "", //item.hasFavor ? " fav" : "",
                     myself = item.userId == global.sessionId,
                     clsFixed = (item.hasFavor && !myself) || myself ? "" : " fixed";
 
-                html.push('<li class="song past item'+ clsFixed + clsPlay + clsFav + '" data-index='+(index)+'><div class="slider">'+item.name+'<i class="icon-play"></i></div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
+                html.push('<li class="song past item'+ clsFixed + clsPlay + clsFav + '" data-index='+(index)+'><div class="slider"><i class="icon-play"></i>'+item.name + " - " + item.artist+'</div><span class="check sideIcon"><i class="icon-heart"></i></span><span class="cross sideIcon"><i class="icon-trash"></i></span></li>');
             });
             html.push('</ul>');
             return html.join('');
@@ -204,11 +204,16 @@ console.log('songlist:', data);
 
             console.log('play '+ $parent.attr('data-index'));
 
-            HearU.switchView('songdetail');
+            HearU.switchView('songdetail', metaData);
         },
         pullDown: function() {
             console.log('pulldown by songlist')
-            HearU.switchView('albumlist', metaData);
+            if(metaData.userId != -1) {
+                HearU.switchView('albumlist', metaData);
+            }
+        },
+        handlePulldown: function() {
+            return metaData.userId == -1;
         },
         inputDown: function() {
             HearU.openSearch();
