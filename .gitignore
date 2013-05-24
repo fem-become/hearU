@@ -20,5 +20,5 @@ logs
 results
 
 npm-debug.log
-server/node_modules/*
-server/resources/resources
+node_modules/*
+resources/resources/*
